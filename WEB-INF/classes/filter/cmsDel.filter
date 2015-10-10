@@ -1,0 +1,4 @@
+{
+	serviceName:"cms.deleteContent",
+	after:"cms.operRecord"
+}

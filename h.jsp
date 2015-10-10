@@ -1,0 +1,1 @@
+<%response.sendRedirect("manager_auxiliary/index.jsp"); %>

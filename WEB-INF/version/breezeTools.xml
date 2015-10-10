@@ -1,0 +1,10 @@
+﻿<description>
+	<ContentDir>dest/breezeTools.zip</ContentDir>
+	<PatchDir>dest/breezeTools_patch.zip</PatchDir>
+	<DocDir>dest/breezeTools_doc.zip</DocDir>
+	<Type>BreezeTools</Type>
+	<Version>1.43</Version>
+	<VersionDesc>
+	 editgadget和edithtml的修改
+	</versionDesc>
+<description>

@@ -1,0 +1,4 @@
+{
+	serviceName:"cms.addContent",
+	after:"cms.operRecord"
+}

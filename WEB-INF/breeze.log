@@ -1,0 +1,403 @@
+2015-10-10 10:13:16 [com.breeze.init.Initer]-[FATAL]
+
+....begin to init breeze(V4.08)
+2015-10-10 10:13:16 [com.breeze.init.Initer]-[FATAL]....breeze innit step 1 inti WorkFlowUnit
+2015-10-10 10:13:16 [com.weiguang.ability.datarefresh.DataRefreshMgr]-[FATAL]begin to init DataRefreshMgrlist
+2015-10-10 10:13:16 [com.breeze.init.Initer]-[FATAL]....ok
+2015-10-10 10:13:16 [com.breeze.init.Initer]-[FATAL]....breeze innit step 2 inti processor
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow setting in dir:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF/classes/flow/
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\adminOprRecord.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\adminOprRecord.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSAdd.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSAdd.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSDel.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSDel.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSImportCSV.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSImportCSV.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSMod.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSMod.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSQuery.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSQuery.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CommQuery.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CommQuery.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CommSql.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CommSql.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CommUpdate.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CommUpdate.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CreateCMSType.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CreateCMSType.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\DeleteCMSType.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\DeleteCMSType.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\getServerData.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\getServerData.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\Login.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\Login.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\ModifyCMSType.flw
+2015-10-10 10:13:16 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\ModifyCMSType.flw
+2015-10-10 10:13:16 [com.breeze.init.Initer]-[FATAL]....ok
+2015-10-10 10:13:16 [com.breeze.init.Initer]-[FATAL]....breeze innit step 3 inti service template
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.AllServiceTemple]-[FATAL]begin load service file in base:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF/classes/service/
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\statusCtr\getStatusAction.brz
+2015-10-10 10:13:16 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:16 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\statusCtr\getStatusAction.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\statusCtr\setStatus.brz
+2015-10-10 10:13:16 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:16 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\statusCtr\setStatus.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\statusCtr\setStatusByAlias.brz
+2015-10-10 10:13:16 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:16 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\statusCtr\setStatusByAlias.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\addCMSType.brz
+2015-10-10 10:13:16 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:16 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\addCMSType.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\addContent.brz
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\addContent.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\addNode.brz
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\addNode.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteCmsList.brz
+2015-10-10 10:13:16 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:16 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteCmsList.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteCMSType.brz
+2015-10-10 10:13:16 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:16 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:2
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteCMSType.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteContent.brz
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteContent.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteNode.brz
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteNode.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\frontQueryContent.brz
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\frontQueryContent.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\frontQueryNode.brz
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\frontQueryNode.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\importCVStoDB.brz
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\importCVStoDB.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\maskSelect.brz
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\maskSelect.brz)is ok
+2015-10-10 10:13:16 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\modifyCMSType.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\modifyCMSType.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\modifyContent.brz
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\modifyContent.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\modifyNode.brz
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\modifyNode.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\operRecord.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\operRecord.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryAllCMSType.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryAllCMSType.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryComitData.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryComitData.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryConSonAlias.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryConSonAlias.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryContent.brz
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryContent.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryNode.brz
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryNode.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryNodeCMSType.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryNodeCMSType.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryOneCMSType.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryOneCMSType.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\adminLogin.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\adminLogin.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\checkOldPwd.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\checkOldPwd.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\checkPasswordProtection.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\checkPasswordProtection.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\modifyPasswordProtection.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\modifyPasswordProtection.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\queryAdmininfo.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\queryAdmininfo.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\queryAminQua.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\queryAminQua.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\refreshManagerSession.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\refreshManagerSession.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminBaseInfo.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminBaseInfo.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminImg.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminImg.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminPwd.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminPwd.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminPwdByR.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminPwdByR.brz)is ok
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\roleactiongroupMgr\queryRolactiongroup.brz
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:13:17 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:13:17 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\roleactiongroupMgr\queryRolactiongroup.brz)is ok
+2015-10-10 10:13:17 [com.breeze.init.Initer]-[FATAL]....ok
+2015-10-10 10:13:17 [com.breeze.init.Initer]-[FATAL]....breeze innit step 4 inti filter
+2015-10-10 10:13:17 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]begin load flow setting in dir:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF/classes/filter/
+2015-10-10 10:13:17 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]begin load filter :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\filter\cmsAdd.filter
+2015-10-10 10:13:17 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]finished load filter :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\filter\cmsAdd.filter
+2015-10-10 10:13:17 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]begin load filter :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\filter\cmsDel.filter
+2015-10-10 10:13:17 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]finished load filter :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\filter\cmsDel.filter
+2015-10-10 10:13:17 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]begin load filter :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\filter\cmsModify.filter
+2015-10-10 10:13:17 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]finished load filter :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\filter\cmsModify.filter
+2015-10-10 10:13:17 [com.breeze.init.Initer]-[FATAL]....ok
+2015-10-10 10:13:17 [com.breeze.init.Initer]-[FATAL]....breeze innit step 5 inti timing
+2015-10-10 10:13:17 [com.breeze.framwork.netserver.filter.BreezeTimingMgr]-[FATAL]begin load flow setting in dir:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF/classes/scheduler/
+2015-10-10 10:13:17 [com.breeze.init.Initer]-[FATAL]....ok
+2015-10-10 10:13:17 [com.breeze.init.Initer]-[FATAL]....breeze init step 6 init transSetting
+2015-10-10 10:13:17 [com.breeze.framwork.netserver.filter.BreezeDBTransProcessMgr]-[FATAL]begin load trans setting in dir:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF/classes/trans/
+2015-10-10 10:13:17 [com.breeze.init.Initer]-[FATAL]....breeze init complete!
+
+
+2015-10-10 10:13:19 [com.breezefw.service.authority.AuthIniter]-[FATAL]enc a exception the exception is 
+java.lang.NullPointerException
+	at com.breeze.base.db.DBCPOper.executeSql(DBCPOper.java:53)
+	at com.breeze.base.db.DBCPOper.executeSql(DBCPOper.java:90)
+	at com.breeze.base.db.DBCPOper.executeSql(DBCPOper.java:42)
+	at com.breeze.base.db.COMMDB.executeSql(COMMDB.java:40)
+	at com.breezefw.service.authority.AuthIniter.refresh(AuthIniter.java:45)
+	at com.breezefw.service.authority.AuthIniter.doInit(AuthIniter.java:145)
+	at com.breezefw.framework.init.InitServlet.init(InitServlet.java:52)
+	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1284)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1197)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:1087)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:5267)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5557)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:901)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:877)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:652)
+	at org.apache.catalina.startup.HostConfig.deployDirectory(HostConfig.java:1263)
+	at org.apache.catalina.startup.HostConfig$DeployDirectory.run(HostConfig.java:1948)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+
+2015-10-10 10:13:19 [com.weiguang.ability.datarefresh.DataRefreshMgr]-[FATAL]begin to init DataRefreshMgrlist
+2015-10-10 10:15:24 [com.breezefw.service.cms.CmsIniter]-[FATAL]alias[cmsconfig]not exist!
+2015-10-10 10:15:24 [com.breezefw.service.cms.CmsIniter]-[FATAL]alias[cmsconfig]not exist!
+2015-10-10 10:15:24 [com.breezefw.service.cms.CmsIniter]-[FATAL]alias[cmsconfig]not exist!
+2015-10-10 10:15:25 [com.breezefw.service.cms.CmsIniter]-[FATAL]alias[cmsconfig]not exist!
+2015-10-10 10:15:25 [com.breezefw.service.cms.CmsIniter]-[FATAL]alias[cmsconfig]not exist!
+2015-10-10 10:15:25 [com.breezefw.service.cms.CmsIniter]-[FATAL]alias[cmsconfig]not exist!
+2015-10-10 10:15:25 [com.breezefw.service.cms.CmsIniter]-[FATAL]alias[cmsconfig]not exist!
+2015-10-10 10:15:25 [com.breezefw.service.cms.CmsIniter]-[FATAL]alias[cmsconfig]not exist!
+2015-10-10 10:15:25 [com.breezefw.service.cms.CmsIniter]-[FATAL]alias[cmsconfig]not exist!
+2015-10-10 10:15:25 [com.breezefw.service.cms.CmsIniter]-[FATAL]alias[cmsconfig]not exist!
+2015-10-10 10:15:25 [com.breezefw.service.cms.CmsIniter]-[FATAL]alias[cmsconfig]not exist!
+2015-10-10 10:15:25 [com.breezefw.service.cms.CmsIniter]-[FATAL]alias[cmsconfig]not exist!
+2015-10-10 10:16:00 [com.breeze.init.Initer]-[FATAL]
+
+....begin to init breeze(V4.08)
+2015-10-10 10:16:00 [com.breeze.init.Initer]-[FATAL]....breeze innit step 1 inti WorkFlowUnit
+2015-10-10 10:16:00 [com.weiguang.ability.datarefresh.DataRefreshMgr]-[FATAL]begin to init DataRefreshMgrlist
+2015-10-10 10:16:00 [com.breeze.init.Initer]-[FATAL]....ok
+2015-10-10 10:16:00 [com.breeze.init.Initer]-[FATAL]....breeze innit step 2 inti processor
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow setting in dir:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF/classes/flow/
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\adminOprRecord.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\adminOprRecord.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSAdd.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSAdd.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSDel.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSDel.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSImportCSV.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSImportCSV.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSMod.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSMod.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSQuery.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CMSQuery.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CommQuery.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CommQuery.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CommSql.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CommSql.flw
+2015-10-10 10:16:00 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CommUpdate.flw
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CommUpdate.flw
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CreateCMSType.flw
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\CreateCMSType.flw
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\DeleteCMSType.flw
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\DeleteCMSType.flw
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\getServerData.flw
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\getServerData.flw
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\Login.flw
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\Login.flw
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]begin load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\ModifyCMSType.flw
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.process.ServerProcessManager]-[FATAL]finished load flow :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\flow\ModifyCMSType.flw
+2015-10-10 10:16:01 [com.breeze.init.Initer]-[FATAL]....ok
+2015-10-10 10:16:01 [com.breeze.init.Initer]-[FATAL]....breeze innit step 3 inti service template
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.AllServiceTemple]-[FATAL]begin load service file in base:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF/classes/service/
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\statusCtr\getStatusAction.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\statusCtr\getStatusAction.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\statusCtr\setStatus.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\statusCtr\setStatus.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\statusCtr\setStatusByAlias.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\statusCtr\setStatusByAlias.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\addCMSType.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\addCMSType.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\addContent.brz
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\addContent.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\addNode.brz
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\addNode.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteCmsList.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteCmsList.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteCMSType.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:2
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteCMSType.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteContent.brz
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteContent.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteNode.brz
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\deleteNode.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\frontQueryContent.brz
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\frontQueryContent.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\frontQueryNode.brz
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\frontQueryNode.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\importCVStoDB.brz
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\importCVStoDB.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\maskSelect.brz
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\maskSelect.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\modifyCMSType.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\modifyCMSType.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\modifyContent.brz
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\modifyContent.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\modifyNode.brz
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\modifyNode.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\operRecord.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\operRecord.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryAllCMSType.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryAllCMSType.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryComitData.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryComitData.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryConSonAlias.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryConSonAlias.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryContent.brz
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryContent.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryNode.brz
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryNode.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryNodeCMSType.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryNodeCMSType.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryOneCMSType.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\cms\queryOneCMSType.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\adminLogin.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\adminLogin.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\checkOldPwd.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\checkOldPwd.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\checkPasswordProtection.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\checkPasswordProtection.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\modifyPasswordProtection.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\modifyPasswordProtection.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\queryAdmininfo.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\queryAdmininfo.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\queryAminQua.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\queryAminQua.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\refreshManagerSession.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\refreshManagerSession.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminBaseInfo.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminBaseInfo.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminImg.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminImg.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminPwd.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminPwd.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminPwdByR.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\admin\updateAdminPwdByR.brz)is ok
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\roleactiongroupMgr\queryRolactiongroup.brz
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]--------------biegin init dboperItem
+2015-10-10 10:16:01 [com.breezefw.framework.template.DBOperateItem]-[FATAL]sql is:1
+2015-10-10 10:16:01 [com.breeze.framwork.servicerg.ServiceRegister]-[FATAL]passer file(C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\service\roleactiongroupMgr\queryRolactiongroup.brz)is ok
+2015-10-10 10:16:01 [com.breeze.init.Initer]-[FATAL]....ok
+2015-10-10 10:16:01 [com.breeze.init.Initer]-[FATAL]....breeze innit step 4 inti filter
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]begin load flow setting in dir:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF/classes/filter/
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]begin load filter :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\filter\cmsAdd.filter
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]finished load filter :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\filter\cmsAdd.filter
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]begin load filter :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\filter\cmsDel.filter
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]finished load filter :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\filter\cmsDel.filter
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]begin load filter :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\filter\cmsModify.filter
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.filter.BreezeFilterMgr]-[FATAL]finished load filter :C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF\classes\filter\cmsModify.filter
+2015-10-10 10:16:01 [com.breeze.init.Initer]-[FATAL]....ok
+2015-10-10 10:16:01 [com.breeze.init.Initer]-[FATAL]....breeze innit step 5 inti timing
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.filter.BreezeTimingMgr]-[FATAL]begin load flow setting in dir:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF/classes/scheduler/
+2015-10-10 10:16:01 [com.breeze.init.Initer]-[FATAL]....ok
+2015-10-10 10:16:01 [com.breeze.init.Initer]-[FATAL]....breeze init step 6 init transSetting
+2015-10-10 10:16:01 [com.breeze.framwork.netserver.filter.BreezeDBTransProcessMgr]-[FATAL]begin load trans setting in dir:C:\soft\apache-tomcat-7.0.63\webapps\b\WEB-INF/classes/trans/
+2015-10-10 10:16:01 [com.breeze.init.Initer]-[FATAL]....breeze init complete!
+
+
+2015-10-10 10:16:01 [com.weiguang.ability.datarefresh.DataRefreshMgr]-[FATAL]begin to init DataRefreshMgrlist

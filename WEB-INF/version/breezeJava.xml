@@ -1,0 +1,10 @@
+﻿<description>
+	<ContentDir>dest/breezeJava.zip</ContentDir>
+	<PatchDir>dest/breezeJava_patch.zip</PatchDir>
+	<DocDir>dest/breezeJava_doc.zip</DocDir>
+	<Type>BreezeJava</Type>
+	<Version>1.24</Version>
+	<VersionDesc>
+	  改造callService方法，支持异步调用
+	</versionDesc>
+<description>

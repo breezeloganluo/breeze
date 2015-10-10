@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+  <jsp-config>
+	 <taglib>
+		<taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+		<taglib-location>/WEB-INF/tdl/fmt.tld</taglib-location>
+	  </taglib>
+
+	  <taglib>
+		<taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+		<taglib-location>/WEB-INF/tdl/c.tld</taglib-location>
+	  </taglib>
+
+	  <taglib>
+		<taglib-uri>http://java.sun.com/jstl/fn</taglib-uri>
+		<taglib-location>/WEB-INF/tdl/fn.tld</taglib-location>
+	  </taglib>
+
+	  <taglib>
+		<taglib-uri>http://java.sun.com/jstl/perTag</taglib-uri>
+		<taglib-location>/WEB-INF/tdl/permittedTaglibs.tld</taglib-location>
+	  </taglib>
+
+	  <taglib>
+		<taglib-uri>http://java.sun.com/jstl/sql</taglib-uri>
+		<taglib-location>/WEB-INF/tdl/sql.tld</taglib-location>
+	  </taglib>
+
+		<taglib>
+		<taglib-uri>http://java.sun.com/jstl/script</taglib-uri>
+		<taglib-location>/WEB-INF/tdl/scriptfree.tld</taglib-location>
+	  </taglib>
+
+	  <taglib>
+		<taglib-uri>http://java.sun.com/jstl/x</taglib-uri>
+		<taglib-location>/WEB-INF/tdl/x.tld</taglib-location>
+	  </taglib>
+	  
+	  <taglib>
+		<taglib-uri>http://breeze.joinlinking.com/tag</taglib-uri>
+		<taglib-location>/WEB-INF/tdl/breeze.tld</taglib-location>
+	  </taglib>
+
+	</jsp-config>
+  <servlet>
+    <servlet-name>Init</servlet-name>
+    <servlet-class>com.breezefw.framework.init.InitServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>breezeclient</servlet-name>
+    <servlet-class>com.breezefw.framework.netserver.BreezeClientPoint</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>webrequestpoint</servlet-name>
+    <servlet-class>com.breezefw.framework.netserver.RequestBreezePoint</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>upload</servlet-name>
+    <servlet-class>com.breezefw.framework.netserver.UploadPoint</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WeiXinServlet</servlet-name>
+    <servlet-class>com.breezefw.service.weixin.WeiXinServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>static</servlet-name>
+  	<servlet-class>com.breezefw.servlet.PageStatic</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>static</servlet-name>
+  	<url-pattern>*.brp</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Init</servlet-name>
+    <url-pattern>/Init.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>breezeclient</servlet-name>
+    <url-pattern>*.brz</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>webrequestpoint</servlet-name>
+    <url-pattern>*.rbp</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>upload</servlet-name>
+    <url-pattern>*.up</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>upload</servlet-name>
+    <url-pattern>*.mup</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>upload</servlet-name>
+    <url-pattern>*.php</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WeiXinServlet</servlet-name>
+    <url-pattern>*.wx</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+  <welcome-file-list>
+    <welcome-file>
+            index.jsp
+        </welcome-file>
+  </welcome-file-list>
+</web-app>

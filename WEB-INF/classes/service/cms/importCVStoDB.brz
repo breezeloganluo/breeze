@@ -1,0 +1,28 @@
+{
+    "serviceName": "importCVStoDB",
+    "flowName": "CMSImportCSV",
+    "toolsMemoDesc0000": "",
+    "com.breezefw.framework.template.ContextResultItem.templateErrorUrl": "",
+    "com.breezefw.service.cms.templateitem.CMSDBOperItem.isFather": "no",
+    "com.breezefw.service.cms.templateitem.CMSDBOperItem.resultContextName": "data",
+    "com.breezefw.framework.template.ContextResultItem.templateUrl": "",
+    "com.breezefw.framework.template.CheckerItem.checkerInfo": [{
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": "",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.failCode": "10",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerObj": "_R.data",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull"
+    },
+    {
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": "",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.failCode": "11",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerObj": "_R.alias",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull"
+    },
+    {
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": "",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.failCode": "12",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerObj": "_R.importAlias",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull"
+    }],
+    "com.breezefw.service.cms.templateitem.CMSDBOperItem.sql": ""
+}

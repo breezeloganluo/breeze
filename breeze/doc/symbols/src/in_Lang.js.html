@@ -1,0 +1,357 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/** 
+<span class='line'>  2</span> * @fileOverview FW配套使用的核心默认函数lang 
+<span class='line'>  3</span> * @author &lt;a href="http://www.wgfly.com">Logan&lt;/a> 
+<span class='line'>  4</span> * @version 0.1
+<span class='line'>  5</span> */</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>  6</span> 
+<span class='line'>  7</span> </span><span class="COMM">/**
+<span class='line'>  8</span> * @namespace
+<span class='line'>  9</span> * @author Logan 
+<span class='line'> 10</span> * @name lang
+<span class='line'> 11</span> * @description  FW的核心基本扩展 
+<span class='line'> 12</span> */</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'> 13</span> </span><span class="NAME">define</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">require</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">exports</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">module</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="WHIT">	</span><span class="COMM">//用函数自身做域名承载对象</span><span class="WHIT">
+<span class='line'> 15</span> </span><span class="WHIT">	</span><span class="COMM">//这样在外部使用的时候，可以简化比如use("xx/x/xx")(FW);</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_result</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fw</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="WHIT">		</span><span class="NAME">fw.use</span><span class="PUNC">(</span><span class="NAME">_result</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="WHIT">	</span><span class="NAME">_result.getDomain</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="STRN">"lang"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">APICtr</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="WHIT">		</span><span class="NAME">JsonAPI</span><span class="PUNC">:</span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./lib/json"</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="WHIT">		</span><span class="NAME">BreezeTemplate</span><span class="PUNC">:</span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./lib/BreezeTemplate"</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">		</span><span class="NAME">FormAPI</span><span class="PUNC">:</span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"./lib/FormOper"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">	</span><span class="COMM">// alert(APICtr.JsonAPI.toJSONString({name:"alec"}));</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 31</span> 	 * @function
+<span class='line'> 32</span> 	 * @memberOf lang
+<span class='line'> 33</span> 	 * @name getParameter
+<span class='line'> 34</span> 	 * @description 从url中获取参数
+<span class='line'> 35</span> 	 * @param {String}pName 参数名
+<span class='line'> 36</span> 	 * @returns 参数名对应的参数值
+<span class='line'> 37</span> 	 */</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">	</span><span class="NAME">_result.getParameter</span><span class="PUNC">=</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">__pName</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">url</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">window.location.toString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">execResult</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">RegExp</span><span class="PUNC">(</span><span class="NAME">__pName</span><span class="PUNC">+</span><span class="STRN">"=([\\w%\\.]+)"</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">exec</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">execResult</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">execResult</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 48</span> 	 * @function
+<span class='line'> 49</span> 	 * @memberOf lang
+<span class='line'> 50</span> 	 * @name save
+<span class='line'> 51</span> 	 * @desctiption 本地存储,存
+<span class='line'> 52</span> 	 * @param {String} name 存储名称
+<span class='line'> 53</span> 	 * @param {Object} data 被存储的对象，如果为null，则是把name删除掉
+<span class='line'> 54</span> 	 * @param {boolean} [isPermanent] 是否永久性存储，true是永久存储，false或默认不填是会话存储
+<span class='line'> 55</span> 	 * @see load
+<span class='line'> 56</span> 	 * @example
+<span class='line'> 57</span> 	 * FW.use().save("abc",{a:'hello'});//存储
+<span class='line'> 58</span> 	 * FW.use().save("abc",null);//删除
+<span class='line'> 59</span> 	 * 
+<span class='line'> 60</span> 	 */</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">	</span><span class="NAME">_result.save</span><span class="PUNC">=</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="NAME">data</span><span class="PUNC">,</span><span class="NAME">isPermanent</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">window.localStorage</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">window.sessionStorage</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">			</span><span class="NAME">seajs.log</span><span class="PUNC">(</span><span class="STRN">"browser not supprt window.loalStorage!"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">storage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">isPermanent</span><span class="PUNC">)</span><span class="PUNC">?</span><span class="NAME">localStorage</span><span class="PUNC">:</span><span class="NAME">sessionStorage</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">			</span><span class="NAME">storage.setItem</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="NAME">APICtr.JsonAPI.toJSONString</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">					</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">			</span><span class="COMM">//如果是null，表示删除</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">			</span><span class="NAME">storage.removeItem</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 74</span> 
+<span class='line'> 75</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 76</span> 	 * @function
+<span class='line'> 77</span> 	 * @memberOf lang
+<span class='line'> 78</span> 	 * @name load
+<span class='line'> 79</span> 	 * @desctiption 本地存储，取
+<span class='line'> 80</span> 	 * @param {String} name 存储名称
+<span class='line'> 81</span> 	 * @param {boolean} [isPermanent] 是否永久性存储，true是永久存储，false或默认不填是会话存储
+<span class='line'> 82</span> 	 * @return 返回本地存储name对应的值
+<span class='line'> 83</span> 	 * @see save
+<span class='line'> 84</span> 	 * @example
+<span class='line'> 85</span> 	 * FW.use().load("abc");
+<span class='line'> 86</span> 	 * 
+<span class='line'> 87</span> 	 */</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">	</span><span class="NAME">_result.load</span><span class="PUNC">=</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">,</span><span class="NAME">isPermanent</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">window.localStorage</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">window.sessionStorage</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">			</span><span class="NAME">seajs.log</span><span class="PUNC">(</span><span class="STRN">"browser not supprt window.loalStorage!"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">storage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">isPermanent</span><span class="PUNC">)</span><span class="PUNC">?</span><span class="NAME">localStorage</span><span class="PUNC">:</span><span class="NAME">sessionStorage</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">resultJson</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">storage.getItem</span><span class="PUNC">(</span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 95</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">eval</span><span class="PUNC">(</span><span class="STRN">"("</span><span class="PUNC">+</span><span class="NAME">resultJson</span><span class="PUNC">+</span><span class="STRN">")"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 99</span> 	 * @function
+<span class='line'>100</span> 	 * @memberOf lang
+<span class='line'>101</span> 	 * @name parserTemplate
+<span class='line'>102</span> 	 * @desctiption 模板解析函数
+<span class='line'>103</span> 	 * @param {String} src 模板名称
+<span class='line'>104</span> 	 * @param {Object} data 用于模板的数据对象
+<span class='line'>105</span> 	 * @param {Object} useAPI 在模板中，可用于xx:xx模式的api对象，例如{a:{f:function(){}}}则在模板中使用${a:f()}调用
+<span class='line'>106</span> 	 * @return 模板解析后的值
+<span class='line'>107</span> 	 */</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">	</span><span class="NAME">_result.parserTemplate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">__src</span><span class="PUNC">,</span><span class="NAME">__data</span><span class="PUNC">,</span><span class="NAME">_useAPI</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">APICtr.BreezeTemplate.parserTemplate</span><span class="PUNC">(</span><span class="NAME">__src</span><span class="PUNC">,</span><span class="NAME">__data</span><span class="PUNC">,</span><span class="NAME">_useAPI</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>111</span> 
+<span class='line'>112</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>113</span> 	 * @function
+<span class='line'>114</span> 	 * @memberOf lang
+<span class='line'>115</span> 	 * @name evalJSON
+<span class='line'>116</span> 	 * @desctiption 将Json转换函数
+<span class='line'>117</span> 	 * @param {String} strJson json字符串
+<span class='line'>118</span> 	 * @return 返回object,array,string等对象
+<span class='line'>119</span> 	 * @example
+<span class='line'>120</span> 	 * FW.use().evalJSON("{name:'alec'}");
+<span class='line'>121</span> 	 */</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">	</span><span class="NAME">_result.evalJSON</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">strJson</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">APICtr.JsonAPI.evalJSON</span><span class="PUNC">(</span><span class="NAME">strJson</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>125</span> 
+<span class='line'>126</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>127</span> 	 * @function
+<span class='line'>128</span> 	 * @memberOf lang
+<span class='line'>129</span> 	 * @name toJSONString
+<span class='line'>130</span> 	 * @desctiption 将javascript数据类型转换为json字符串的方法
+<span class='line'>131</span> 	 * @param {object} object 需转换为json字符串的对象, 一般为Json 【支持object,array,string,function,number,boolean,regexp *】
+<span class='line'>132</span> 	 * @return 返回json字符串
+<span class='line'>133</span> 	 * @example
+<span class='line'>134</span> 	 * FW.use().toJSONString({name:'alec'});
+<span class='line'>135</span> 	 */</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">	</span><span class="NAME">_result.toJSONString</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">object</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">APICtr.JsonAPI.toJSONString</span><span class="PUNC">(</span><span class="NAME">object</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>141</span> 	 * @function
+<span class='line'>142</span> 	 * @memberOf lang
+<span class='line'>143</span> 	 * @name createForm
+<span class='line'>144</span> 	 * @desctiption 使用对象描述符，创建表单
+<span class='line'>145</span> 	 * @param {Object}desc 对象描述符 
+<span class='line'>146</span> 	 * @param {JqueryContainer}dom 加载生成的表单，挂接到dom节点
+<span class='line'>147</span> 	 * @param {Object}data 对象实际的值，可以为空
+<span class='line'>148</span> 	 */</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">	</span><span class="NAME">_result.createForm</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">desc</span><span class="PUNC">,</span><span class="NAME">dom</span><span class="PUNC">,</span><span class="NAME">data</span><span class="PUNC">,</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">		</span><span class="NAME">APICtr.FormAPI.createFormByObjDesc</span><span class="PUNC">(</span><span class="NAME">desc</span><span class="PUNC">,</span><span class="NAME">dom</span><span class="PUNC">,</span><span class="NAME">data</span><span class="PUNC">,</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>152</span> 
+<span class='line'>153</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>154</span> 	 * @function
+<span class='line'>155</span> 	 * @memberOf lang
+<span class='line'>156</span> 	 * @name createFormList
+<span class='line'>157</span> 	 * @desctiption 使用对象描述符，创建表单列表页
+<span class='line'>158</span> 	 * @param {Object}desc 对象描述符 
+<span class='line'>159</span> 	 * @param {JqueryContainer}dom 加载生成的表单，挂接到dom节点
+<span class='line'>160</span> 	 * @param {Object}data 对象实际的值，可以为空
+<span class='line'>161</span> 	 * @param {Object}callback 提供给外联显示类型的执行函数 有两个参数 value,valueRange
+<span class='line'>162</span> 	 */</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">	</span><span class="NAME">_result.createFormList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">desc</span><span class="PUNC">,</span><span class="NAME">dom</span><span class="PUNC">,</span><span class="NAME">data</span><span class="PUNC">,</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">		</span><span class="NAME">APICtr.FormAPI.createFormListByObjDesc</span><span class="PUNC">(</span><span class="NAME">desc</span><span class="PUNC">,</span><span class="NAME">dom</span><span class="PUNC">,</span><span class="NAME">data</span><span class="PUNC">,</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>168</span> 	 * @function
+<span class='line'>169</span> 	 * @memberOf lang
+<span class='line'>170</span> 	 * @name bindFormList
+<span class='line'>171</span> 	 * @desctiption 创建表单分页列表页
+<span class='line'>172</span> 	 * @param {Object}_desc 对象描述符 
+<span class='line'>173</span> 	 * @param {JqueryContainer}_dom 加载生成的表单，挂接到dom节点
+<span class='line'>174</span> 	 * @param {String}_countService 请求列表数据总数的serviceName  查询结果获取格式data[0].count
+<span class='line'>175</span> 	 * @param {String}_countPackage 请求列表数据总数的package
+<span class='line'>176</span> 	 * @param {Object}_countParam 请求列表数据总数的param 
+<span class='line'>177</span> 	 * @param {String}_qConService 请求列表内容的serviceName
+<span class='line'>178</span> 	 * @param {String}_qConPackage 请求列表内容的package
+<span class='line'>179</span> 	 * @param {Number}_pagesize 列表m每页显示多少条数据
+<span class='line'>180</span> 	 * @param {function}_formListFun 获取分页按钮对应页码的真实数据函数
+<span class='line'>181</span> 	 * @param {function}_bindFormListCallBack 分页列表显示后的回调函数，用途例如：用于给列表绑定按钮事件
+<span class='line'>182</span> 	 */</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">	</span><span class="NAME">_result.bindFormList</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">_desc</span><span class="PUNC">,</span><span class="NAME">_dom</span><span class="PUNC">,</span><span class="NAME">_countService</span><span class="PUNC">,</span><span class="NAME">_countPackage</span><span class="PUNC">,</span><span class="NAME">_countParam</span><span class="PUNC">,</span><span class="NAME">_qConService</span><span class="PUNC">,</span><span class="NAME">_qConPackage</span><span class="PUNC">,</span><span class="NAME">_pagesize</span><span class="PUNC">,</span><span class="NAME">_formListFun</span><span class="PUNC">,</span><span class="NAME">_bindFormListCallBack</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="WHIT">		</span><span class="COMM">// this.FW.blockUI("&lt;a href=''>alec&lt;/a>",0,0,400,400,0);</span><span class="WHIT">
+<span class='line'>185</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">_this</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>186</span> 
+<span class='line'>187</span> </span><span class="WHIT">		</span><span class="COMM">//计算list的数据总数</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">		 </span><span class="NAME">_this.FW.doServer</span><span class="PUNC">(</span><span class="NAME">_countService</span><span class="PUNC">,</span><span class="NAME">_countPackage</span><span class="PUNC">,</span><span class="NAME">_countParam</span><span class="PUNC">,</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">code</span><span class="PUNC">,</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">			 </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">code</span><span class="PUNC">==</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>190</span> 
+<span class='line'>191</span> </span><span class="WHIT">				</span><span class="COMM">//储存数据总数</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="WHIT">				</span><span class="COMM">// var dataCount = data;</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">dataCount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">count</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>194</span> 
+<span class='line'>195</span> </span><span class="WHIT">				</span><span class="COMM">//储存总页数</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pageCount</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.ceil</span><span class="PUNC">(</span><span class="NAME">dataCount</span><span class="PUNC">/</span><span class="NAME">_pagesize</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">				</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">				</span><span class="COMM">//如果pageCount等于0,则显示空列表</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">pageCount</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">					</span><span class="NAME">APICtr.FormAPI.createFormListByObjDesc</span><span class="PUNC">(</span><span class="NAME">_desc</span><span class="PUNC">,</span><span class="NAME">_dom</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="WHIT">					</span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>203</span> 
+<span class='line'>204</span> </span><span class="WHIT">				</span><span class="COMM">//显示列表函数</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">				</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">reShowFormList</span><span class="PUNC">(</span><span class="NAME">pageNum</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>206</span> 
+<span class='line'>207</span> </span><span class="WHIT">					</span><span class="COMM">//获取最新newData数据</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">					</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">newParam</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_formListFun</span><span class="PUNC">(</span><span class="NAME">pageNum</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>209</span> 
+<span class='line'>210</span> </span><span class="WHIT">					</span><span class="NAME">_this.FW.doServer</span><span class="PUNC">(</span><span class="NAME">_qConService</span><span class="PUNC">,</span><span class="NAME">_qConPackage</span><span class="PUNC">,</span><span class="NAME">newParam</span><span class="PUNC">,</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">code</span><span class="PUNC">,</span><span class="NAME">data</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="WHIT">						</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">code</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="WHIT">							</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="WHIT">							</span><span class="COMM">//生成表单								</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="WHIT">							</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">data</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">data.length</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="WHIT">								</span><span class="COMM">//转换data中数组字符串的情况为数组</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">								</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">v_prop</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">_this.contentDesc</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="WHIT">									</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">_this.contentDesc</span><span class="PUNC">[</span><span class="NAME">v_prop</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="STRN">'List'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="WHIT">										</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NUMB">0</span><span class="PUNC">;</span><span class="NAME">i</span><span class="PUNC">&lt;</span><span class="NAME">data.length</span><span class="PUNC">;</span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="WHIT">											</span><span class="NAME">data</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">v_prop</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">FW.use</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">evalJSON</span><span class="PUNC">(</span><span class="NAME">data</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NAME">v_prop</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="WHIT">										</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="WHIT">									</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="WHIT">								</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">newData</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="WHIT">								</span><span class="COMM">// alert(_this.FW.use().toJSONString(newData));</span><span class="WHIT">
+<span class='line'>225</span> 
+<span class='line'>226</span> </span><span class="WHIT">								</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">newData</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="WHIT">									</span><span class="NAME">alert</span><span class="PUNC">(</span><span class="STRN">"获取数据失败！"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="WHIT">									</span><span class="KEYW">return</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>230</span> 
+<span class='line'>231</span> </span><span class="WHIT">								</span><span class="COMM">//重新显示列表数据</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="WHIT">								</span><span class="NAME">APICtr.FormAPI.createFormListByObjDesc</span><span class="PUNC">(</span><span class="NAME">_desc</span><span class="PUNC">,</span><span class="NAME">_dom</span><span class="PUNC">,</span><span class="NAME">newData</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="WHIT">								</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="WHIT">								</span><span class="COMM">//更新数字连接</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="WHIT">								</span><span class="NAME">strPageNum</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="WHIT">								</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="WHIT">								</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">begNo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">pageNum</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">3</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">pageNum</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="WHIT">								</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">pageCount</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">pageNum</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="NAME">begNo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">begNo</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">pageCount</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">pageNum</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">begNo</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">pageCount</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">pageNum</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="WHIT">								</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">endNo</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">begNo</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">5</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NAME">pageCount</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">pageCount</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">begNo</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">5</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="WHIT">								</span><span class="KEYW">for</span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">=</span><span class="NAME">begNo</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">&lt;</span><span class="NAME">endNo</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="WHIT">									</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">pageNum</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="WHIT">										</span><span class="NAME">strPageNum</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'&lt;li class="pagenum active">&lt;a href="javascript:void(0);">'</span><span class="PUNC">+</span><span class="NAME">i</span><span class="PUNC">+</span><span class="STRN">'&lt;/a>&lt;/li>\n'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="WHIT">									</span><span class="PUNC">}</span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="WHIT">										</span><span class="NAME">strPageNum</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'&lt;li class="pagenum">&lt;a href="javascript:void(0);">'</span><span class="PUNC">+</span><span class="NAME">i</span><span class="PUNC">+</span><span class="STRN">'&lt;/a>&lt;/li>\n'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>245</span> </span><span class="WHIT">									</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>246</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>247</span> 
+<span class='line'>248</span> </span><span class="WHIT">								</span><span class="COMM">//重置分页列表的dom节点</span><span class="WHIT">
+<span class='line'>249</span> </span><span class="WHIT">								</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;div class='dataTables_paginate paging_bootstrap pagination'>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>250</span> </span><span class="WHIT">								</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;ul>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>251</span> </span><span class="WHIT">								</span><span class="COMM">//首页 and 上一页</span><span class="WHIT">
+<span class='line'>252</span> </span><span class="WHIT">								</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">pageNum</span><span class="PUNC">&lt;=</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>253</span> </span><span class="WHIT">									</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;li class='pfirst disabled'>&lt;a href='#'>&lt;i class='icon-double-angle-left'>&lt;/i>&lt;/a>&lt;/li>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>254</span> </span><span class="WHIT">									</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;li class='prev disabled'>&lt;a href='#'>&lt;i class='icon-angle-left'>&lt;/i>&lt;/a>&lt;/li>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>255</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>256</span> </span><span class="WHIT">									</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;li class='pfirst'>&lt;a href='#'>&lt;i class='icon-double-angle-left'>&lt;/i>&lt;/a>&lt;/li>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>257</span> </span><span class="WHIT">									</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;li class='prev'>&lt;a href='#'>&lt;i class='icon-angle-left'>&lt;/i>&lt;/a>&lt;/li>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>258</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>259</span> </span><span class="WHIT">								</span><span class="COMM">//中间数字</span><span class="WHIT">
+<span class='line'>260</span> </span><span class="WHIT">								</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">strPageNum</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>261</span> 
+<span class='line'>262</span> </span><span class="WHIT">								</span><span class="COMM">//下一页 and 尾页</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">								</span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">pageNum</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NAME">pageCount</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>264</span> </span><span class="WHIT">									</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;li class='next disabled'>&lt;a href='#'>&lt;i class='icon-angle-right'>&lt;/i>&lt;/a>&lt;/li>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>265</span> </span><span class="WHIT">									</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;li class='plast disabled'>&lt;a href='#'>&lt;i class='icon-double-angle-right'>&lt;/i>&lt;/a>&lt;/li>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>266</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>267</span> </span><span class="WHIT">									</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;li class='next'>&lt;a href='#'>&lt;i class='icon-angle-right'>&lt;/i>&lt;/a>&lt;/li>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>268</span> </span><span class="WHIT">									</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;li class='plast'>&lt;a href='#'>&lt;i class='icon-double-angle-right'>&lt;/i>&lt;/a>&lt;/li>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>269</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>270</span> 
+<span class='line'>271</span> </span><span class="WHIT">								</span><span class="COMM">//总计信息</span><span class="WHIT">
+<span class='line'>272</span> </span><span class="WHIT">								</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;li class='disabled'>&lt;a href='#'>共&lt;b>"</span><span class="PUNC">+</span><span class="NAME">pageCount</span><span class="PUNC">+</span><span class="STRN">"&lt;/b>页"</span><span class="PUNC">+</span><span class="NAME">dataCount</span><span class="PUNC">+</span><span class="STRN">"条&lt;/a>&lt;/li>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>273</span> </span><span class="WHIT">								</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;/ul>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>274</span> </span><span class="WHIT">								</span><span class="NAME">strPageBtn</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;/div>"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>275</span> 
+<span class='line'>276</span> </span><span class="WHIT">								</span><span class="COMM">//插入到dom中显示出来</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">								</span><span class="NAME">_dom.find</span><span class="PUNC">(</span><span class="STRN">"#pagination"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">html</span><span class="PUNC">(</span><span class="NAME">strPageBtn</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>278</span> </span><span class="WHIT">								</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">								</span><span class="COMM">//获取分页的dom</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">								</span><span class="NAME">$pageFirst</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_dom.find</span><span class="PUNC">(</span><span class="STRN">"#pagination li.pfirst"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">not</span><span class="PUNC">(</span><span class="STRN">".disabled"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">  </span><span class="COMM">//首页 Dom</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">								</span><span class="NAME">$pagePrev</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_dom.find</span><span class="PUNC">(</span><span class="STRN">"#pagination li.prev"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">not</span><span class="PUNC">(</span><span class="STRN">".disabled"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">     </span><span class="COMM">//上页 Dom</span><span class="WHIT">
+<span class='line'>282</span> </span><span class="WHIT">								</span><span class="NAME">$pageNum</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_dom.find</span><span class="PUNC">(</span><span class="STRN">"#pagination li.pagenum"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">not</span><span class="PUNC">(</span><span class="STRN">".active"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">     </span><span class="COMM">//中间数字 Dom</span><span class="WHIT">
+<span class='line'>283</span> </span><span class="WHIT">								</span><span class="NAME">$pageNext</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_dom.find</span><span class="PUNC">(</span><span class="STRN">"#pagination li.next"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">not</span><span class="PUNC">(</span><span class="STRN">".disabled"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">     </span><span class="COMM">//下页 Dom</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="WHIT">								</span><span class="NAME">$pageLast</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_dom.find</span><span class="PUNC">(</span><span class="STRN">"#pagination li.plast"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">not</span><span class="PUNC">(</span><span class="STRN">".disabled"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">    </span><span class="COMM">//尾页 Dom</span><span class="WHIT">
+<span class='line'>285</span> 
+<span class='line'>286</span> </span><span class="WHIT">								</span><span class="COMM">//给分页按钮绑定点击事件</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="WHIT">								</span><span class="NAME">$pageFirst.on</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="WHIT">									</span><span class="NAME">reShowFormList</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="WHIT">								</span><span class="NAME">$pagePrev.on</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="WHIT">									</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">curPageNum</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">_dom.find</span><span class="PUNC">(</span><span class="STRN">"#pagination li.pagenum.active"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">text</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="WHIT">									</span><span class="NAME">reShowFormList</span><span class="PUNC">(</span><span class="NAME">curPageNum</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="WHIT">								</span><span class="NAME">$pageNum.on</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="WHIT">									</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">curPageNum</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">text</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="WHIT">									</span><span class="NAME">reShowFormList</span><span class="PUNC">(</span><span class="NAME">curPageNum</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="WHIT">								</span><span class="NAME">$pageNext.on</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="WHIT">									</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">curPageNum</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">parseInt</span><span class="PUNC">(</span><span class="NAME">_dom.find</span><span class="PUNC">(</span><span class="STRN">"#pagination li.pagenum.active"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">text</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="WHIT">									</span><span class="NAME">reShowFormList</span><span class="PUNC">(</span><span class="NAME">curPageNum</span><span class="PUNC">+</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="WHIT">								</span><span class="NAME">$pageLast.on</span><span class="PUNC">(</span><span class="STRN">"click"</span><span class="PUNC">,</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="WHIT">									</span><span class="NAME">reShowFormList</span><span class="PUNC">(</span><span class="NAME">pageCount</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="WHIT">								</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>305</span> 
+<span class='line'>306</span> </span><span class="WHIT">								</span><span class="COMM">//回调函数</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="WHIT">								</span><span class="NAME">_bindFormListCallBack</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="WHIT">							</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">code</span><span class="WHIT"> </span><span class="PUNC">==</span><span class="WHIT"> </span><span class="NUMB">21</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="WHIT">							</span><span class="NAME">alert</span><span class="PUNC">(</span><span class="STRN">"未登录！"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="WHIT">							</span><span class="NAME">alert</span><span class="PUNC">(</span><span class="NAME">_this.alias</span><span class="PUNC">+</span><span class="STRN">"列表内容请求报错！"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="WHIT">						</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>316</span> 
+<span class='line'>317</span> </span><span class="WHIT">				</span><span class="COMM">//默认显示第一页</span><span class="WHIT">
+<span class='line'>318</span> </span><span class="WHIT">				</span><span class="NAME">reShowFormList</span><span class="PUNC">(</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>319</span> 
+<span class='line'>320</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>321</span> </span><span class="WHIT">				</span><span class="NAME">alert</span><span class="PUNC">(</span><span class="STRN">"列表分页总数获取失败！"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>322</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>323</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>324</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>325</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>326</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>327</span> 	 * @function
+<span class='line'>328</span> 	 * @memberOf lang
+<span class='line'>329</span> 	 * @name lang
+<span class='line'>330</span> 	 * @desctiption 使用语言信息格式化要显示的内容，如果要显示的内容对象包含了多语信息，则显示成多语言，否则直接显示成字符串
+<span class='line'>331</span> 	 * @param {String}_displayObj 对象描述符 
+<span class='line'>332</span> 	 */</span><span class="WHIT">
+<span class='line'>333</span> </span><span class="WHIT">	</span><span class="NAME">_result.lang</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">__displayObj</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>334</span> </span><span class="WHIT">		</span><span class="KEYW">try</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>335</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">langObj</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">eval</span><span class="PUNC">(</span><span class="STRN">"("</span><span class="PUNC">+</span><span class="NAME">__displayObj</span><span class="PUNC">+</span><span class="STRN">")"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>336</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">lang</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Cfg.lang</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>337</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">_SYS_PageLang</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>338</span> </span><span class="WHIT">				</span><span class="NAME">lang</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">_SYS_PageLang</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>339</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>340</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">langObj</span><span class="PUNC">[</span><span class="NAME">lang</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>341</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">langObj</span><span class="PUNC">[</span><span class="NAME">lang</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>342</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>343</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">__displayObj</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>344</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="KEYW">catch</span><span class="PUNC">(</span><span class="NAME">e</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>345</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">__displayObj</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>346</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>347</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>348</span> 
+<span class='line'>349</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">_result</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>350</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

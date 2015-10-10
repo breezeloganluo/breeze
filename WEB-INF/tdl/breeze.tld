@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    
+  <description>breeze tag library</description>
+  <display-name>breeze tag</display-name>
+  <tlib-version>1.0</tlib-version>
+  <short-name>breeze</short-name>
+  <uri>http://breeze.joinlinking.com/tag</uri>
+
+
+  <tag>
+    <description>
+        servicecall
+    </description>
+    <name>service</name>
+    <tag-class>com.breezefw.shell.BreezeFunctioinCallTag</tag-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+        <description>
+			servicename to be call
+        </description>
+        <name>servicename</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+	
+	<attribute>
+        <description>
+			param for servicecall defalut can use the request param
+        </description>
+        <name>param</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+	
+	<attribute>
+        <description>
+			btl location defalut is [root]/btl/btl.js
+        </description>
+        <name>btl</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+	
+	<attribute>
+        <description>
+			simulate filename
+        </description>
+        <name>simulateFile</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
+  <tag>
+    <description>
+        arraycall for more than one array level
+    </description>
+    <name>arr</name>
+    <tag-class>com.breezefw.shell.ArrayFuncallTag</tag-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+        <description>
+			idx to be use
+        </description>
+        <name>idx</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
+  
+  <tag>
+    <description>
+        jscall
+    </description>
+    <name>fun</name>
+    <tag-class>com.breezefw.shell.JsFuncallTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+        <description>
+			funexp to be call
+        </description>
+        <name>funexp</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+	
+  </tag>
+
+
+</taglib>

@@ -1,0 +1,20 @@
+{
+	node:[
+		{
+			name:"first",
+			dir:"xxxx"
+		},
+		{
+			name:"second",
+			dir:"xxx"
+		}
+	],
+	line:[
+		{
+			start:"second",
+			end:"first",
+			dtype:"abc",
+			desc:"这是一个很重要的连线"
+		}
+	]
+}

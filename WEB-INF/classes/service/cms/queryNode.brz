@@ -1,0 +1,24 @@
+{
+    "serviceName": "queryNode",
+    "flowName": "CMSQuery",
+    "toolsMemoDesc0000": "",
+    "com.breezefw.framework.template.ContextResultItem.templateErrorUrl": "",
+    "com.breezefw.service.cms.templateitem.CMSDBOperItem.isFather": "yes",
+    "com.breezefw.service.cms.templateitem.CMSDBOperItem.resultContextName": "data",
+    "com.breezefw.service.authority.temmplate.AuthItem.rolePath": "_S.manager.role",
+    "com.breezefw.framework.template.ContextResultItem.templateUrl": "",
+    "com.breezefw.framework.template.CheckerItem.checkerInfo": [{
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": "",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.failCode": "10",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerObj": "_R.alias",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull"
+    },
+    {
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": "",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.failCode": "20",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerObj": "_S.manager",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull"
+    }],
+    "com.breezefw.service.cms.templateitem.CMSDBOperItem.sql": "",
+    "com.breezefw.service.authority.temmplate.AuthItem.defaultRole": "customer"
+}

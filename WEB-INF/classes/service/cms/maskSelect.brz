@@ -1,0 +1,18 @@
+{
+    "serviceName": "maskSelect",
+    "flowName": "CMSQuery",
+    "toolsMemoDesc0000": "",
+    "com.breezefw.framework.template.ContextResultItem.templateErrorUrl": "",
+    "com.breezefw.service.cms.templateitem.CMSDBOperItem.isFather": "no",
+    "com.breezefw.service.cms.templateitem.CMSDBOperItem.resultContextName": "",
+    "com.breezefw.service.authority.temmplate.AuthItem.rolePath": "",
+    "com.breezefw.framework.template.ContextResultItem.templateUrl": "",
+    "com.breezefw.framework.template.CheckerItem.checkerInfo": [{
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": "",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.failCode": "20",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerObj": "_S.manager",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull"
+    }],
+    "com.breezefw.service.cms.templateitem.CMSDBOperItem.sql": "select ${types(_R.resultset)} from ${tab(_R.alias,view)} where ${cnd(_R.param._baseAlias)}",
+    "com.breezefw.service.authority.temmplate.AuthItem.defaultRole": ""
+}

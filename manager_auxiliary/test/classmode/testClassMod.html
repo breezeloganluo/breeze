@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	
+</head>
+<body>
+
+
+<script src="/breezecore/breeze/lib/js/jquery.js"></script>
+<script src="/breezecore/breeze/lib/js/sea.js"></script>
+<script src="/breezecore/breeze/lib/js/seajs-text.js"></script>
+
+
+<div id="main">
+		<div id="myCanvas" style="border:1px solid #ccc; height:800px;width:1024px">
+		</div>
+	</div>
+<div id="app1" class="FWApp">
+    <!--@testGadget@
+				{
+				}
+		-->
+	
+
+</div>
+
+<!-- wgfly breeze -->
+<script>
+	seajs.config({base:"/breezecore/"});
+	seajs.use([
+			'./testGadget'
+		],
+		function(a) {
+			a.go("/breezecore/breeze.brz");
+			window.FW = a;
+		}
+	);
+</script>
+
+</body>
+</html>

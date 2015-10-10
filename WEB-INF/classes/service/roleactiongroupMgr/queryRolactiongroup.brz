@@ -1,0 +1,16 @@
+{
+    "serviceName": "queryRolactiongroup",
+    "flowName": "CommQuery",
+    "toolsMemoDesc0000": "",
+    "com.breezefw.framework.template.DBOperateItem.sqlResultName": "data",
+    "com.breezefw.framework.template.DBOperateItem.sqlConfig": ["select actiongroupid from wg_roles a,wg_roleactiongroup b where a.name = ${str(_R.name)} and a.cid = b.nodeid"],
+    "com.breezefw.framework.template.DBOperateItem.refreshList": "",
+    "com.breezefw.framework.template.ContextResultItem.templateErrorUrl": "",
+    "com.breezefw.framework.template.ServiceCallItem.serviceNameNoFoundResult": "",
+    "com.breezefw.service.authority.temmplate.AuthItem.rolePath": "",
+    "com.breezefw.framework.template.ContextResultItem.templateUrl": "",
+    "com.breezefw.framework.template.CheckerItem.checkerInfo": "",
+    "com.breezefw.framework.template.ServiceCallItem.serviceNameType": "1",
+    "com.breezefw.framework.template.ServiceCallItem.serviceName": "",
+    "com.breezefw.service.authority.temmplate.AuthItem.defaultRole": ""
+}

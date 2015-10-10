@@ -1,0 +1,1 @@
+{"name":"getServerData","statusList":[{"status":"0","unitName":"checkerFlow","actionResult":"0","nextStatus":"1"},{"status":"0","unitName":"checkerFlow","actionResult":"-1","nextStatus":"2"},{"status":"1","unitName":"copyContext","actionResult":"-1","nextStatus":"2"},{"status":"2","unitName":"contextResult","actionResult":"-1","nextStatus":"-1"}]}
