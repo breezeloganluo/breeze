@@ -66,7 +66,7 @@ define(function(require, exports, module) {
                 if (data.orgData.data.cmsmetadata.dataMemo && data.orgData.data.cmsmetadata.dataMemo.aliasCfg && data.orgData.data.cmsmetadata.dataMemo.aliasCfg.filterSet) {
                     CMSMgrDefaultListFilterDecorate = {
                         data: FW.use().evalJSON(data.orgData.data.cmsmetadata.dataMemo.aliasCfg.filterSet),
-                        selectData: this.param.queryParam
+                        selectData: FW.getApp("CMSMgrControl").param.queryParam
                     };
                 }
                 //进一步处理

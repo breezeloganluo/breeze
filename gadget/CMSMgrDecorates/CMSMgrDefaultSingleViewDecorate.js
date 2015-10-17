@@ -362,7 +362,7 @@ define(function(require, exports, module) {
                 if (window.customized && window.customized[data.alias] && window.customized[data.alias].singleButton) {
                     _btnData = FW.use().evalJSON(window.customized[data.alias].singleButton);
                 }
-                if (!this.control.param.queryParam || (!this.control.param.queryParam.cid && !param.cid) || (!this.control.param.cid && this.control.param.mid)) {
+                if ((this.control.param.queryParam && this.control.param.queryParam.cpc_oper=='addNode') || !this.control.param.queryParam || (!this.control.param.queryParam.cid && !param.cid) || (!this.control.param.cid && this.control.param.mid)) {
                     data.data = null;
                 }
                 var CMSMgrDefaultSingleViewDecorate = {
@@ -472,9 +472,12 @@ define(function(require, exports, module) {
                 if (this.control.param.parentAlias && this.control.param.queryObj && this.control.param.queryParam && this.control.param.queryParam.nodeid) {
                     data.nodeid = this.control.param.queryParam.nodeid;
                 }
-                if (this.control.param.parentAlias && this.control.param.parentAlias == this.control.param.alias && data.nodeid) {
+                //if (是自己挂接自己，而且是编辑操作){就强制删除nodeid
+                //--用cpc_oper=addNode来区分是否编辑操作
+                if (this.control.param.parentAlias && this.control.param.parentAlias == this.control.param.alias && data.nodeid && this.control.param.queryParam.cpc_oper != "addNode") {
                     delete data.nodeid;
                 }
+                //}
                 if (this.control.param.parentAlias && this.control.param.parentAlias == this.control.param.alias && this.control.param.mid) {
                     data.nodeid = this.control.param.mid;
                 }
@@ -518,11 +521,19 @@ define(function(require, exports, module) {
                             url += "&type=single";
                         }
                     } else {
+                    	//if(参数传入type就用之){
                         if (type) {
                             url += "&type=" + type;
-                        } else {
-                            url += "&type=list";
+                        } //}
+                		//else{用堆栈返回
+                		else {
+                            var curCtr = FW.page.MY.curControl;
+		                    var lastCtr = FW.page.getLastControl(curCtr.alias, curCtr.type);
+		                    if (lastCtr && lastCtr.type) {
+		                        url += "&type=" + lastCtr.type;
+		                    }
                         }
+                		//}
                     }
 
                     FW.page.createControl(url);

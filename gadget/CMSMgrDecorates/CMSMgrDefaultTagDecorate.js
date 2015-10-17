@@ -41,10 +41,10 @@ define(function(require, exports, module) {
                 } else if (this.control.param.mode && this.control.param.mode == "node") {
                     CMSMgrDefaultTagDecorate.showData = null;
                 } else {
-                    if (this.control.param.type == "list") {
+                    if (/list/i.test(this.control.param.type)) {
                         CMSMgrDefaultTagDecorate.showData = null;
                     }
-                    if (this.control.param.type == "single") {
+                    if (/single/i.test(this.control.param.type)) {
                         //单列表情况
                         CMSMgrDefaultTagDecorate.showData = [];
                         CMSMgrDefaultTagDecorate.showData.push({

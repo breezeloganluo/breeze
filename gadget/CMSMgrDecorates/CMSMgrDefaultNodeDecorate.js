@@ -2,7 +2,7 @@
 * @namespace
 * @name CMSMgrDefaultNodeDecorate 
 * @description  左边菜单树，点击的时候，默认是不给type或者照操原来的参数
-*但是param中的clickType参数，是可以强制指定对应的参数的。这个参数，没有默认值，所以没有在类中声明，但是会出现在代码中，treeSelectct中 
+*但是param中的clickType参数，是可以强制指定对应的参数的。这个参数，没有默认值，所以没有在类中声明，但是会出现在代码中，treeSelectct中  
 */
 define(function(require, exports, module) {
     var FW = require("breeze/framework/js/BreezeFW");
@@ -128,7 +128,11 @@ define(function(require, exports, module) {
                 url += "&type=single";
                 url += "&queryObj=father";
                 url += "&parentAlias=" + this.control.MY.metadata.parentAlias;
-                if (this.control.MY.metadata.parentAlias && this.control.MY.metadata.parentAlias == this.control.MY.metadata.alias && this.control.param.queryParam && this.control.param.queryParam.nodeid && this.control.param.type == "single") {
+                //标识出这是添加父节点的操作
+                url += "&cpc_oper=addNode";
+                //判断添加节点
+                //--这是做什么的，还请名剑解释，区分是添加顶节点还是子节点，如果存在是添加子节点，现在和cpc_oper重复了，可能没有用，要看一下保存事件有没有使用mid
+                if (this.param.queryParam && this.control.MY.metadata.parentAlias && this.control.MY.metadata.parentAlias == this.control.MY.metadata.alias && this.control.param.queryParam && this.control.param.queryParam.nodeid && this.control.param.type == "single") {
                     url += "&mid=" + this.param.queryParam.nodeid;
                 }
 
@@ -142,30 +146,52 @@ define(function(require, exports, module) {
             *@param cid 对应的cid
             */
             "treeSelect": function(cid) {
+                //初始化变量url
                 var url = "";
+                //从control中的param中获取参数
                 for (var i in this.control.param) {
                     if (i != "queryParam") {
-                        if (i == "start" || i == "length" || i == "type") continue;
+                    	//将分页参数过滤掉
+                        if (i == "start" || i == "length" ) {
+                        	continue;
+                        }
+                        //处理菜单选择的type
+                        if (i == "type"){
+                        	var myType = this.control.param[i];
+                        	if (/single/i.test(myType)){
+	                        	var curCtr = FW.page.MY.curControl;
+			                    var lastCtr = FW.page.getLastControl(curCtr.alias, curCtr.type);
+			                    if (lastCtr && lastCtr.type) {
+			                    	myType = lastCtr.type;		                        
+			                    }
+		                    }
+		                    url += "&type=" + myType;
+                        	continue;
+                        }
                         url += "&" + i + "=" + this.control.param[i];
                     } else {
                         for (var j in this.control.param.queryParam) {
-                            if (j == "nodeid" || j == "cid") continue;
+                            if (j == "nodeid" || j == "cid" || j == 'cpc_oper') {
+                                continue;
+                            }
                             url += "&" + j + "=" + this.control.param.queryParam[j];
                         }
                     }
-                    //如果有clickType,则忽略原来的type
-                    if (this.param.clickType && i == 'type') {
-                        continue;
-                    }
                 }
+                //增加node节点标识
                 url += "&nodeid=" + cid;
+                //if (有父亲同时在tag页中的其他页面，这时要把parentAlias记录便于返回){
                 if (this.control.MY.metadata.parentAlias && this.control.MY.metadata.parentAlias == this.control.MY.metadata.alias && this.control.param.type == "single") {
                     url += "&parentAlias=" + this.control.MY.metadata.alias;
                 }
-                //如果参数中有clickType，则跳入到对应的定制type中
-                if (this.param.clickType) {
-                    url += ("&type=" + this.param.clickType);
+                //}
+                //if(alias自己等于自己){强制设置type
+                if (!this.param.clickType && this.control.MY.metadata.parentAlias && this.control.MY.metadata.parentAlias == this.control.MY.metadata.alias) {
+                    //设置type信息
+                    url += ("&type=single");
                 }
+                //}
+                
                 FW.page.createControl(url);
             },
             /**
