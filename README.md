@@ -1,8 +1,19 @@
 版本说明：
-第一个正式的Breeze完整版本，本版本包含了BreezeJava，BreezeJs，BreezeCms，BreezeToos
 
-技术框架的文档说明请参见：http://breeze.joinlinking.com/page/product/index.jsp
+这是v1.01版本
 
-本版本已经安装好的合集版本，只要放入tomcat下即可直接运行使用。
+这次版本的四个组建的版本号分别是：
+
+BreezeJava 是1.25
+
+BreezeJs 是1.28
+
+BreezeCms 是2.04
+
+BreezeTools 是1.44
+
+详细内容可以参见http://breeze.joinlinking.com/
+
+有问题可以到论坛社区反馈，更多新特性在近期发布，敬请期待。
 
 初始化数据库的过程请参见：http://breeze.joinlinking.com/page/product/list.jsp?type=BreezeJava&method=showTutorials
