@@ -45,7 +45,7 @@
 		String stUrlCtxStr = (String)request.getAttribute("settingCfg");
 		if (stUrlCtxStr != null){
 			BreezeContext stUrlCtx = ContextTools.getBreezeContext4Json(stUrlCtxStr);
-			BreezeContext settingUrlCtx = stUrlCtx.getContext(roleStr);
+			BreezeContext settingUrlCtx = stUrlCtx.getContext(roleStr);			
 			if (settingUrlCtx != null){
 				settingUrl = settingUrlCtx.toString();
 			}else{
