@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@page import="com.breeze.support.cfg.Cfg"%>
 <%@include file="./hHead.jsp"%>
 <%
-request.setAttribute("B",this.getServletContext().getContextPath()+'/');
+String baseUrl = this.getServletContext().getContextPath();
+String configUrlPrefix = Cfg.getCfg().getString("siteprefix");
+if (configUrlPrefix !=null && !configUrlPrefix.equals("--")){
+	baseUrl = configUrlPrefix;
+}
+if ("/".equals(baseUrl)){
+	baseUrl = "";
+}
+request.setAttribute("B",baseUrl+'/');
 request.setAttribute("_","$");
 %>
 
