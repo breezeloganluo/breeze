@@ -1,10 +1,10 @@
-﻿<description>
+<description>
 	<ContentDir>dest/breezeTools.zip</ContentDir>
 	<PatchDir>dest/breezeTools_patch.zip</PatchDir>
 	<DocDir>dest/breezeTools_doc.zip</DocDir>
 	<Type>BreezeTools</Type>
-	<Version>1.43</Version>
+	<Version>1.44</Version>
 	<VersionDesc>
-	 editgadget和edithtml的修改
+	 编辑器gadget支持反向代理的url，gadget编辑器和html编辑器支持退出判断是否保存
 	</versionDesc>
 <description>
