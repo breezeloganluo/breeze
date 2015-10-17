@@ -69,6 +69,16 @@ define(function(require, exports, module) {
                 var allData = null;
                 //请求当前alias数据
                 var _queryData = this.queryData();
+                //查询结果判断
+                if (!_queryData || _queryData.code != 0){
+                	if (!_queryData){
+                		FW.alert("访问数据失败");                		
+                	}
+                	else if (_queryData.code == 25){
+                		FW.alert("您没有权限进行本操作");
+                	}
+                	return null;
+                }
                 var _metadata = this.handleMetaDataBefore(_queryData.data);
                 var _data = this.handleDataBefore(_queryData.data, _metadata);
 

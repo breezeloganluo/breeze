@@ -24,8 +24,7 @@ define(function(require, exports, module) {
                 },{
                     gadgetName: "CMSMgrDefaultNodeDecorate",
                     view: "CMSMgrDefaultNodeResourceView",
-                    instance: "CMSMgrDefaultNodeDecorate",
-                    clickType:"actionList",
+                    instance: "CMSMgrDefaultNodeDecorate",                    
                     children: [{
                         gadgetName: "CMSMgrDefaultTagDecorate",
                         view: "CMSMgrDefaultTagResourceView",

@@ -403,6 +403,12 @@ define(function(require, exports, module) {
                 var decorates = this.API.private("getDecorates");
                 //整理显示数据
                 var allData = this.API.private('processorShowData');
+                //if (allData为空){直接退出，不处理
+                //--这种情况就是超时或者查询数据失败
+                if(!allData){
+                	return;
+                }
+                //}
                 //创建所有decorate
                 this.createDecorateApps(decorates, allData);
                 //显示前调整数据
@@ -433,6 +439,12 @@ define(function(require, exports, module) {
                 param = param || this.param.queryParam;
                 if (param == "-") {
                     param = null;
+                }
+                //将cpc_开头的参数全部删除，因为这些是客户端控制参数，不能放到这里使用
+                for(var n in param){
+                	if (/^cpc_/i.test(n)){
+                		delete param[n];
+                	}
                 }
                 start = start || this.param.start || 0;
                 length = length || this.param.length || 10;
