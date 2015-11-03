@@ -216,11 +216,15 @@ define(function(require, exports, module) {
                             if (j == "nodeid" || j == "cid" || j == 'cpc_oper') {
                                 continue;
                             }
+<<<<<<< HEAD
                             if(typeof this.control.param.queryParam[j] == "object"){
                         		url += "&" + j + "=[" + this.control.param.queryParam[j].join(",") + "]";
                         	}else{
                         		url += "&" + j + "=" + this.control.param.queryParam[j];
                         	}
+=======
+                            url += "&" + j + "=" + this.control.param.queryParam[j];
+>>>>>>> origin/master
                         }
                     }
                 }

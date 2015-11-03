@@ -1,10 +1,10 @@
-﻿<description>
+<description>
 	<ContentDir>dest/breezeJs.zip</ContentDir>
 	<PatchDir>dest/breezeJs_patch.zip</PatchDir>
 	<DocDir>dest/breezeJs_doc.zip</DocDir>
 	<Type>BreezeJs</Type>
-	<Version>1.27</Version>
+	<Version>1.28</Version>
 	<VersionDesc>
-	  BreezeJs模块部分升级，解决.father的一个bug
+	  修改了h.jsp支持反向代理的入口
 	</versionDesc>
 <description>

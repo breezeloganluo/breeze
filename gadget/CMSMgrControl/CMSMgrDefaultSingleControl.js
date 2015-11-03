@@ -135,6 +135,7 @@ define(function(require, exports, module) {
                 	else if (_queryData.code == 25){
                 		FW.alert("您没有权限进行本操作");
                 	}
+<<<<<<< HEAD
                 	else if (_queryData.code = 20){
                 		FW.alert("由于长时间没有操作，请重新登录本系统");
                 		location.reload();
@@ -142,6 +143,8 @@ define(function(require, exports, module) {
                 	else{
                 		FW.alert("操作错误,错误结果码是"+_queryData.code);
                 	}
+=======
+>>>>>>> origin/master
                 	return null;
                 }
                 var _metadata = this.handleMetaDataBefore(_queryData.data);

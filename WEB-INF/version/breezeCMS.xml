@@ -1,11 +1,8 @@
-﻿<description>
+<description>
 	<ContentDir>dest/breezeCMS.zip</ContentDir>
 	<PatchDir>dest/breezeCMS_patch.zip</PatchDir>
 	<DocDir>dest/breezeCMS_doc.zip</DocDir>
 	<Type>BreezeCMS</Type>
-	<Version>2.03</Version>
-	<VersionDesc>
-修改文件结构
-模块化组件
-	</VersionDesc>
+	<Version>2.04</Version>
+	<VersionDesc>修复filterbug以及对于定制页面的控制</VersionDesc>
 </description>
