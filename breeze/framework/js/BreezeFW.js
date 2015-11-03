@@ -49,6 +49,7 @@
 * @version 0.48 罗光瑜2015-07-27 修改mask的高度的可用性
 * @version 0.49 罗光瑜2015-09-02 增加返回gadget
 * @version 0.50 罗光瑜2015-09-20 father函数中，寻找father的循环写的有问题，被修复
+* @version 0.51 2015-10-19罗光瑜修改 注册gadget的时候增加module参数使得gadget能带上_uri属性
 */ 
 
 /**
@@ -843,11 +844,15 @@ define(function(require, exports, module) {
 	*	}
 	*)
 	*/
-	_obj.register =  function(__c){
+	_obj.register =  function(__c,module){
 		if (!__c || !__c.name){
 			return;
 		}
 		_gadget[__c.name] = __c;
+		//2015-10-19罗光瑜修改，增加参数module，使得gadget中可以获取自己所在路径
+		if (module){
+			_gadget[__c.name]._uri = module.uri;	
+		}		
 	};
 	
 	/**

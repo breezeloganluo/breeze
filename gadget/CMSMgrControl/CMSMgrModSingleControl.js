@@ -230,6 +230,25 @@ define(function(require, exports, module) {
                     "issearch": "0",
                     "order": "50"
                 };
+                metadata.isMuliTab = {
+                	"title": "是否为多表模式",
+                	"type": "Select",
+                	"filedType": "varchar",
+                	"ourterLink": "",
+                	"fieldLen": "128",
+                    "dataExt": "",
+                    "valueRange": [{
+                    	"否": 0
+                    },{
+                    	"是": 1
+                    }],
+                    "desc": "填写对应alias则共用其表并自动填写数据描述，不填则是正常模式",
+                    "width": "",
+                    "fieldtmp": "",
+                    "islist": "1",
+                    "issearch": "0",
+                    "order": "50"
+                };
                 metadata.dataDesc = {
                     title: "字段描述",
                     type: "List",
@@ -437,7 +456,7 @@ define(function(require, exports, module) {
                         isFun = true;
                     } catch(e) {
 
-}
+                    }
                     if (oneData.valueRange && oneData.valueRange != '' && isFun) {
                         oneData.valueRange = eval("(" + oneData.valueRange + ")");
                         //将数值校验转换成字符串
@@ -577,7 +596,7 @@ define(function(require, exports, module) {
                 }
 
                 /*
-                这里要把数据描述里面的对象数据转换成列表值
+   				这里要把数据描述里面的对象数据转换成列表值
                 */
                 if (this.param.type == "single") {
                     if (__data.cmsdata == null || __data.cmsdata.length == 0) {
@@ -640,6 +659,19 @@ define(function(require, exports, module) {
                 }
                 return __data.cmsdata;
             }
+        },
+        "private":{
+        	/**
+        	 * @function 
+        	 * @memberOf CMSMgrModSingleControl
+        	 * @name private&checkReservedWord
+        	 * @description 校验系统保留字
+        	 * @param data 页面数据
+        	 * */
+        	"checkReservedWord" : function(data){
+        		
+        		return null;
+        	}
         },
         "TrigerEvent": {
             /**
@@ -715,6 +747,6 @@ define(function(require, exports, module) {
                 $("#modListMask").remove();
             }
         }
-    });
+    },module);
     return FW;
 });

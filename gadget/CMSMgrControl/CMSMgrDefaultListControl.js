@@ -69,6 +69,22 @@ define(function(require, exports, module) {
                 var allData = null;
                 //请求当前alias数据
                 var _queryData = this.queryData();
+                //查询结果判断
+                if (!_queryData || _queryData.code != 0){
+                	if (!_queryData){
+                		FW.alert("访问数据失败");                		
+                	}
+                	else if (_queryData.code == 25){
+                		FW.alert("您没有权限进行本操作");
+                	}
+                	else if (_queryData.code = 20){                		
+                		location.reload();
+                	}
+                	else{
+                		FW.alert("操作错误,错误结果码是"+_queryData.code);
+                	}
+                	return null;
+                }
                 var _metadata = this.handleMetaDataBefore(_queryData.data);
                 var _data = this.handleDataBefore(_queryData.data, _metadata);
 
@@ -82,37 +98,27 @@ define(function(require, exports, module) {
                 //--头部描述区显示数据
                 var _titileData = _queryData.data.cmsmetadata.displayName;
                 var _listBtnData = FW.use().evalJSON(window.systemCtx.listButton);
-                if (window.customized && window.customized[_metadata.alias] && window.customized[_metadata.alias].listButton) {
-                    _listBtnData = FW.use().evalJSON(window.customized[_metadata.alias].listButton);
+                if (window.customized && window.customized[this.param.alias] && window.customized[this.param.alias].listButton) {
+                    _listBtnData = FW.use().evalJSON(window.customized[this.param.alias].listButton);
                 }
 
                 allData.titleData = _titileData;
                 allData.btnData = _listBtnData;
                 return allData;
-            }
-        },
-        "TrigerEvent": {
+            },
             /**
-            *@function
-            *@memberOf CMSMgrDefaultListControl
-            *@name TrigerEvent$openAdd
-            *@description 添加操作
-            */
-            "openAdd": function() {
-                var url = "";
-                for (var i in this.param) {
-                    if (i == "queryParam") {
-                        for (var j in this.param.queryParam) {
-                            url += "&" + j + "=" + this.param.queryParam[j];
-                        }
-                    } else {
-                        url += "&" + i + "=" + this.param[i];
-                    }
-                }
-                url += "&type=single";
-                FW.page.createControl(url);
-            }
+             *@function
+             *@memberOf CMSMgrDefaultListControl
+             *@name private$afterShow
+             *@description 显示结束后处理
+             *@param data 显示数据信息
+             */
+             "afterShow": function(data) {
+                 //处理数据
+                 var listApp = FW.getApp("CMSMgrDefaultListViewDecorate");
+                 listApp.assetsInit();
+             },
         }
-    });
+    },module);
     return FW;
 });

@@ -5,6 +5,10 @@
 				<h4 class="widget-title lighter smaller">栏目目录</h4>
 			</div>	
 			<div id="aliasNodeTree" class="btn-group" style="margin:5px 10px;">
+				<button class="btn btn-xs btn-success" onClick="FireEvent.treeTopAdd();">
+					<i class="icon-plus"></i>
+					添加顶节点
+				</button>
 				<button class="btn btn-xs btn-primary" onClick="FireEvent.treeAdd();">
 					<i class="icon-plus"></i>
 					增加
@@ -45,7 +49,7 @@
 							<!--$}-->
 							<!--$if(data.treeData[i].cid.trim()==data.select || checkChildrenSelect){-->
 								<li class="tree-branch tree-open">
-									<div class="tree-branch-header">
+									<div class="tree-branch-header" onclick="FireEvent.treeSelect('${data.treeData[i].cid.trim()}');">
 										<span class="tree-branch-name">
 											<i class="icon-folder ace-icon tree-minus"></i>
 											<span class="tree-label">${data.treeData[i].name}</span>

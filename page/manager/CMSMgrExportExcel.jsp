@@ -73,7 +73,16 @@
 				request.setAttribute("alias", entry.getValue());
 			}else if(entry.getKey().equals("threadSignal")){
 				continue;
-			}else{
+			}
+			else if("start".equals(entry.getKey())) {
+				BreezeContext limit = new BreezeContext();
+				BreezeContext start = new BreezeContext();
+				start.setContext("start", new BreezeContext(entry.getValue()));
+				start.setContext("length", new BreezeContext(10));
+				limit.setContext("limit", start);
+				request.setAttribute("spes", limit);
+			}
+			else{
 				if(entry.getValue().indexOf("-") != -1){
 					String[] args = entry.getValue().split("-");
 					BreezeContext data = new BreezeContext();
@@ -84,10 +93,12 @@
 				}else{
 					param.setContext(entry.getKey(), new BreezeContext(entry.getValue()));
 				}
+
+
+
 			}
 		}
 		request.setAttribute("param", param);
-		
 		JSP jspTools = new JSP(request,response);
 		//执行查询
 		BreezeContext bc = jspTools.call("cms.queryContent", "bc");

@@ -24,8 +24,24 @@
 	<!-- cssAssets -->
 	<jsp:include page="ace-cssAssets.jsp"/>
 	<!-- /cssAssets -->
+	<style type="text/css">
+        #maskLayer{
+        	display: none;  
+        	position: absolute;  
+        	top: 0%;  
+        	left: 0%;  
+        	width: 100%;  
+        	height: 100%;  
+        	background-color: black;  
+        	z-index:1001;  
+        	-moz-opacity: 0.7;  
+        	opacity:.70;  
+        	filter: alpha(opacity=70);
+        }
+	</style>
 </head>
 <body class="no-skin">
+	<div id="maskLayer"></div>
 	<div  id="navbar" class="navbar navbar-default">
 		<jsp:include page="ace-header.jsp"/>
 	</div>

@@ -45,7 +45,7 @@
 		String stUrlCtxStr = (String)request.getAttribute("settingCfg");
 		if (stUrlCtxStr != null){
 			BreezeContext stUrlCtx = ContextTools.getBreezeContext4Json(stUrlCtxStr);
-			BreezeContext settingUrlCtx = stUrlCtx.getContext(roleStr);
+			BreezeContext settingUrlCtx = stUrlCtx.getContext(roleStr);			
 			if (settingUrlCtx != null){
 				settingUrl = settingUrlCtx.toString();
 			}else{
@@ -170,7 +170,7 @@
 		<span class="icon-bar"></span>
 	</button>
 	<div class="navbar-header pull-left">
-		<a href="CMSMgr.jsp" class="navbar-brand">
+		<a href="CMSAceMgr.jsp" class="navbar-brand">
 			<small>
 				<i class="fa fa-leaf"></i>
 				${headerTitle }

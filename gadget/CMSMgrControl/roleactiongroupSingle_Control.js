@@ -24,6 +24,6 @@ define(function(require, exports, module) {
                 return _metadata;
             }
         }
-    });
+    },module);
     return FW;
 });

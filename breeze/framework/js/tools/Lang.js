@@ -628,7 +628,8 @@ define(function(require, exports, module) {
 	*@param __srcObj 原始的对象
 	*@param __destObj 拷贝到的目标对象
 	*@param __filterFun 只是一个拷贝过程中回调的过滤函数，回调的输入参数有如下：
-	*                  srcMemberName当前要拷贝的成员名,path 路径名,srcObj上一级父亲名，destObj上一级父亲名
+	*                  srcMemberName当前要拷贝的成员名,path 路径名,srcObj上一级父亲名，destObj上一级父亲名,
+	* 					即，使用srcObj[srcMemberName]就可以获取到当前正在要拷贝的对象了
 	*                  返回值true这个成员继续拷贝，否则不拷贝了
 	*/
 	_result.deepCopy = function(__srcObj, __destObj, __filterFun,_allPath) {

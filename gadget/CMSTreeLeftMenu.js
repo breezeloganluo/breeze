@@ -348,6 +348,10 @@ define(function(require, exports, module) {
             *@param param url参数
             */
             "go2selector": function(param) {
+                var url4 = param.substring(0, 4);
+                if(url4 == "http") {
+                    window.open(param, "_blank");
+                }
                 FW.page.createControl(param);
             }
         },

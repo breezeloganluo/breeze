@@ -2,44 +2,44 @@
     "serviceName": "addCMSType",
     "flowName": "CreateCMSType",
     "toolsMemoDesc0000": "",
-    "com.breezefw.framework.template.DBOperateItem.sqlResultName": "data",
-    "com.breezefw.framework.template.DBOperateItem.sqlConfig": ["insert into cmsmetadata(dataRefresh,dataDesc,alias,tableName,displayName,parentAlias,dataOwnerSet,nodeid,roleSetting,outAlias,dataMemo)values(${str(_R.dataRefresh)},${str(_R.dataDesc)},${str(_R.alias)},${str(_R.tableName)},${str(_R.displayName)},${str(_R.parentAlias)},${str(_R.dataOwnerSet)},${str(_R.nodeid)},${str(_R.roleSetting)},${str(_R.outAlias)},${str(_R.dataMemo)})"],
-    "com.breezefw.framework.template.DBOperateItem.refreshList": "",
-    "com.breezefw.framework.template.ContextResultItem.templateErrorUrl": "",
-    "com.breezefw.service.cms.templateitem.Desc2TableItem.aliasNamePath": "",
-    "com.breezefw.service.cms.templateitem.Desc2TableItem.tableContextPath": "_R.tableName",
-    "com.breezefw.service.authority.temmplate.AuthItem.rolePath": "_S.manager.role",
-    "com.breezefw.framework.template.ContextResultItem.templateUrl": "",
     "com.breezefw.service.cms.templateitem.Desc2TableItem.descContextPath": "_R.dataDesc",
+    "com.breezefw.service.cms.templateitem.Desc2TableItem.tableContextPath": "_R.tableName",
+    "com.breezefw.framework.template.DBOperateItem.sqlConfig": ["insert into cmsmetadata(dataRefresh,dataDesc,alias,tableName,displayName,parentAlias,dataOwnerSet,nodeid,roleSetting,outAlias,dataMemo,isMuliTab)values(${str(_R.dataRefresh)},${str(_R.dataDesc)},${str(_R.alias)},${str(_R.tableName)},${str(_R.displayName)},${str(_R.parentAlias)},${str(_R.dataOwnerSet)},${str(_R.nodeid)},${str(_R.roleSetting)},${str(_R.outAlias)},${str(_R.dataMemo)},${str(_R.isMuliTab)})"],
+    "com.breezefw.service.authority.temmplate.AuthItem.rolePath": "_S.manager.role",
+    "com.breezefw.service.authority.temmplate.AuthItem.defaultRole": "customer",
     "com.breezefw.framework.template.CheckerItem.checkerInfo": [{
-        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": "",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull",
         "com.breezefw.framework.template.CheckerItem$CheckInfo.failCode": "10",
         "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerObj": "_R.dataDesc",
-        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull"
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": ""
     },
     {
-        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": "",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull",
         "com.breezefw.framework.template.CheckerItem$CheckInfo.failCode": "10",
         "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerObj": "_R.alias",
-        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull"
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": ""
     },
     {
-        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": "",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull",
         "com.breezefw.framework.template.CheckerItem$CheckInfo.failCode": "10",
         "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerObj": "_R.tableName",
-        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull"
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": ""
     },
     {
-        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": "",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull",
         "com.breezefw.framework.template.CheckerItem$CheckInfo.failCode": "10",
         "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerObj": "_R.displayName",
-        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull"
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": ""
     },
     {
-        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": "",
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull",
         "com.breezefw.framework.template.CheckerItem$CheckInfo.failCode": "20",
         "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerObj": "_S.manager",
-        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerName": "NotNull"
+        "com.breezefw.framework.template.CheckerItem$CheckInfo.checkerParam": ""
     }],
-    "com.breezefw.service.authority.temmplate.AuthItem.defaultRole": "customer"
+    "com.breezefw.framework.template.DBOperateItem.refreshList": "",
+    "com.breezefw.framework.template.DBOperateItem.sqlResultName": "data",
+    "com.breezefw.service.cms.templateitem.Desc2TableItem.aliasNamePath": "",
+    "com.breezefw.framework.template.ContextResultItem.templateErrorUrl": "",
+    "com.breezefw.framework.template.ContextResultItem.templateUrl": ""
 }

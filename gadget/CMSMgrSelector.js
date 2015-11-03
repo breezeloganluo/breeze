@@ -2,7 +2,7 @@
 * @namespace
 * @name CMSMgrSelector 
 * @version 1.01 FrankCheng 选择器初始版本
-* @description  后台CMS系统选择器 负责创建对应的选择器 gadget名称=type+"_Control"                        
+* @description  后台CMS系统选择器 负责创建对应的选择器 gadget名称=type+"_Control"                          
 */
 define(function(require, exports, module) {
     var FW = require("breeze/framework/js/BreezeFW");
@@ -65,8 +65,22 @@ define(function(require, exports, module) {
                     param: _param,
                     id: gadgetName
                 };
-                //创建app
-                FW.createApp("CMSMgrControl", gadgetName, resource, "CMSMgrControl");
+                //获取gadget对象
+                var gadget = FW.getGadget(gadgetName);
+                //if(gadget存在){正常的创建
+                if (gadget) {
+                    //创建app
+                    FW.createApp("CMSMgrControl", gadgetName, resource, "CMSMgrControl");
+                }
+                //}
+                //else{转向到debugpage上
+                else {
+                    //修改resource
+                    resource.param.forward = true;
+                    //创建app
+                    FW.createApp("CMSMgrControl", "debugpage_Control", resource, "CMSMgrControl");
+                }
+                //}
                 //将信息录入到controls中
                 this.MY.curControl = {
                     alias: alias,
@@ -84,6 +98,11 @@ define(function(require, exports, module) {
             *@return 输入信息的上一个control
             */
             "getLastControl": function(alias, type) {
+                //if (没有输入参数){只返回最近信息
+                if (alias == null && type == null) {
+                    return this.MY.controls.pop();
+                }
+                //}
                 //获取control对象
                 var controlObj = {
                     alias: alias,
@@ -92,7 +111,7 @@ define(function(require, exports, module) {
                 //出栈
                 var historyControl = this.MY.controls.pop();
                 //找到不是mask的类型
-                while(historyControl.type == "mask"){
+                while (historyControl.type == "mask") {
                     historyControl = this.MY.controls.pop();
                 }
                 //while(this.my记录不为空，且出栈内容不是输入的control){继续出栈
@@ -123,7 +142,7 @@ define(function(require, exports, module) {
                 //出栈
                 var historyControl = this.MY.controls.pop();
                 //找到不是mask的类型
-                while(historyControl.type && historyControl.type == "mask"){
+                while (historyControl.type && historyControl.type == "mask") {
                     historyControl = this.MY.controls.pop();
                 }
                 //while(this.my记录不为空，且出栈内容不是输入的control){继续出栈
@@ -171,7 +190,9 @@ define(function(require, exports, module) {
                                 param.queryParam = param.queryParam || {};
                                 if (_str[2].split("%").length > 1) {
                                     param.queryParam[_str[1]] = _str[2].split("%");
-                                } else {
+                                }else if(_str[2].indexOf("[") != -1){
+                                	param.queryParam[_str[1]] = _str[2].replace(/[\[\]]/ig,"").split("\,");
+                                }else {
                                     param.queryParam[_str[1]] = _str[2];
                                 }
                             }
@@ -232,6 +253,7 @@ define(function(require, exports, module) {
                 return gadgetName;
             }
         }
-    });
+    },
+    module);
     return FW;
 });

@@ -80,7 +80,11 @@ define(function(require, exports, module) {
                 for (var i in this.control.param) {
                     if (i == "queryParam") {
                         for (var j in this.control.param.queryParam) {
-                            url += "&" + j + "=" + this.control.param.queryParam[j];
+                        	if(typeof this.control.param.queryParam[j] == "object"){
+                        		url += "&" + j + "=[" + this.control.param.queryParam[j].join(",") + "]";
+                        	}else{
+                        		url += "&" + j + "=" + this.control.param.queryParam[j];
+                        	}
                         }
                     } else {
                         url += "&" + i + "=" + this.control.param[i];
@@ -90,6 +94,6 @@ define(function(require, exports, module) {
                 FW.page.createControl(url);
             }
         }
-    });
+    },module);
     return FW;
 });

@@ -24,8 +24,7 @@ define(function(require, exports, module) {
                 },{
                     gadgetName: "CMSMgrDefaultNodeDecorate",
                     view: "CMSMgrDefaultNodeResourceView",
-                    instance: "CMSMgrDefaultNodeDecorate",
-                    clickType:"actionList",
+                    instance: "CMSMgrDefaultNodeDecorate",                    
                     children: [{
                         gadgetName: "CMSMgrDefaultTagDecorate",
                         view: "CMSMgrDefaultTagResourceView",
@@ -63,7 +62,11 @@ define(function(require, exports, module) {
                 for (var i in this.param) {
                     if (i == "queryParam") {
                         for (var j in this.param.queryParam) {
-                            url += "&" + j + "=" + this.param.queryParam[j];
+                            if(typeof this.param.queryParam[i] == "object"){
+                        		url += "&" + j + "=[" + this.param.queryParam[j].join(",") + "]";
+                        	}else{
+                        		url += "&" + j + "=" + this.param.queryParam[j];
+                        	}
                         }
                     } else {
                         url += "&" + i + "=" + this.param[i];
@@ -78,6 +81,6 @@ define(function(require, exports, module) {
                 FW.page.createControl(url);
             }
         }
-    });
+    },module);
     return FW;
 });

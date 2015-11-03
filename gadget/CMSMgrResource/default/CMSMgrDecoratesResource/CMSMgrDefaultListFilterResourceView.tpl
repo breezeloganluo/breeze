@@ -9,7 +9,7 @@
 					<div class="btn-group">
 						<!--$if(!filterSet[i].type){-->
 							<!--$for(var j=0;j<filterSet[i].filterValue.length;j++){-->
-								<!--$if(data.selectData&&data.selectData[filterSet[i].filterName]&&data.selectData[filterSet[i].filterName]==_data.filterValue[j].Value){-->
+								<!--$if(data.selectData&& ((data.selectData[filterSet[i].filterName]&&data.selectData[filterSet[i].filterName]==_data.filterValue[j].Value) || (data.selectData["%"+filterSet[i].filterName+"%"]&&data.selectData["%"+filterSet[i].filterName+"%"]==_data.filterValue[j].Value))){-->
 									<a type="checkbox" class="btn btn-default btn-line btn-sm active" name="${_data.filterName}" value="${_data.filterValue[j].Value}" onClick="FireEvent.chooseFilter('${filterSet[i].filterName}','${_data.filterValue[j].Value}');">${_data.filterValue[j].Name}</a>
 								<!--$}else{-->
 									<a type="checkbox" class="btn btn-default btn-line btn-sm" name="${_data.filterName}" value="${_data.filterValue[j].Value}" onClick="FireEvent.chooseFilter('${filterSet[i].filterName}','${_data.filterValue[j].Value}');">${_data.filterValue[j].Name}</a>

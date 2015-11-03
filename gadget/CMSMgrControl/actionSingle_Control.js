@@ -152,6 +152,6 @@ define(function(require, exports, module) {
                 }).code;
             }
         }
-    });
+    },module);
     return FW;
 });

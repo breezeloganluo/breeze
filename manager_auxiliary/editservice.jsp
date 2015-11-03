@@ -72,23 +72,23 @@
 				//备份  林浩旋  7-3 
 				for(int i1=0;i1<ps.length;i1++)
 				{
-					System.out.println("ps.getItempClass------->"+ps[i1].getItempClass());
+					//System.out.println("ps.getItempClass------->"+ps[i1].getItempClass());
 					BreezeContext x = ServiceDescTools.parserItemDesc(ps[i1].getItempClass());
-					System.out.println("BreezeContext------->"+x);
+					//System.out.println("BreezeContext------->"+x);
 					oneFlowContent.combindContext(x);
 				}
 			}
-			System.out.println("oneFlowContent------------------>"+oneFlowContent);
+			//System.out.println("oneFlowContent------------------>"+oneFlowContent);
  			root.setContext(name,oneFlowContent);
- 			System.out.println("name----------------->"+name);			
+ 			//System.out.println("name----------------->"+name);			
 		}
-		System.out.println("root--------->"+root);
+		//System.out.println("root--------->"+root);
 		String flowContent = ContextTools.getJsonString(root, null);
 
 		///////////////////////////////////////////////////////////////////////
 		//获取所有已注册的业务
 		Set<String> sSet = AllServiceTemplate.INSTANCE.getTempleNameSet();
-		System.out.println("sSet:----->"+sSet);
+		//System.out.println("sSet:----->"+sSet);
 		StringBuilder arrayStr = new StringBuilder();
 		boolean isFirst = true;
 		arrayStr.append("[");

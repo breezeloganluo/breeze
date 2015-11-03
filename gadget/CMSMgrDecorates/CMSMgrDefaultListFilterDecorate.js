@@ -66,13 +66,17 @@ define(function(require, exports, module) {
                 if (data.orgData.data.cmsmetadata.dataMemo && data.orgData.data.cmsmetadata.dataMemo.aliasCfg && data.orgData.data.cmsmetadata.dataMemo.aliasCfg.filterSet) {
                     CMSMgrDefaultListFilterDecorate = {
                         data: FW.use().evalJSON(data.orgData.data.cmsmetadata.dataMemo.aliasCfg.filterSet),
-                        selectData: this.param.queryParam
+                        selectData: FW.getApp("CMSMgrControl").param.queryParam
                     };
                 }
                 //进一步处理
                 var _data = {};
                 _data.filterData = CMSMgrDefaultListFilterDecorate && CMSMgrDefaultListFilterDecorate.data;
                 _data.selectData = CMSMgrDefaultListFilterDecorate && CMSMgrDefaultListFilterDecorate.selectData;
+                //2015年10月31日11:06:01 FrankCheng 添加描述数据 用于制作时间域选择
+                if (data.metadata && CMSMgrDefaultListFilterDecorate != void 0){
+                	_data.metadata = data.metadata;
+                }
                 return CMSMgrDefaultListFilterDecorate && CMSMgrDefaultListFilterDecorate.data ? _data: null;
             }
         },
@@ -151,6 +155,8 @@ define(function(require, exports, module) {
             *@return 无
             */
             "chooseFilter": function(key, value, type) {
+            	//进行转义排除关键字 [此处造成filter无法显示选中状态 通过修改TPL]
+            	key="%"+key+"%";
                 var url = "";
                 var c = true;
                 for (var i in this.control.param.queryParam) {
@@ -158,7 +164,11 @@ define(function(require, exports, module) {
                         c = false;
                         continue;
                     } else {
-                        url += "&" + i + "=" + this.control.param.queryParam[i];
+                    	if(typeof this.control.param.queryParam[i] == "object"){
+                    		url += "&" + i + "=[" + this.control.param.queryParam[i].join(",") + "]";
+                    	}else{
+                    		url += "&" + i + "=" + this.control.param.queryParam[i];
+                    	}
                     }
                 }
                 if (c) {
@@ -174,6 +184,6 @@ define(function(require, exports, module) {
                 FW.page.createControl(url);
             }
         }
-    });
+    },module);
     return FW;
 });

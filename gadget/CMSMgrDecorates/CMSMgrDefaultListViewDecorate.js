@@ -20,6 +20,58 @@ define(function(require, exports, module) {
             //toDO
         },
         "public": {
+        	/**
+	        *@function
+	        *@memberOf CMSMgrDefaultListViewDecorate
+	        *@name public$assetsInit
+	        *@description 插件初始化
+	        */
+            "assetsInit": function() {
+            	var _this = this;
+            	$('.input-daterange').datepicker({
+            		autoclose:true,
+            		format: "yyyy/mm/dd"
+            	});
+            	$(".input-daterange").datepicker().on("changeDate", function(){
+            		//绑定变化事件[隐藏问题 会请求多次]
+            		/*
+            		 * 2015年10月31日12:04:37 支持时间域选择
+            		 * 必须同时存在开始时间和结束时间 会自动替换时间前后
+            		 * 通过这种方法屏蔽多次请求
+            		 * */
+            		//获取开始时间
+            		var start = $(this).find("input[data-t='start']").val();
+            		//获取结束时间
+            		var end = $(this).find("input[data-t='end']").val();
+            		//若有一者为空那么拒绝执行
+                    if(start == "" || start == void 0 || end == void 0 || end == ""){
+                    	return;
+                    }
+                    //判断开始时间是否大于结束时间 若大于 结束时间与开始时间相同
+                    if(parseFloat(start.replace(/\//ig,"")) > parseFloat(end.replace(/\//ig,""))){
+                    	$(this).find("input[data-t='end']").val(start);
+                    }
+                    //格式化格式
+                    start = new Date(start).getTime();
+                    end = new Date(end).getTime();
+                    var url = "";
+                    for (var i in _this.control.param.queryParam) {
+                        url += "&" + i + "=" + _this.control.param.queryParam[i];
+                    }
+                    
+                    for (var i in _this.control.param) {
+                        if (i == "queryParam" || i == "start" || i == "length") {
+                            continue;
+                        }
+                        url += "&" + i + "=" + _this.control.param[i];
+                    }
+                    
+                    url+="&" + $(this).find("input").attr("name") + "=[" + start + "," + end + "]";
+                    
+                    FW.page.createControl(url);
+                    
+            	});
+            },
             /**
             *@function
             *@memberOf CMSMgrDefaultListViewDecorate
@@ -80,6 +132,105 @@ define(function(require, exports, module) {
                 //设置数据
                 CMSMgrDefaultListViewDecorate.listOperBtns = _listOperBtns;
                 return CMSMgrDefaultListViewDecorate;
+            },
+            /**
+            *@function
+            *@memberOf CMSMgrDefaultListViewDecorate
+            *@name private$openMod
+            *@description 打开模型编辑框
+            *@param type 指定type类型
+            *@param cid 标识符
+            */
+            "openMod": function(type, cid) {
+                //防止被多次实例化时调用，比如在模型编辑的时候被调用 
+                if (!this.control) {
+                    return;
+                }
+                //if(cid或alias不存在){退出
+                if (!cid || !this.control.param.alias) {
+                    FW.alert("缺少关键参数alias或cid！");
+                    return;
+                }
+                //}
+                //else{打开新的页面
+                else {
+                    var url = "";
+                    //将原来参数设定到url中
+                    for (var i in this.control.param) {
+                        if (i == "type" || i == "queryObj" || i == 'start') {
+                            continue;
+                        }
+                        if (i == "queryParam") {
+                            for (var j in this.control.param.queryParam) {
+                                if(typeof this.control.param.queryParam[j] == "object"){
+                            		url += "&" + j + "=[" + this.control.param.queryParam[j].join(",") + "]";
+                            	}else{
+                            		url += "&" + j + "=" + this.control.param.queryParam[j];
+                            	}
+                            }
+                        } else {
+                            url += "&" + i + "=" + this.control.param[i];
+                        }
+
+                    }
+                    //设定type
+                    if (type) {
+                        url += "&type=" + type;
+                    } else {
+                        url += "&type=single";
+                    }
+                    //设定cid
+                    if (cid) {
+                        url += "&cid=" + cid;
+                    }
+                    //调用页面转向
+                    FW.page.createControl(url);
+                }
+                //}
+            },
+            /**
+            *@function
+            *@memberOf CMSMgrDefaultListViewDecorate
+            *@name private$deleteContent
+            *@description 删除选中数据
+            *@param type 指定type
+            *@param cid 标识符
+            *@param domid 节点标识
+            *@param dom 节点
+            */
+            "deleteContent": function(type, cid, domid, dom) {
+                //防止被多次实例化时调用，比如在模型编辑的时候被调用 
+                if (!this.control) {
+                    return;
+                }
+                //调用control的删除方法
+                var result = this.control.deleteContent(type, cid, dom);
+                if (result != 0) {
+                    return result;
+                }
+                //重新刷新页面
+                var url = "";
+                for (var i in this.control.param) {
+                    if (i == "type" || i == "queryObj") {
+                        continue;
+                    }
+                    if (i == "queryParam") {
+                        for (var j in this.control.param.queryParam) {
+                            if(typeof this.control.param.queryParam[j] == "object"){
+	                    		url += "&" + j + "=[" + this.control.param.queryParam[j].join(",") + "]";
+	                    	}else{
+	                    		url += "&" + j + "=" + this.control.param.queryParam[j];
+	                    	}
+                        }
+                    } else {
+                        url += "&" + i + "=" + this.param[i];
+                    }
+                }
+                if (type) {
+                    url += "&type=" + type;
+                }
+                FW.page.createControl(url);
+                return 0;
             }
         },
         "FireEvent": {
@@ -106,8 +257,26 @@ define(function(require, exports, module) {
                 //处理domid参数
                 var domid = "data" + dataId;
                 //}
-                //执行函数
-                FW.trigerEvent(funName, type, cid, domid, domObj);
+                //if (公有方法存在){先调用自己的公有方法
+                if (this[funName]) {
+                    this[funName](type, cid, domid, domObj);
+                    return;
+                }
+                //}
+                //if (私有方法存在){
+                if (this["private"][funName]) {
+                    this.API.private(funName, type, cid, domid, domObj);
+                    return;
+                }
+                //}
+                //if (control公有方法中存在){
+                if (this.control[funName]) {
+                    this.control[funName](type, cid, domid, domObj);
+                    return;
+                }
+                //}
+                //若全都没找到 执行triger
+            	FW.trigerEvent(funName, type, cid);
             },
             /**
             *@function
@@ -172,100 +341,8 @@ define(function(require, exports, module) {
                     cloneCol.html(cloneCol.html()).show();
                 }
             }
-        },
-        "TrigerEvent": {
-            /**
-            *@function
-            *@memberOf CMSMgrDefaultListViewDecorate
-            *@name TrigerEvent$openMod
-            *@description 打开模型编辑框
-            *@param type 指定type类型
-            *@param cid 标识符
-            */
-            "openMod": function(type, cid) {
-                //防止被多次实例化时调用，比如在模型编辑的时候被调用 
-                if (!this.control) {
-                    return;
-                }
-                //if(cid或alias不存在){退出
-                if (!cid || !this.control.param.alias) {
-                    FW.alert("缺少关键参数alias或cid！");
-                    return;
-                }
-                //}
-                //else{打开新的页面
-                else {
-                    var url = "";
-                    //将原来参数设定到url中
-                    for (var i in this.control.param) {
-                        if (i == "type" || i == "queryObj" || i == 'start') {
-                            continue;
-                        }
-                        if (i == "queryParam") {
-                            for (var j in this.control.param.queryParam) {
-                                url += "&" + j + "=" + this.control.param.queryParam[j];
-                            }
-                        } else {
-                            url += "&" + i + "=" + this.control.param[i];
-                        }
-
-                    }
-                    //设定type
-                    if (type) {
-                        url += "&type=" + type;
-                    } else {
-                        url += "&type=single";
-                    }
-                    //设定cid
-                    if (cid) {
-                        url += "&cid=" + cid;
-                    }
-                    //调用页面转向
-                    FW.page.createControl(url);
-                }
-                //}
-            },
-            /**
-            *@function
-            *@memberOf CMSMgrDefaultListViewDecorate
-            *@name TrigerEvent$deleteContent
-            *@description 删除选中数据
-            *@param type 指定type
-            *@param cid 标识符
-            *@param domid 节点标识
-            *@param dom 节点
-            */
-            "deleteContent": function(type, cid, domid, dom) {
-                //防止被多次实例化时调用，比如在模型编辑的时候被调用 
-                if (!this.control) {
-                    return;
-                }
-                //调用control的删除方法
-                var result = this.control.deleteContent(type, cid, dom);
-                if (result != 0) {
-                    return result;
-                }
-                //重新刷新页面
-                var url = "";
-                for (var i in this.control.param) {
-                    if (i == "type" || i == "queryObj") {
-                        continue;
-                    }
-                    if (i == "queryParam") {
-                        for (var j in this.control.param.queryParam) {
-                            url += "&" + j + "=" + this.control.param.queryParam[j];
-                        }
-                    } else {
-                        url += "&" + i + "=" + this.param[i];
-                    }
-                }
-                if (type) {
-                    url += "&type=" + type;
-                }
-                FW.page.createControl(url);
-                return 0;
-            }
         }
-    });
+    },
+    module);
     return FW;
 });

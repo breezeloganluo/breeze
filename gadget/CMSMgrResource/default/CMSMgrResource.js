@@ -103,6 +103,13 @@ define(function(require, exports, module) {
 		},
 		"roleactiongroup_Control":{
 			"groupView":require("./CMSMgrControlResource/roleactiongroup.tpl")
+		},
+		"CMSMgrDefaultListControl":{
+			"debugView":require("./CMSMgrControlResource/debugpage.tpl")
+		},
+		"debugpage_Control":{
+			"debugView":require("./CMSMgrControlResource/debugpage.tpl"),
+			"debug4new":require("./CMSMgrControlResource/debugpage4new.tpl")
 		}
 	}
 	FW.regResource(resource);

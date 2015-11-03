@@ -11,6 +11,7 @@
 						<tr role="row">
 							<th style='width:60px;' class='center'>选择</th>
 							<th>提示信息</th>
+							<th>大小</th>
 							<th>颜色</th>
 							<th>图标</th>
 							<th>当前行cid</th>
@@ -31,6 +32,14 @@
 							</td>
 							<td attr-d="title">
 								<input class="form-control"></input>
+							</td>
+							<td attr-d="size">
+								<select class="form-control">
+									<option>btn-default</option>
+									<option>btn-xs</option>
+									<option>btn-sm</option>
+									<option>btn-lg</option>
+								</select>
 							</td>
 							<td attr-d="style">
 								<select class="form-control">

@@ -248,7 +248,7 @@ define(function(require, exports, module) {
 					}
 					result = result + "require(\"" + oneObj.vDir + "\");\n";
 				}
-				result = result + "FW.register({\n__body__\n});\n	return FW;\n});";
+				result = result + "FW.register({\n__body__\n},module);\n	return FW;\n});";
 				result = result.replace("__body__",mainStr);
 				result = formatJS.js_beautify(result);
 				return result;

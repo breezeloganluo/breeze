@@ -5,6 +5,10 @@
 				<h4 class="lighter smaller pull-left">栏目目录</h4>
 			</div>	
 			<div id="aliasNodeTree" class="btn-group" style="margin:5px 10px;">
+				<button class="btn btn-xs btn-success" onClick="FireEvent.treeTopAdd();">
+					<i class="icon-plus"></i>
+					添加顶节点
+				</button>
 				<button class="btn btn-xs btn-primary" onClick="FireEvent.treeAdd();">
 					<i class="icon-plus"></i>
 					增加

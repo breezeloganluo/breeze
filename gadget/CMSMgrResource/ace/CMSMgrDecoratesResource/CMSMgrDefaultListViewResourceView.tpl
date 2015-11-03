@@ -39,28 +39,29 @@
 									<!--$for(var j=0;j<_data.listOperBtns.length;j++){-->
 										<!--$var oneBtn = _data.listOperBtns[j];-->
 										<!--$var btnClass = oneBtn.style;-->
+										<!--$var btnSize = oneBtn.size || "btn-xs";-->
 										<!--$var _id = "data"+i;-->
 										<!--$if(oneBtn.oper.fun=="openMod"){-->
 											<!--$if(oneBtn.authority){-->
-												<a title="${oneBtn.title}" style="display:none" authority="${oneBtn.authority}" class="btn btn-xs ${btnClass}"  onclick="FireEvent.btnEvent(${i},${j},this)" href="javascript:void(0);">
+												<a title="${oneBtn.title}" style="display:none" authority="${oneBtn.authority}" class="btn ${btnSize} ${btnClass}"  onclick="FireEvent.btnEvent(${i},${j},this)" href="javascript:void(0);">
 													<i class="ace-icon glyphicon glyphicon-edit"></i>
 												</a>
 											<!--$}else if(oneBtn.actionKey){-->
-												<a title="${oneBtn.title}" style="display:none" actionKey="${oneBtn.actionKey}" class="btn btn-xs ${btnClass}"  onclick="FireEvent.btnEvent(${i},${j},this)" href="javascript:void(0);">
+												<a title="${oneBtn.title}" style="display:none" actionKey="${oneBtn.actionKey}" class="btn ${btnSize} ${btnClass}"  onclick="FireEvent.btnEvent(${i},${j},this)" href="javascript:void(0);">
 													<i class="ace-icon glyphicon glyphicon-edit"></i>
 												</a>
 											<!--$}else{-->
-												<a title="${oneBtn.title}" class="btn ${btnClass}"  onclick="FireEvent.btnEvent(${i},${j},this)" href="javascript:void(0);">
+												<a title="${oneBtn.title}" class="btn ${btnSize} ${btnClass}"  onclick="FireEvent.btnEvent(${i},${j},this)" href="javascript:void(0);">
 													<i class="ace-icon glyphicon glyphicon-edit"></i>
 												</a>
 											<!--$}-->
 										<!--$}else if(oneBtn.oper.fun=="deleteContent"){-->
 											<!--$if(oneBtn.authority){-->
-												<a title="${oneBtn.title}" style="display:none" authority="${oneBtn.authority}" class="btn btn-xs ${btnClass}"  href="javascript:void(0);" data-toggle="modal" data-target="#${_id}">
+												<a title="${oneBtn.title}" style="display:none" authority="${oneBtn.authority}" class="btn ${btnSize} ${btnClass}"  href="javascript:void(0);" data-toggle="modal" data-target="#${_id}">
 													<i class="ace-icon glyphicon glyphicon-trash"></i>
 												</a>
 											<!--$}else{-->
-												<a title="${oneBtn.title}" class="btn btn-xs ${btnClass}"  href="javascript:void(0);" data-toggle="modal" data-target="#${_id}">
+												<a title="${oneBtn.title}" class="btn ${btnSize} ${btnClass}"  href="javascript:void(0);" data-toggle="modal" data-target="#${_id}">
 													<i class="ace-icon glyphicon glyphicon-trash"></i>
 												</a>
 											<!--$}-->
@@ -85,15 +86,15 @@
 											</div>
 										<!--$}else{-->
 											<!--$if(oneBtn.authority){-->
-												<a title="${oneBtn.title}" style="display:none" authority="${oneBtn.authority}" class="btn btn-xs ${btnClass}"  onclick="FireEvent.btnEvent(${i},${j},this)" href="javascript:void(0);">
+												<a title="${oneBtn.title}" style="display:none" authority="${oneBtn.authority}" class="btn ${btnSize} ${btnClass}"  onclick="FireEvent.btnEvent(${i},${j},this)" href="javascript:void(0);">
 													<i class="ace-icon ${oneBtn.icon}"></i>
 												</a>
 											<!--$}else if(oneBtn.actionKey){-->
-												<a title="${oneBtn.title}" style="display:none" actionKey="${oneBtn.actionKey}" class="btn btn-xs ${btnClass}"  onclick="FireEvent.btnEvent(${i},${j},this)" href="javascript:void(0);">
+												<a title="${oneBtn.title}" style="display:none" actionKey="${oneBtn.actionKey}" class="btn ${btnSize} ${btnClass}"  onclick="FireEvent.btnEvent(${i},${j},this)" href="javascript:void(0);">
 													<i class="ace-icon ${oneBtn.icon}"></i>
 												</a>
 											<!--$}else{-->
-												<a title="${oneBtn.title}" class="btn btn-xs ${btnClass}"  onclick="FireEvent.btnEvent(${i},${j},this)" href="javascript:void(0);">
+												<a title="${oneBtn.title}" class="btn ${btnSize} ${btnClass}"  onclick="FireEvent.btnEvent(${i},${j},this)" href="javascript:void(0);">
 													<i class="ace-icon ${oneBtn.icon}"></i>
 												</a>
 											<!--$}-->

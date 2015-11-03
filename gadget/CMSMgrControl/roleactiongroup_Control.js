@@ -94,7 +94,11 @@ define(function(require, exports, module) {
                             if (j == "cid" || j == "nodeid") {
                                 continue;
                             }
-                            url += "&" + j + "=" + this.param.queryParam[j];
+                            if(typeof this.param.queryParam[i] == "object"){
+                        		url += "&" + j + "=[" + this.param.queryParam[j].join(",") + "]";
+                        	}else{
+                        		url += "&" + j + "=" + this.param.queryParam[j];
+                        	}
                         }
                     } else {
                         url += "&" + i + "=" + this.param[i];
@@ -201,6 +205,6 @@ define(function(require, exports, module) {
                 alert("操作成功");
             }
         }
-    });
+    },module);
     return FW;
 });

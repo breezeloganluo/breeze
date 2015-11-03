@@ -26,6 +26,21 @@
 	<!-- cssAssets -->
 	<jsp:include page="cssAssets.jsp"/>
 	<!-- /cssAssets -->
+	<style type="text/css">
+        #maskLayer{
+        	display: none;  
+        	position: absolute;  
+        	top: 0%;  
+        	left: 0%;  
+        	width: 100%;  
+        	height: 100%;  
+        	background-color: black;  
+        	z-index:1001;  
+        	-moz-opacity: 0.7;  
+        	opacity:.70;  
+        	filter: alpha(opacity=70);
+        }
+	</style>
 	<%
 		if(session.getAttribute("manager")!=null&&request.getAttribute("Template").toString().equals("ace")){
 			%>
@@ -37,6 +52,7 @@
 	%>
 </head>
 <body class="padTop53">
+	<div id="maskLayer"></div>
 	<div id="wrap">
 		<div id="top">
 			<jsp:include page="header.jsp"/>

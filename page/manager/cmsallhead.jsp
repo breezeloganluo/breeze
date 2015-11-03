@@ -11,26 +11,32 @@
 <%@page import="java.util.List"%>
 <%@page import="java.io.File"%>
 <%!
-	private List<String> getGadget(String basePath,String template,File ... files){
+	private List<String> getGadget(String basePath,String template,String mgr,File ... files){
 		List<String> list = new ArrayList<String>();
-		for(File file : files){
-			if(file.isDirectory()){
-				list.addAll(getGadget(basePath,template,file.listFiles()));
-			}else if(file.isFile()){
-				if(file.getName().indexOf("js")!=-1){
-					String _path = file.getPath().replace(basePath, "");
-					_path = _path.substring(0,_path.length()).replace("\\","/");
-					if(_path.startsWith("/")){
-						_path = _path.replaceFirst("/", "");
+		if (files != null){
+			for(File file : files){
+				if(file.isDirectory()){
+					if(mgr.equals("mgr") && file.getName().indexOf("Mgr")!=-1){
+						list.addAll(getGadget(basePath,template,"gadget",file.listFiles()));
+					}else if(mgr.equals("gadget")){
+						list.addAll(getGadget(basePath,template,"gadget",file.listFiles()));
 					}
-					if(_path.indexOf("CMSMgrResource") != -1 || _path.indexOf("resource") != -1){
-						if(_path.indexOf(template) == -1){
-							continue;
+				}else if(file.isFile()){
+					if(file.getName().indexOf("js")!=-1){
+						String _path = file.getPath().replace(basePath, "");
+						_path = _path.substring(0,_path.length()).replace("\\","/");
+						if(_path.startsWith("/")){
+							_path = _path.replaceFirst("/", "");
 						}
+						if(_path.indexOf("CMSMgrResource") != -1 || _path.indexOf("resource") != -1){
+							if(_path.indexOf(template) == -1){
+								continue;
+							}
+						}
+						list.add("'"+_path+"'");
 					}
-					list.add("'"+_path+"'");
 				}
-			}
+			}	
 		}
 		return list;
 	}
@@ -79,13 +85,19 @@
 	//读取gadget目录下所有文件
 	File[] gadgetFiles = new File(_path+"/gadget").listFiles();
 	if(request.getAttribute("Template")!=null){
-		allGadget.addAll(getGadget(_path,request.getAttribute("Template").toString(),gadgetFiles));
+		allGadget.addAll(getGadget(_path,request.getAttribute("Template").toString(),"gadget",gadgetFiles));
 	}
 
 	//读取privategadget下所有文件
 	File[] privategadgetFiles = new File(_path+"/privategadget").listFiles();
 	if(request.getAttribute("Template")!=null){
-		allGadget.addAll(getGadget(_path,request.getAttribute("Template").toString(),privategadgetFiles));
+		allGadget.addAll(getGadget(_path,request.getAttribute("Template").toString(),"gadget",privategadgetFiles));
+	}
+
+	//读取servicegadget下所有文件
+	File[] servicegadgetFiles = new File(_path+"/servicegadget").listFiles();
+	if(request.getAttribute("Template")!=null){
+		allGadget.addAll(getGadget(_path,request.getAttribute("Template").toString(),"mgr",servicegadgetFiles));
 	}
 
 	request.setAttribute("allGadget", allGadget.toString());

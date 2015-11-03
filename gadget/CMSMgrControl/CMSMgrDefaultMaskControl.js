@@ -200,6 +200,6 @@ define(function(require, exports, module) {
                 }
             }
         }
-    });
+    },module);
     return FW;
 });

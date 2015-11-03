@@ -94,11 +94,7 @@ define(function(require, exports, module) {
 		"CMSMgrModSingleControl":{
 			"appMainView":require("./CMSMgrControlResource/CMSMgrControl.tpl"),
 			"modListMaskView":require("./CMSMgrControlResource/CMSMgrModListMaskView.tpl")
-		},
-		
-		
-		
-		
+		},		
 		"Info_Decorate":{
 			"Info_Decorate":require("../../CMSMgrTypeDecorate/resource/ace/Info_Decorate.tpl")			
 		},
@@ -106,8 +102,11 @@ define(function(require, exports, module) {
 	
 		"roleactiongroup_Control":{
 			"groupView":require("./CMSMgrControlResource/roleactiongroup.tpl")
+		},
+		"debugpage_Control":{
+			"debugView":require("./CMSMgrControlResource/debugpage.tpl"),
+			"debug4new":require("./CMSMgrControlResource/debugpage4new.tpl"),
 		}
-
 
 	}
 	FW.regResource(resource);

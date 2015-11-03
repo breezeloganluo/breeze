@@ -162,7 +162,7 @@
    </a>
    <!-- LOGO SECTION -->
    <header class="navbar-header">
-       <a href="CMSMgr.jsp" class="navbar-brand" style="${headerFontColor}">
+       <a href="CMSBaseMgr.jsp" class="navbar-brand" style="${headerFontColor}">
        		${logo } ${headerTitle }
        </a>
    </header>

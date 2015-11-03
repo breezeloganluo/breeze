@@ -67,7 +67,7 @@ define(function(require, exports, module) {
                     });
                 } catch(e) {
 
-}
+                }
 
                 try {
                     $('.date-picker').datepicker({
@@ -96,7 +96,7 @@ define(function(require, exports, module) {
                     });
                 } catch(e) {
 
-}
+                }
 
                 try {
                     $('.timepicker').datetimepicker({
@@ -244,10 +244,9 @@ define(function(require, exports, module) {
                         onclickStr = onclickStr + "})";
                         $(this).find("input[name=upload]").attr("onchange", onclickStr);
                     });
-
                 } catch(e) {
 
-}
+                }
             },
             /**
             *@function
@@ -362,7 +361,7 @@ define(function(require, exports, module) {
                 if (window.customized && window.customized[data.alias] && window.customized[data.alias].singleButton) {
                     _btnData = FW.use().evalJSON(window.customized[data.alias].singleButton);
                 }
-                if (!this.control.param.queryParam || (!this.control.param.queryParam.cid && !param.cid) || (!this.control.param.cid && this.control.param.mid)) {
+                if ((this.control.param.queryParam && this.control.param.queryParam.cpc_oper=='addNode') || !this.control.param.queryParam || (!this.control.param.queryParam.cid && !param.cid) || (!this.control.param.cid && this.control.param.mid)) {
                     data.data = null;
                 }
                 var CMSMgrDefaultSingleViewDecorate = {
@@ -388,8 +387,26 @@ define(function(require, exports, module) {
                 //设置参数
                 var funName = btnData.onclick;
                 var type = btnData.type;
-                //外部调用
-                FW.trigerEvent(funName, type, dom);
+                //if (公有方法存在){先调用自己的公有方法
+                if (this[funName]) {
+                    this[funName](type, cid, domid, domObj);
+                    return;
+                }
+                //}
+                //if (私有方法存在){
+                if (this["private"][funName]) {
+                    this.API.private(funName, type, cid, domid, domObj);
+                    return;
+                }
+                //}
+                //if (control公有方法中存在){
+                if (this.control[funName]) {
+                    this.control[funName](type, cid, domid, domObj);
+                    return;
+                }
+                //}
+                //若全都没找到 执行triger
+            	FW.trigerEvent(funName, type, dom);
             },
             /**
             *@function
@@ -465,16 +482,21 @@ define(function(require, exports, module) {
             */
             "submit": function(type) {
                 //防止被多次实例化时调用，比如在模型编辑的时候被调用 
+            	document.getElementById("maskLayer").style.display ="block";
                 if (!this.control) {
+                	document.getElementById("maskLayer").style.display ="none";
                     return;
                 }
                 var data = this.getData();
                 if (this.control.param.parentAlias && this.control.param.queryObj && this.control.param.queryParam && this.control.param.queryParam.nodeid) {
                     data.nodeid = this.control.param.queryParam.nodeid;
                 }
-                if (this.control.param.parentAlias && this.control.param.parentAlias == this.control.param.alias && data.nodeid) {
+                //if (是自己挂接自己，而且是编辑操作){就强制删除nodeid
+                //--用cpc_oper=addNode来区分是否编辑操作
+                if (this.control.param.parentAlias && this.control.param.parentAlias == this.control.param.alias && data.nodeid && this.control.param.queryParam.cpc_oper != "addNode") {
                     delete data.nodeid;
                 }
+                //}
                 if (this.control.param.parentAlias && this.control.param.parentAlias == this.control.param.alias && this.control.param.mid) {
                     data.nodeid = this.control.param.mid;
                 }
@@ -501,7 +523,11 @@ define(function(require, exports, module) {
                                 if (j == "cid") {
                                     continue;
                                 }
-                                url += "&" + j + "=" + this.control.param.queryParam[j];
+                                if(typeof this.control.param.queryParam[j] == "object"){
+                            		url += "&" + j + "=[" + this.control.param.queryParam[j].join(",") + "]";
+                            	}else{
+                            		url += "&" + j + "=" + this.control.param.queryParam[j];
+                            	}
                             }
                         } else {
                             if (i == "queryObj" || i == "mid") {
@@ -518,15 +544,39 @@ define(function(require, exports, module) {
                             url += "&type=single";
                         }
                     } else {
+                    	//if(参数传入type就用之){
                         if (type) {
                             url += "&type=" + type;
-                        } else {
-                            url += "&type=list";
+                        } //}
+                		//else{用堆栈返回
+                		else {
+                            var curCtr = FW.page.MY.curControl;
+		                    var lastCtr = FW.page.getLastControl(curCtr.alias, curCtr.type);
+		                    if (lastCtr && lastCtr.type) {
+		                        url += "&type=" + lastCtr.type;
+		                    }
                         }
+                		//}
                     }
-
                     FW.page.createControl(url);
+                }else if(code == 501){
+                	alert("你正在设置多表关键配置信息 值不能为空！");
+                }else if(code == 502){
+                	alert("你正在设置多表关键配置信息 所配信息不符合标准或对应表不存在");
+                }else if(code == 503){
+                	alert("你所修改的字段为存在多表关系 无法进行修改");
+                }else if(code == 504){
+                	alert("你所设置的alias表必须为空表");
+                }else if(code == 505){
+                	alert("若想删除多表关键字 必须确保没有多表模型！");
+                }else if(code == 506){
+                	alert("你不能将多表关键表设置为多表模式！");
+                }else if(code == 507){
+                	alert("你正在修改多表关键表，此表一经创建及配置 无法再次修改！");
+                }else if(code == 508){
+                	alert("你正在操作关键表 此表只能添加数据！");
                 }
+                document.getElementById("maskLayer").style.display ="none";
             },
             /**
             *@function
@@ -559,7 +609,11 @@ define(function(require, exports, module) {
                             if (j == "cid") {
                                 continue;
                             }
-                            url += "&" + j + "=" + this.control.param.queryParam[j];
+                            if(typeof this.control.param.queryParam[j] == "object"){
+                        		url += "&" + j + "=[" + this.control.param.queryParam[j].join(",") + "]";
+                        	}else{
+                        		url += "&" + j + "=" + this.control.param.queryParam[j];
+                        	}
                         }
                     } else {
                         url += "&" + i + "=" + this.control.param[i];
@@ -599,6 +653,6 @@ define(function(require, exports, module) {
                 FW.page.createControl(url);
             }
         }
-    });
+    },module);
     return FW;
 });
