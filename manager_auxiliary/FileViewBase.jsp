@@ -1,108 +1,196 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="./hHead.jsp"%>
-	<% /* * 这是一个基本的文件处理类，外部文件通过include方式转入到这个页面中。 *这个页面只包含body部分，其他是外部的文件包含。外部文件必须设置一个全局的js变量： * fileGlobleSetting={ initDir:页面的初始化文件目录 clickSetting:{ default: "点击自身的事件", "编辑": "url" } *} */ %>
-		<jsp:include page="../page/allhead.jsp" />
-<%
-request.setAttribute("S",request.getAttribute("B")+"breeze/framework/jsp/BreezeFW.jsp");
-%>
-		<body>
-        <!--@config@{
-			"./":"xxxx"
-		}        	
-        -->
-			<table width="100%" border="1">
-				<tr>
-					<td width="40%" valign="top">
-						<div id="maintree" class="FWApp">
-							<!--@treeFileSelect@{
-								viewid:"view_treemain",
-								listApp:"mainlist",
-								operType:"dir"
-							}-->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.util.regex.*"%>
+<%@page import="com.breeze.support.cfg.Cfg"%>
 
-						</div>
-					</td>
-					<td width="60%" valign="top">
-						<div>
-							[<span id="currDir"></span>]&nbsp;<a href="#" onclick="FireEvent('maintree.openAddSubDir')">添加子节点</a>|
-							<a href="#" onclick="FireEvent('mainlist.openAddFile')">添加新文件</a>|
-							<a href="#" onclick="FireEvent('mainlist.filePaste')">粘贴</a>
-							<div id="mainlist" class="FWApp">
-								<!--@treeFileSelect@{
-								listViewId:"view_fileList",
-								operType:"file"
-							}-->
+	<body>
+		<%
+		String baseUrl = this.getServletContext().getContextPath();
+		String configUrlPrefix = Cfg.getCfg().getString("siteprefix");
+		if (configUrlPrefix !=null && !configUrlPrefix.equals("--")){
+			baseUrl = configUrlPrefix;
+		}
+		if ("/".equals(baseUrl)){
+			request.setAttribute("B","/");
+			baseUrl = "";
+		}else{
+			request.setAttribute("B",baseUrl+'/');
+		}
+		request.setAttribute("S",request.getAttribute("B")+"breeze/framework/jsp/BreezeFW.jsp");
+		%>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		
+		<!-- basic styles -->
 
-							</div>
-						</div>
-					</td>
-				</tr>
-			</table>
+		<link href="assets3/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="assets3/css/font-awesome.min.css" />
 
-			<script src="${B}breeze/lib/js/jquery.js"></script>
-			<script src="${B}breeze/lib/js/sea.js"></script>
-			<script src="${B}config/config.jsp"></script>
-			<script>
-				seajs.config({
-					base: "${B}"
-				});
-				seajs.use(['manager_auxiliary/service/treeFileSelect'], function(a) {
-					a.go("${S}");
-					window.FW = a;
-				});
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="assets3/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+
+		<!-- fonts -->
+
+		<link rel="stylesheet" href="assets3/css/googlefont.css" />
+
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="assets3/css/ace.min.css" />
+		<link rel="stylesheet" href="assets3/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="assets3/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="assets3/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+
+		<script src="assets3/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="assets3/js/html5shiv.js"></script>
+		<script src="assets3/js/respond.min.js"></script>
+        <![endif]-->
+        <style>
+        	.nogap{padding:0}
+        </style>
+		
+		
+		
+		
+		<!--头部的管理条-->
+    	<div class="navbar navbar-default" id="navbar">
+			<script type="text/javascript">
+				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
 			</script>
-			<div style="display:none">
-				<div class="FWRES" APPID="maintree" RESID="view_treemain">
-					<!--$for (var i = 0 ;i<data.length;i++){-->
 
-					<span><a href="#" onclick="FireEvent.clickSub('${_}{data.dir}/${_}{data[i]}',this)">+</a></span><span><a href="#" onclick="FireEvent.clickDir('${_}{data.dir}/${_}{data[i]}')">${_}{p:("changeDisplayName",data[i])}</a></span>
-					<br/>
-					<div style="display: none;" id="container_${_}{p:('changeLetter',[data.dir,'/',data[i]])}">
-						<div style="margin-left: 30px;" id="${_}{p:('changeLetter',[data.dir,'/',data[i]])}"></div>
-					</div>
-					<!--$}-->
-				</div>
-				<div class="FWRES" APPID="maintree" RESID="mask_openSubDir">
-					请输入子节点的路径名称
-					<br />
-					<input id="mask_openSubDir" type="text"></input>
-					<br/>
-					<input type="button" value="确定" onclick="FireEvent.addSubDir('mask_openSubDir')"></input>
-					<input type="button" value="取消" onclick="FW.unblockUI();" />
-				</div>
+			<div class="navbar-container" id="navbar-container">
+				<div class="navbar-header pull-left" id="menuTitle_fileTree">
+					<a href="#" class="navbar-brand">
+						<small>
+							<img src="./img/icon/all.png" width="25" height="25"></img>
+							综合编辑器
+						</small>
+					</a><!-- /.brand -->
+				</div><!-- /.navbar-header -->
 
-				<div class="FWRES" APPID="mainlist" RESID="view_fileList">
-					<!--$for (var i = 0 ;i<data.length;i++){-->
-					<div><a href="${B}${_}{data.dir}/${_}{data[i]}" target="_blank">${_}{p:("changeDisplayName",data[i])}</a> 
-						<!--$for(var n in fileGlobleSetting.clickSetting){-->
-							<!--$if(n == 'link' || n == 'newone'){continue;}-->
-							&nbsp;&nbsp;<a href="#" onclick="FireEvent.editSRS('${_}{data[i]}','${_}{n}')">${_}{n}</a>
-						<!--$}-->
-						&nbsp;<a href="#" onclick="FireEvent.deleteFile('${_}{data[i]}');">删除</a>
-						&nbsp;<a href="#" onclick="FireEvent.openRename('${_}{data[i]}');">重命名</a>
-						&nbsp;<a href="#" onclick="FireEvent.fileCopyCut('${_}{data[i]}','copy');">复制</a>
-						&nbsp;<a href="#" onclick="FireEvent.fileCopyCut('${_}{data[i]}','cut');">剪切</a>
+				<div id="topMenu_fileTree" class="navbar-header pull-right" role="navigation" style="height:45px;" id="topMenu_fileTree">
+					<!--在视图topMenu中-->
+				</div><!-- /.navbar-header -->
+			</div><!-- /.container -->
+		</div>
+        <!--头部管理条结束-->
+        
+        <!--下面主体部分-->
+		<div class=".container-fluid" id="main-container">
+        	<div class="row">
+            	<div class="col-xs-4 nogap" >
+                    <div style="margin-left: 30px;">
+                      <div class="breadcrumbs" >
+						
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-sitemap"></i>
+								<a href="#">1</a>
+							</li>
+
+							<li>
+								<a href="#">2</a>
+							</li>
+							<li class="active">3</li>
+						</ul>
+
+						
 					</div>
-					<!--$}-->
-				</div>
-				<div class="FWRES" APPID="mainlist" RESID="mask_openFile">
-					请输入原型名称名称
-					<br />
-					<input id="mask_fileSRS" type="text"></input>
-					<br/>
-					<input type="button" value="确定" onclick="FireEvent.addFile('mask_fileSRS')"></input>
-					<input type="button" value="取消" onclick="FW.unblockUI();" />
-				</div>
-				
-				<div class="FWRES" APPID="mainlist" RESID="mask_rnFile">
-					请重新输入名字
-					<br />
-					<input id="mask_newName" type="text"></input>
-					<input id="mask_oldName" type="hidden" value="${_}{data}"></input>
-					<br/>
-					<input type="button" value="确定" onclick="FireEvent.reName()"></input>
-					<input type="button" value="取消" onclick="FW.unblockUI();" />
-				</div>
-				
-			</div>
-		</body>
+                      <div id="tree" class="FWApp ">
+                         <!--@treeView@{
+                          }-->
+                      </div>
+                    </div>
+                </div>
+                <div class="col-xs-8 nogap" >
+                    <div class="breadcrumbs" id="controlTitle_fileTree" >
+						
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-align-left"></i>
+								<a href="#">33</a>
+							</li>
+
+							<li>
+								<a href="#">2</a>
+							</li>
+							<li class="active">3</li>
+						</ul>
+
+						
+					</div>
+
+					<div class="page-content">
+						<div class="row">
+							<div class="col-xs-12  FWApp" id="fileTree">
+                            <!--@treeFileControl@{}-->
+								<!-- PAGE CONTENT BEGINS -->
+
+								     页面中间内容
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+                </div>
+            </div>			
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="icon-double-angle-up icon-only bigger-110"></i>
+			</a>
+		</div>
+		
+		<!--主体部分结束-->
+		
+		
+		<script src="${B}breeze/lib/js/jquery.js"></script>
+        
+
+
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='assets3/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="assets3/js/bootstrap.min.js"></script>
+		
+
+		<!-- page specific plugin scripts -->
+
+		
+
+		
+
+		<!-- ace scripts -->
+
+		<script src="assets3/js/ace-elements.min.js"></script>
+		<script src="assets3/js/ace.min.js"></script>
+
+		
+        
+        
+        <script src="${B}breeze/lib/js/sea.js"></script>
+        <script src="${B}breeze/lib/js/seajs-text.js"></script>
+		<script src="${B}config/config.jsp"></script>
+    
+		<script >
+           seajs.config({
+           base: '${B}'
+           });
+           seajs.use(['./service/treeFileControl','./service/editServiceTest'], function(a) {
+           window.FW = a;
+           a.go('${S}');           
+           });
+        </script>
+	</body>

@@ -114,21 +114,35 @@
 <a href="#" onclick="FireEvent.addNewObj(27)"><!--流程图-->
   <img src="./img/SRSCreator/b27.jpg" objid="27" width="100" height="100"/>
 </a>
+<!--2015-12-7 new add------------------------------------------------------->
+<a href="#" onclick="FireEvent.addNewObj(28)"><!--顶部导航-->
+  <img src="./img/SRSCreator/b28.jpg" objid="28" width="100" height="100"/>
+</a>
 
+<a href="#" onclick="FireEvent.addNewObj(29)"><!--左侧导航-->
+  <img src="./img/SRSCreator/b29.jpg" objid="29" width="100" height="100"/>
+</a>
 
+<a href="#" onclick="FireEvent.addNewObj(30)"><!--内容导航-->
+  <img src="./img/SRSCreator/b30.jpg" objid="30" width="100" height="100"/>
+</a>
+
+<a href="#" onclick="FireEvent.addNewObj(31)"><!--表单-->
+  <img src="./img/SRSCreator/b31.jpg" objid="31" width="100" height="100"/>
+</a>
 
 
 
 <!--
    ##1##
-   <div style="height:80px;border-color: red;border-style: solid;border-width: 1px;text-align: center;">
-   	   这是一个普通的方框，其中文字边框，高度等，都可以定义，请编辑并修改其属性,将高度删除就是自动高度
+   <div style="min-height:80px;height:auto;border:1px solid #eee;border-radius:3px;text-align: left;padding:5px;">
+   	   这是一个内容区域
    </div>
    @@1@@
 
    ##2##
-    <span style="width:500px;height:80px;border:1px solid red;text-align: center;background:#ccc;display:block;">
-   	   这是一个普通的块，其中文字，边框，宽度，高度，背景等，都可以定义，请编辑并修改其属性,常见的显示方式有none,block,inline-block
+    <span style="width:500px;min-height:80px;height:auto;border:1px solid #eee;border-radius:3px;text-align: left;padding:5px;display:block;">
+   	   这是一个块,常见的显示方式有none,block,inline-block
    </span>
    @@2@@
 
@@ -140,62 +154,66 @@
     
    @@3@@
 
-    ##4##
+##4##
     <div>
     	<style>
 	        table.dataintable {
 	        margin-top:10px;
 	        border-collapse:collapse;
-	        border:1px solid #aaa;
+	        border:1px solid #eee;
 	        width:100%;
 	        }
 	
 	      table.dataintable th {
 	        vertical-align:baseline;
 	        padding:5px 15px 5px 6px;
-	        background-color:#d5d5d5;
-	        border:1px solid #aaa;
+	        background-color:#f1f1f1;
+	        border:1px solid #eee;
 	        text-align:left;
 	        }
 	
 	      table.dataintable td {
 	        vertical-align:text-top;
 	        padding:6px 15px 6px 6px;
-	        background-color:#efefef;
-	        border:1px solid #aaa;
+	        background-color:#f9f9f9;
+	        border:1px solid #eee;
 	        }
 	    </style>
 	
 	  <table class="dataintable">
 	      <tbody><tr>
-	        <th>表格属性</th>
-	        <th>表格描述</th>
+	        <th>帐号</th>
+	        <th>昵称</th>
+            <th>操作</th>
 	      </tr>
 	
 	        <tr>
-	        <td><a href="/cssref/pr_tab_border-collapse.asp" title="">border-collapse</a></td>
-	        <td>设置是否把表格边框合并为单一的边框。</td>
+	        <td><a href="/cssref/pr_tab_border-collapse.asp" title="">131341</a></td>
+	        <td>wang</td>
+            <td>
+              <a  href="javascript:void(0);" title="编辑" class="FormOperBtn btn btn-mini btn-info _formlist_editbtn_inp"> <i class="icon-edit bigger-120"></i></a>
+              <a  href="javascript:void(0);"  title="删除" class="FormOperBtn btn btn-mini btn-danger _formlist_delbtn_inp"> <i class="icon-trash bigger-120"></i></a> 
+             </td>
 	        </tr>
 	
 	        <tr>
-	        <td><a href="/cssref/pr_tab_border-spacing.asp" title="">border-spacing</a></td>
-	        <td>设置分隔单元格边框的距离。</td>
+	        <td><a href="/cssref/pr_tab_border-spacing.asp" title="">24241</a></td>
+	        <td>wangwi</td>
+            <td>
+              <a  href="javascript:void(0);" title="编辑" class="FormOperBtn btn btn-mini btn-info _formlist_editbtn_inp"> <i class="icon-edit bigger-120"></i></a>
+              <a  href="javascript:void(0);"  title="删除" class="FormOperBtn btn btn-mini btn-danger _formlist_delbtn_inp"> <i class="icon-trash bigger-120"></i></a> 
+             </td>
 	        </tr>
 	
 	        <tr>
-	        <td><a href="/cssref/pr_tab_caption-side.asp" title="">caption-side</a></td>
-	        <td>设置表格标题的位置。</td>
+	        <td><a href="/cssref/pr_tab_caption-side.asp" title="">142111</a></td>
+	        <td>ikwj</td>
+            <td>
+              <a  href="javascript:void(0);" title="编辑" class="FormOperBtn btn btn-mini btn-info _formlist_editbtn_inp"> <i class="icon-edit bigger-120"></i></a>
+              <a  href="javascript:void(0);"  title="删除" class="FormOperBtn btn btn-mini btn-danger _formlist_delbtn_inp"> <i class="icon-trash bigger-120"></i></a> 
+             </td>
 	        </tr>
 	
-	        <tr>
-	        <td><a href="/cssref/pr_tab_empty-cells.asp" title="">empty-cells</a></td>
-	        <td>设置是否显示表格中的空单元格。</td>
-	        </tr>
-	
-	        <tr>
-	        <td><a href="/cssref/pr_tab_table-layout.asp" title="">table-layout</a></td>
-	        <td>设置显示单元、行和列的算法。</td>
-	        </tr>
 	      </tbody>
 	   </table> 
     </div>
@@ -203,7 +221,7 @@
 
 
 
-   @@4@@
+@@4@@
 
   ##5##
 	<div class="pagination">
@@ -271,22 +289,22 @@
     <div class="controls">
       <label >
         <input name="form-field-radio" type="radio">
-        <span class="lbl"> radio option 1</span>
+        <span class="lbl"> 单选按钮1</span>
       </label>
 
       <label >
         <input name="form-field-radio" type="radio">
-        <span class="lbl"> radio option 2</span>
+        <span class="lbl"> 单选按钮2</span>
       </label>
 
       <label >
         <input name="form-field-radio" type="radio">
-        <span class="lbl"> radio option 3</span>
+        <span class="lbl"> 单选按钮3</span>
       </label>
 
       <label >
         <input disabled="" name="form-field-radio" type="radio">
-        <span class="lbl"> disabled</span>
+        <span class="lbl"> 无效</span>
       </label>
     </div>
   
@@ -297,22 +315,22 @@
    <div class="controls">
     <label>
       <input name="form-field-checkbox" type="checkbox">
-      <span class="lbl"> choice 1</span>
+      <span class="lbl"> 复选框1</span>
     </label>
 
     <label >
       <input name="form-field-checkbox" type="checkbox">
-      <span class="lbl"> choice 2</span>
+      <span class="lbl"> 复选框2</span>
     </label>
 
     <label >
       <input name="form-field-checkbox" class="ace-checkbox-2" type="checkbox">
-      <span class="lbl"> choice 3</span>
+      <span class="lbl"> 复选框3</span>
     </label>
 
     <label >
       <input name="form-field-checkbox" disabled="" type="checkbox">
-      <span class="lbl"> disabled</span>
+      <span class="lbl"> 无效</span>
     </label>
   </div>
 
@@ -329,27 +347,27 @@
       <textarea name="" cols="" rows="">textarea</textarea>
       <br/>
       <select name="carlist">
-        <option value ="name1">name1</option>
-        <option value ="name2">name2</option>
-        <option value="name3">name3</option>
-        <option value="name4">name4</option>
+        <option value ="name1">名称1</option>
+        <option value ="name2">名称2</option>
+        <option value="name3">名称3</option>
+        <option value="name4">名称4</option>
       </select>
       <br/>
       <div class="controls">
       <label class="checkbox inline">
         <input name="form-field-radio" type="radio">
-        <span class="lbl"> radio option 1</span>
+        <span class="lbl">名称1</span>
       </label>
 
       <label class="checkbox inline">
         <input name="form-field-radio" type="radio">
-        <span class="lbl"> radio option 2</span>
+        <span class="lbl">名称2</span>
       </label>
 
       
       <label class="checkbox inline">
         <input disabled="" name="form-field-radio" type="radio">
-        <span class="lbl"> disabled</span>
+        <span class="lbl"> 无效</span>
       </label>
     </div>
 <br/>
@@ -357,18 +375,18 @@
 <div class="controls">
     <label class="checkbox inline">
       <input name="form-field-checkbox" type="checkbox">
-      <span class="lbl"> choice 1</span>
+      <span class="lbl">名称1</span>
     </label>
 
     <label class="checkbox inline">
       <input name="form-field-checkbox" type="checkbox">
-      <span class="lbl"> choice 2</span>
+      <span class="lbl">名称2</span>
     </label>
 
 
     <label class="checkbox inline">
       <input name="form-field-checkbox" disabled="" type="checkbox">
-      <span class="lbl"> disabled</span>
+      <span class="lbl"> 无效</span>
     </label>
   </div>
 <br/>
@@ -404,7 +422,7 @@
                 <i class="icon-minus">
                 </i>
                 <div class="tree-folder-name">
-                    For Sale
+                    名称
                 </div>
             </div>
             <div class="tree-folder-content" style="display: block;">
@@ -412,14 +430,14 @@
                     <i class="icon-remove">
                     </i>
                     <div class="tree-item-name">
-                        Appliances
+                        名称1
                     </div>
                 </div>
                 <div class="tree-item" style="display: block;">
                     <i class="icon-remove">
                     </i>
                     <div class="tree-item-name">
-                        Arts &amp; Crafts
+                        名称2
                     </div>
                 </div>
             </div>
@@ -743,7 +761,7 @@
 ##21##
 <div >
                   <h3 class="  smaller lighter purple">
-                     Default Buttons 
+                     默认按钮
 
                     
                   </h3>
@@ -755,75 +773,8 @@
                     <button class="btn btn-success">Success</button>
                   </p>
 
-                  <p>
-                    <button class="btn btn-warning">Warning</button>
-                    <button class="btn btn-danger">Danger</button>
-                    <button class="btn btn-inverse">Inverse</button>
-                    <button class="btn btn-pink">Pink</button>
-                  </p>
+                 
 
-                  <p>
-                    <button class="btn btn-purple">Purple</button>
-                    <button class="btn btn-yellow">Yellow</button>
-                    <button class="btn btn-grey">Grey</button>
-                    <button class="btn btn-light">Light</button>
-                    <button class="btn btn-link">Link</button>
-                  </p>
-                  <h3 class=" smaller lighter green">Button with Icons</h3>
-
-                  <p>
-                    <button class="btn">
-                      <i class="icon-pencil bigger-125"></i>
-                      Default
-                    </button>
-
-                    <button class="btn btn-primary">
-                      <i class="icon-beaker bigger-125"></i>
-                      Primary
-                    </button>
-
-                    <button class="btn btn-info">
-                      Info
-                      <i class="icon-print  bigger-125 icon-on-right"></i>
-                    </button>
-                  </p>
-
-                  <p>
-                    <button class="btn btn-large btn-success">
-                      <i class="icon-ok bigger-150"></i>
-                      Success
-                    </button>
-
-                    <button class="btn btn-small btn-warning">
-                      <i class="icon-fire"></i>
-                      Warning
-                    </button>
-
-                    <button class="btn btn-mini btn-danger">
-                      <i class="icon-bolt"></i>
-
-                      Danger
-                      <i class="icon-arrow-right  icon-on-right"></i>
-                    </button>
-                  </p>
-
-                  <p>
-                    <button class="btn btn-info">
-                      <i class="icon-signal icon-only bigger-150"></i>
-                    </button>
-
-                    <button class="btn btn-warning btn-mini">
-                      <i class="icon-wrench  bigger-110 icon-only"></i>
-                    </button>
-
-                    <button class="btn btn-danger btn-small">
-                      <i class="icon-reply icon-only"></i>
-                    </button>
-
-                    <button class="btn btn-grey btn-large">
-                      <i class="icon-trash icon-2x icon-only"></i>
-                    </button>
-                  </p>
                 </div>
 
 @@21@@
@@ -838,21 +789,21 @@
 
                       <ul class="dropdown-menu dropdown-default">
                         <li>
-                          <a href="#">Action</a>
+                          <a href="#">名称1</a>
                         </li>
 
                         <li>
-                          <a href="#">Another action</a>
+                          <a href="#">名称2</a>
                         </li>
 
                         <li>
-                          <a href="#">Something else here</a>
+                          <a href="#">名称3</a>
                         </li>
 
                         <li class="divider"></li>
 
                         <li>
-                          <a href="#">Separated link</a>
+                          <a href="#">名称4</a>
                         </li>
                       </ul>
                     </div>
@@ -865,21 +816,21 @@
 
                       <ul class="dropdown-menu">
                         <li>
-                          <a href="#">Action</a>
+                          <a href="#">名称1</a>
                         </li>
 
                         <li>
-                          <a href="#">Another action</a>
+                          <a href="#">名称2</a>
                         </li>
 
                         <li>
-                          <a href="#">Something else here</a>
+                          <a href="#">名称3</a>
                         </li>
 
                         <li class="divider"></li>
 
                         <li>
-                          <a href="#">Separated link</a>
+                          <a href="#">名称4</a>
                         </li>
                       </ul>
                     </div>
@@ -892,21 +843,21 @@
 
                       <ul class="dropdown-menu dropdown-danger">
                         <li>
-                          <a href="#">Action</a>
+                          <a href="#">名称1</a>
                         </li>
 
                         <li>
-                          <a href="#">Another action</a>
+                          <a href="#">名称2</a>
                         </li>
 
                         <li>
-                          <a href="#">Something else here</a>
+                          <a href="#">名称3</a>
                         </li>
 
                         <li class="divider"></li>
 
                         <li>
-                          <a href="#">Separated link</a>
+                          <a href="#">名称4</a>
                         </li>
                       </ul>
                     </div>
@@ -1040,17 +991,17 @@
             
             <div class="sleft-menu mt20">
               <dl>
-                  <dt>Title One</dt>
+                  <dt>标题1</dt>
                   
-                    <dd><a href="c-order.html">list one</a></dd>
-                    <dd><a href="c-return.html">list two</a></dd>
-                    <dd><a href="c-refund.html">list three</a></dd>
+                    <dd><a href="c-order.html">菜单1</a></dd>
+                    <dd><a href="c-return.html">菜单2</a></dd>
+                    <dd><a href="c-refund.html">菜单3</a></dd>
 
-                  <dt>Title Two</dt>
+                  <dt>标题2</dt>
                   
-                    <dd><a href="c-order.html">list one</a></dd>
-                    <dd><a href="c-return.html">list two</a></dd>
-                    <dd><a href="c-refund.html">list three</a></dd>
+                    <dd><a href="c-order.html">菜单1</a></dd>
+                    <dd><a href="c-return.html">菜单2</a></dd>
+                    <dd><a href="c-refund.html">菜单3</a></dd>
                     
                </dl>
                 
@@ -1087,28 +1038,417 @@
     <ul class="wizard-steps">
       <li data-target="#step1" class="active" style="min-width: 25%; max-width: 25%;">
         <span class="step">1</span>
-        <span class="title">Validation states</span>
+        <span class="title">名称1</span>
       </li>
 
       <li data-target="#step2" style="min-width: 25%; max-width: 25%;">
         <span class="step">2</span>
-        <span class="title">Alerts</span>
+        <span class="title">名称2</span>
       </li>
 
       <li data-target="#step3" style="min-width: 25%; max-width: 25%;">
         <span class="step">3</span>
-        <span class="title">Payment Info</span>
+        <span class="title">名称3</span>
       </li>
 
       <li data-target="#step4" style="min-width: 25%; max-width: 25%;">
         <span class="step">4</span>
-        <span class="title">Other Info</span>
+        <span class="title">名称4</span>
       </li>
     </ul>
   </div>
 
 @@27@@
 
+
+##28##
+   <div id="navbar" class="navbar navbar-default" style="background:#2c6aa0;height:50px;width:100%;">
+      <script type="text/javascript">
+        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+      </script>
+
+      <div id="navbar-container" class="navbar-container">
+        <div class="navbar-header pull-left" style="color:#fff;font-size:14px; padding-left:10px; line-height:50px;">
+          <a class="navbar-brand" href="#">
+            <small style="color:#fff;font-size:14px;" >
+              <i class="icon-leaf" style="color:#fff;font-size:14px;"></i>
+              众联无限后台管理系统
+            </small>
+          </a>
+        </div>
+		
+		<div role="navigation" class="navbar-header pull-right">
+          <ul class="nav ace-nav">
+            
+
+            <li class="light-blue">
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+               
+				<i class="icon-user"></i>
+                <span class="user-info">
+                  <small>欢迎光临,</small>
+                  超级管理员
+                </span>
+
+                <i class="icon-caret-down"></i>
+              </a>
+
+              <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                <li>
+                  <a href="#">
+                    <i class="icon-cog"></i>
+                    设置
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#">
+                    <i class="icon-user"></i>
+                    个人资料
+                  </a>
+                </li>
+
+                <li class="divider"></li>
+
+                <li>
+                  <a href="#">
+                    <i class="icon-off"></i>
+                    退出
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        
+      </div>
+    </div>
+@@28@@
+
+##29##
+<div id="sidebar" class="sidebar" style="width: 189px;height: 100%; position: static;">
+					
+
+					<ul class="nav nav-list">
+						
+
+
+						<li class="open">
+							<a class="dropdown-toggle" href="#">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> 会员管理 </span>
+
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu" style="display: block;">
+								<li>
+									<a href="#">
+										<i class="icon-double-angle-right"></i>
+										会员管理
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<i class="icon-double-angle-right"></i>
+										在线充值
+									</a>
+								</li>
+
+							
+							</ul>
+						</li>
+
+						<li>
+							<a class="dropdown-toggle" href="#">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> 权限管理 </span>
+
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							
+						</li>
+
+					</ul>
+
+					
+</div>
+
+@@29@@
+
+
+
+##30##
+<div id="breadcrumbs" class="breadcrumbs">
+						
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+
+							<li>
+								<a href="#">二级</a>
+							</li>
+							<li class="active">当前</li>
+						</ul>
+
+						<div id="nav-search" class="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" autocomplete="off" id="nav-search-input" class="nav-search-input" placeholder="">
+									<i class="icon-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div>
+</div>
+@@30@@
+
+##31##
+<form id="view_formObj" class="form-horizontal clearfix article_conList conList">
+  <div class="form-wrap pull-left clearfix">
+    <div class="control-group c_Text">
+      <label for="data.account" class="control-label">帐号：</label>
+      <div class="controls">
+        <input id="data.account" class="inp_text _account_inp" type="text" name="data.account" value="wang">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Select">
+      <label for="data.userType" class="control-label">用户类型：</label>
+      <div class="controls">
+        <select id="data.userType" class="_usertype_sel" name="data.userType">
+          <option value="普通会员">普通会员</option>
+        </select>
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Text">
+      <label for="data.phone" class="control-label">电话号码：</label>
+      <div class="controls">
+        <input id="data.phone" class="inp_text _phone_inp" type="text" name="data.phone">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Text">
+      <label for="data.nickName" class="control-label">昵称：</label>
+      <div class="controls">
+        <input id="data.nickName" class="inp_text _nickname_inp" type="text" name="data.nickName">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Select">
+      <label for="data.sex" class="control-label">性别：</label>
+      <div class="controls">
+        <select id="data.sex" class="_sex_sel" name="data.sex">
+          <option value="1">男</option>
+          <option value="2">女</option>
+        </select>
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.isStaff" class="control-label">是否为员工：</label>
+      <div class="controls">
+        <input id="data.isStaff" class="inp_text _isstaff_inp" type="hidden" name="data.isStaff">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.userName" class="control-label">用户名：</label>
+      <div class="controls">
+        <input id="data.userName" class="inp_text _username_inp" type="hidden" name="data.userName">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.lastLogin" class="control-label">最后登录时间：</label>
+      <div class="controls">
+        <input id="data.lastLogin" class="inp_text _lastlogin_inp" type="hidden" name="data.lastLogin">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.region" class="control-label">地区：</label>
+      <div class="controls">
+        <input id="data.region" class="inp_text _region_inp" type="hidden" name="data.region">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.qq" class="control-label">QQ：</label>
+      <div class="controls">
+        <input id="data.qq" class="inp_text _qq_inp" type="hidden" name="data.qq">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.msn" class="control-label">MSN：</label>
+      <div class="controls">
+        <input id="data.msn" class="inp_text _msn_inp" type="hidden" name="data.msn">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_DateTimePicker">
+      <label for="data.regTime" class="control-label">注册时间：</label>
+      <div class="controls">
+        <div class="input-append date date-time-picker">
+          <input id="data.regTime" type="text" name="data.regTime" dateformat="yyyy-MM-dd hh:mm:ss">
+          <span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i></span></div>
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.orderNum" class="control-label">订单数量：</label>
+      <div class="controls">
+        <input id="data.orderNum" class="inp_text _ordernum_inp" type="hidden" name="data.orderNum">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Text">
+      <label for="data.score" class="control-label">积分：</label>
+      <div class="controls">
+        <input id="data.score" class="inp_text _score_inp" type="text" name="data.score" value="0">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.password" class="control-label">密码：</label>
+      <div class="controls">
+        <input id="data.password" class="inp_text _password_inp" type="hidden" name="data.password">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.level" class="control-label">等级：</label>
+      <div class="controls">
+        <input id="data.level" class="inp_text _level_inp" type="hidden" name="data.level">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.securePassword" class="control-label">安全密码：</label>
+      <div class="controls">
+        <input id="data.securePassword" class="inp_text _securepassword_inp" type="hidden" name="data.securePassword">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.orderCount" class="control-label">订单总数：</label>
+      <div class="controls">
+        <input id="data.orderCount" class="inp_text _ordercount_inp" type="hidden" name="data.orderCount">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.city" class="control-label">城市：</label>
+      <div class="controls">
+        <input id="data.city" class="inp_text _city_inp" type="hidden" name="data.city">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.email" class="control-label">邮箱：</label>
+      <div class="controls">
+        <input id="data.email" class="inp_text _email_inp" type="hidden" name="data.email">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.province" class="control-label">省份：</label>
+      <div class="controls">
+        <input id="data.province" class="inp_text _province_inp" type="hidden" name="data.province">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.loginCount" class="control-label">登录次数：</label>
+      <div class="controls">
+        <input id="data.loginCount" class="inp_text _logincount_inp" type="hidden" name="data.loginCount" value="0">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.md5Account" class="control-label">标识码：</label>
+      <div class="controls">
+        <input id="data.md5Account" class="inp_text _md5account_inp" type="hidden" name="data.md5Account">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.storeId" class="control-label">店铺ID：</label>
+      <div class="controls">
+        <input id="data.storeId" class="inp_text _storeid_inp" type="hidden" name="data.storeId">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.weixinid" class="control-label">微信ID：</label>
+      <div class="controls">
+        <input id="data.weixinid" class="inp_text _weixinid_inp" type="hidden" name="data.weixinid">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.managerRecCodet" class="control-label">加盟商推荐码：</label>
+      <div class="controls">
+        <input id="data.managerRecCodet" class="inp_text _managerreccodet_inp" type="hidden" name="data.managerRecCodet">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.born" class="control-label">出生日期：</label>
+      <div class="controls">
+        <input id="data.born" class="inp_text _born_inp" type="hidden" name="data.born">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.sinaAccount" class="control-label">新浪帐号：</label>
+      <div class="controls">
+        <input id="data.sinaAccount" class="inp_text _sinaaccount_inp" type="hidden" name="data.sinaAccount">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Select">
+      <label for="data.status" class="control-label">状态：</label>
+      <div class="controls">
+        <select id="data.status" class="_status_sel" name="data.status">
+          <option value="0">活跃状态</option>
+          <option value="1">冻结状态</option>
+          <option value="2">未激活</option>
+        </select>
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_File">
+      <label for="data.icon" class="control-label">头像：</label>
+      <div class="controls">
+        <input id="data.icon_hidden" type="text" class="inp_file_val" style="width:300px; float:left;" name="data.icon">
+        <button type="button" style="line-height:26px; float:left;" class="btn btn-mini btn-info thumbBtn"><i class="icon-edit bigger-120"> 上传</i></button>
+        <input style="opacity:0; cursor:pointer; filter:alpha(opacity=0); float:left; width:62px; margin-right:-42px; overflow:hidden; position:relative; left:-62px; zindex:10;" id="data.icon_file" name="upload" class="inp_file _icon_file">
+        <div style="float:left; height:60px; width:90px; margin:0 10px 0 0;  overflow:hidden;"><a data-toggle="lightbox" ><img class="img_file data.icon_img_file" id="data.icon_img_file" style="height:60px; width:90px;" ></a></div>
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Text">
+      <label for="data.personDesc" class="control-label">个性签名：</label>
+      <div class="controls">
+        <input id="data.personDesc" class="inp_text _persondesc_inp" type="text" name="data.personDesc">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.serviceCenterCid" class="control-label">服务中心CID：</label>
+      <div class="controls">
+        <input id="data.serviceCenterCid" class="inp_text _servicecentercid_inp" type="hidden" name="data.serviceCenterCid">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.serviceCenterName" class="control-label">服务中心：</label>
+      <div class="controls">
+        <input id="data.serviceCenterName" class="inp_text _servicecentername_inp" type="hidden" name="data.serviceCenterName">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.serviceCenterAddress" class="control-label">服务中心地址：</label>
+      <div class="controls">
+        <input id="data.serviceCenterAddress" class="inp_text _servicecenteraddress_inp" type="hidden" name="data.serviceCenterAddress">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.referrer" class="control-label">推荐人：</label>
+      <div class="controls">
+        <input id="data.referrer" class="inp_text _referrer_inp" type="hidden" name="data.referrer">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <label for="data.department" class="control-label">所属部门：</label>
+      <div class="controls">
+        <input id="data.department" class="inp_text _department_inp" type="hidden" name="data.department">
+        <span class="help-inline"></span></div>
+    </div>
+    <div class="control-group c_Hidden">
+      <div class="controls">
+        <input id="data.cid" class="inp_text _cid_inp" type="hidden" name="data.cid" value="10">
+        <span class="help-inline"></span></div>
+    </div>
+  </div>
+</form>
+@@31@@
 
 
 -->   

@@ -249,6 +249,22 @@ define(function(require, exports, module) {
                     "issearch": "0",
                     "order": "50"
                 };
+                //2015-12-07 FrankCheng 隐藏该字段列表显示
+                metadata.checkField = {
+                	"title": "表单校验",
+                    "type": "TextArea",
+                    "fieldType": "varchar",
+                    "ourterLink": "",
+                    "fieldLen": "1024",
+                    "dataExt": "",
+                    "valueRange": "",
+                    "desc": "",
+                    "width": "",
+                    "fieldtmp": "",
+                    "islist": "0",
+                    "issearch": "0",
+                    "order": "50"
+                };
                 metadata.dataDesc = {
                     title: "字段描述",
                     type: "List",
@@ -524,6 +540,9 @@ define(function(require, exports, module) {
             */
             "addNew": function(data) {
                 var service = "addContent"
+                if(!this.API.private("checkReservedWord",data)){
+                	return 1001;
+                }
                 if (this.param.queryObj && this.param.parentAlias) {
                     service = "addNode";
                 }
@@ -547,6 +566,9 @@ define(function(require, exports, module) {
             */
             "update": function(data) {
                 var service = "modifyContent";
+                if(!this.API.private("checkReservedWord",data)){
+                	return 1001;
+                }
                 if (this.param.queryObj && this.param.parentAlias) {
                     if (data.nodeid) {
                         delete data.nodeid;
@@ -664,13 +686,320 @@ define(function(require, exports, module) {
         	/**
         	 * @function 
         	 * @memberOf CMSMgrModSingleControl
+        	 * @name private&afterShow
+        	 * @description 
+        	 * @param data 页面数据
+        	 * */
+        	"afterShow" : function(data){
+        		this.API.father('private.afterShow', data);
+        	    $('div[data-value="data.checkField"]').after('<div col-lg-4>表单验证会有一个传入参数data,返回结果true表示验证通过反之不通过。</div>');
+        	},
+        	/**
+        	 * @function 
+        	 * @memberOf CMSMgrModSingleControl
         	 * @name private&checkReservedWord
         	 * @description 校验系统保留字
         	 * @param data 页面数据
         	 * */
         	"checkReservedWord" : function(data){
+        		var checks = {
+    				ADD: "ADD",
+    				ALL: "ALL",
+    				ALTER: "ALTER",
+    				ANALYZE: "ANALYZE",
+    				AND: "AND",
+    				AS: "AS",
+    				ASC: "ASC",
+    				ASENSITIVE: "ASENSITIVE",
+    				BEFORE: "BEFORE",
+    				BETWEEN: "BETWEEN",
+    				BIGINT: "BIGINT",
+    				BINARY: "BINARY",
+    				BLOB: "BLOB",
+    				BOTH: "BOTH",
+    				BY: "BY",
+    				CALL: "CALL",
+    				CASCADE: "CASCADE",
+    				CASE: "CASE",
+    				CHANGE: "CHANGE",
+    				CHAR: "CHAR",
+    				CHARACTER: "CHARACTER",
+    				CHECK: "CHECK",
+    				COLLATE: "COLLATE",
+    				COLUMN: "COLUMN",
+    				CONDITION: "CONDITION",
+    				CONNECTION: "CONNECTION",
+    				CONSTRAINT: "CONSTRAINT",
+    				CONTINUE: "CONTINUE",
+    				CONVERT: "CONVERT",
+    				CREATE: "CREATE",
+    				CROSS: "CROSS",
+    				CURRENT_DATE: "CURRENT_DATE",
+    				CURRENT_TIME: "CURRENT_TIME",
+    				CURRENT_TIMESTAMP: "CURRENT_TIMESTAMP",
+    				CURRENT_USER: "CURRENT_USER",
+    				CURSOR: "CURSOR",
+    				DATABASE: "DATABASE",
+    				DATABASES: "DATABASES",
+    				DAY_HOUR: "DAY_HOUR",
+    				DAY_MICROSECOND: "DAY_MICROSECOND",
+    				DAY_MINUTE: "DAY_MINUTE",
+    				DAY_SECOND: "DAY_SECOND",
+    				DEC: "DEC",
+    				DECIMAL: "DECIMAL",
+    				DECLARE: "DECLARE",
+    				DEFAULT: "DEFAULT",
+    				DELAYED: "DELAYED",
+    				DELETE: "DELETE",
+    				DESC: "DESC",
+    				DESCRIBE: "DESCRIBE",
+    				DETERMINISTIC: "DETERMINISTIC",
+    				DISTINCT: "DISTINCT",
+    				DISTINCTROW: "DISTINCTROW",
+    				DIV: "DIV",
+    				DOUBLE: "DOUBLE",
+    				DROP: "DROP",
+    				DUAL: "DUAL",
+    				EACH: "EACH",
+    				ELSE: "ELSE",
+    				ELSEIF: "ELSEIF",
+    				ENCLOSED: "ENCLOSED",
+    				ESCAPED: "ESCAPED",
+    				EXISTS: "EXISTS",
+    				EXIT: "EXIT",
+    				EXPLAIN: "EXPLAIN",
+    				FALSE: "FALSE",
+    				FETCH: "FETCH",
+    				FLOAT: "FLOAT",
+    				FLOAT4: "FLOAT4",
+    				FLOAT8: "FLOAT8",
+    				FOR: "FOR",
+    				FORCE: "FORCE",
+    				FOREIGN: "FOREIGN",
+    				FROM: "FROM",
+    				FULLTEXT: "FULLTEXT",
+    				GOTO: "GOTO",
+    				GRANT: "GRANT",
+    				GROUP: "GROUP",
+    				HAVING: "HAVING",
+    				HIGH_PRIORITY: "HIGH_PRIORITY",
+    				HOUR_MICROSECOND: "HOUR_MICROSECOND",
+    				HOUR_MINUTE: "HOUR_MINUTE",
+    				HOUR_SECOND: "HOUR_SECOND",
+    				IF: "IF",
+    				IGNORE: "IGNORE",
+    				IN: "IN",
+    				INDEX: "INDEX",
+    				INFILE: "INFILE",
+    				INNER: "INNER",
+    				INOUT: "INOUT",
+    				INSENSITIVE: "INSENSITIVE",
+    				INSERT: "INSERT",
+    				INT: "INT",
+    				INT1: "INT1",
+    				INT2: "INT2",
+    				INT3: "INT3",
+    				INT4: "INT4",
+    				INT8: "INT8",
+    				INTEGER: "INTEGER",
+    				INTERVAL: "INTERVAL",
+    				INTO: "INTO",
+    				IS: "IS",
+    				ITERATE: "ITERATE",
+    				JOIN: "JOIN",
+    				KEY: "KEY",
+    				KEYS: "KEYS",
+    				KILL: "KILL",
+    				LABEL: "LABEL",
+    				LEADING: "LEADING",
+    				LEAVE: "LEFT",
+    				LIKE: "LIKE",
+    				LIMIT: "LIMIT",
+    				LINEAR: "LINEAR",
+    				LINES: "LINES",
+    				LOAD: "LOAD",
+    				LOCALTIME: "LOCALTIME",
+    				LOCALTIMESTAMP: "LOCALTIMESTAMP",
+    				LOCK: "LOCK",
+    				LONG: "LONG",
+    				LONGBLOB: "LONGBLOB",
+    				LONGTEXT: "LONGTEXT",
+    				LOOP: "LOOP",
+    				LOW_PRIORITY: "LOW_PRIORITY",
+    				MATCH: "MATCH",
+    				MEDIUMBLOB: "MEDIUMBLOB",
+    				MEDIUMINT: "MEDIUMINT",
+    				MEDIUMTEXT: "MEDIUMTEXT",
+    				MIDDLEINT: "MIDDLEINT",
+    				MINUTE_MICROSECOND: "MINUTE_MICROSECOND",
+    				MINUTE_SECOND: "MINUTE_SECOND",
+    				MOD: "MOD",
+    				MODIFIES: "MODIFIES",
+    				NATURAL: "NATURAL",
+    				NOT: "NOT",
+    				NO_WRITE_TO_BINLOG: "NO_WRITE_TO_BINLOG",
+    				NULL: "NULL",
+    				NUMERIC: "NUMERIC",
+    				ON: "ON",
+    				OPTIMIZE: "OPTIMIZE",
+    				OPTION: "OPTION",
+    				OPTIONALLY: "OPTIONALLY",
+    				OR: "OR",
+    				ORDER: "ORDER",
+    				OUT: "OUT",
+    				OUTER: "OUTER",
+    				OUTFILE: "OUTFILE",
+    				PRECISION: "PRECISION",
+    				PRIMARY: "PRIMARY",
+    				PROCEDURE: "PROCEDURE",
+    				PURGE: "PURGE",
+    				RAID0: "RAID0",
+    				RANGE: "RANGE",
+    				READ: "READ",
+    				READS: "READS",
+    				REAL: "REAL",
+    				REFERENCES: "REFERENCES",
+    				REGEXP: "REGEXP",
+    				RELEASE: "RELEASE",
+    				RENAME: "RENAME",
+    				REPEAT: "REPEAT",
+    				REPLACE: "REPLACE",
+    				REQUIRE: "REQUIRE",
+    				RESTRICT: "RESTRICT",
+    				RETURN: "RETURN",
+    				REVOKE: "REVOKE",
+    				RIGHT: "RIGHT",
+    				RLIKE: "RLIKE",
+    				SCHEMA: "SCHEMA",
+    				SCHEMAS: "SCHEMAS",
+    				SECOND_MICROSECOND: "SECOND_MICROSECOND",
+    				SELECT: "SELECT",
+    				SENSITIVE: "SENSITIVE",
+    				SEPARATOR: "SEPARATOR",
+    				SET: "SET",
+    				SHOW: "SHOW",
+    				SMALLINT: "SMALLINT",
+    				SPATIAL: "SPATIAL",
+    				SPECIFIC: "SPECIFIC",
+    				SQL: "SQL",
+    				SQLEXCEPTION: "SQLEXCEPTION",
+    				SQLSTATE: "SQLSTATE",
+    				SQLWARNING: "SQLWARNING",
+    				SQL_BIG_RESULT: "SQL_BIG_RESULT",
+    				SQL_CALC_FOUND_ROWS: "SQL_CALC_FOUND_ROWS",
+    				SQL_SMALL_RESULT: "SQL_SMALL_RESULT",
+    				SSL: "SSL",
+    				STRAIGHT: "STRAIGHT",
+    				STRAIGHT_JOIN: "STRAIGHT_JOIN",
+    				TABLE: "TABLE",
+    				TERMINATED: "TERMINATED",
+    				THEN: "THEN",
+    				TINYBLOB: "TINYBLOB",
+    				TINYINT: "TINYINT",
+    				TINYTEXT: "TINYTEXT",
+    				TO: "TO",
+    				TRAILING: "TRAILING",
+    				TRIGGER: "TRIGGER",
+    				TRUE: "TRUE",
+    				UNDO: "UNDO",
+    				UNION: "UNION",
+    				UNIQUE: "UNIQUE",
+    				UNLOCK: "UNLOCK",
+    				UNSIGNED: "UNSIGNED",
+    				UPDATE: "UPDATE",
+    				USAGE: "USAGE",
+    				USE: "USE",
+    				USING: "USING",
+    				UTC_DATE: "UTC_DATE",
+    				UTC_TIME: "UTC_TIME",
+    				UTC_TIMESTAMP: "UTC_TIMESTAMP",
+    				VALUES: "VALUES",
+    				VARBINARY: "VARBINARY",
+    				VARCHAR: "VARCHAR",
+    				VARCHARACTER: "VARCHARACTER",
+    				VARYING: "VARYING",
+    				WHEN: "WHEN",
+    				WHERE: "WHERE",
+    				WHILE: "WHILE",
+    				WITH: "WITH",
+    				WRITE: "WRITE",
+    				X509: "X509",
+    				XOR: "XOR",
+    				YEAR_MONTH: "YEAR_MONTH",
+    				ZEROFILL: "ZEROFILL"
+    			}
         		
-        		return null;
+        		function check(value){
+        			if(checks[value.toLocaleUpperCase()]){
+        				alert(value + "为系统保留字,不可保存！");
+        				return false;
+        			}else{
+        				return true;
+        			}
+        		}
+        		if(data != null){
+        			for(var i in data){
+        				if(typeof data[i] == "string"){
+        					if(!check(data[i])){
+        						return false;
+        						break;
+        					}
+        				}else if(i == "dataDesc" && data[i].length > 0){
+        					var dataDesc = data[i];
+        					for(var j = dataDesc.length; j--;){
+        						var fieldname = dataDesc[j].fieldname;
+        						var title = dataDesc[j].title;
+        						var type = dataDesc[j].type;
+        						//2015-12－07 FrankCheng 补全空验证
+        						if(!fieldname || fieldname == ''){
+        							alert('字段信息fieldname不能为空!');
+        							return false;
+        							break;
+        						}
+        						if(/\s/ig.test(fieldname)){
+        							alert('字段信息fieldname不能包含空格!');
+        							return false;
+        							break;
+        						}
+        						if(!/^[a-zA-Z0-9]+$/ig.test(fieldname)){
+        							alert('字段信息fieldname只能由字母和数字组成!');
+        							return false;
+        							break;
+        						}
+        						if(!title || title == ''){
+        							alert('字段信息字段名称不能为空!');
+        							return false;
+        							break;
+        						}
+        						if(/\s/ig.test(title)){
+        							alert('字段信息fieldname不能包含空格!');
+        							return false;
+        							break;
+        						}
+        						if(!type || type == ''){
+        							alert('字段信息字段类型不能为空!');
+        							return false;
+        							break;
+        						}
+        						if(/\s/ig.test(type)){
+        							alert('字段信息字段类型不能包含空格!');
+        							return false;
+        							break;
+        						}
+        						if(!/^[a-zA-Z0-9]+$/ig.test(type)){
+        							alert('字段信息字段类型只能由字母和数字组成!');
+        							return false;
+        							break;
+        						}
+        						if(!check(fieldname)){
+        							return false;
+        							break;
+        						}
+        					}
+        				}
+        			}
+        		}
+        		return true;
         	}
         },
         "TrigerEvent": {

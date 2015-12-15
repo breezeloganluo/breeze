@@ -12,6 +12,7 @@
 		</style>
 		<script>
 			fileGlobleSetting = {
+				"icon":"./img/icon/editgadget.jpg",
 				exp:".js",
 				initDir: "",
 				clickSetting: {

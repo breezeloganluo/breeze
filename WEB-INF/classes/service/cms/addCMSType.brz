@@ -4,7 +4,7 @@
     "toolsMemoDesc0000": "",
     "com.breezefw.service.cms.templateitem.Desc2TableItem.descContextPath": "_R.dataDesc",
     "com.breezefw.service.cms.templateitem.Desc2TableItem.tableContextPath": "_R.tableName",
-    "com.breezefw.framework.template.DBOperateItem.sqlConfig": ["insert into cmsmetadata(dataRefresh,dataDesc,alias,tableName,displayName,parentAlias,dataOwnerSet,nodeid,roleSetting,outAlias,dataMemo,isMuliTab)values(${str(_R.dataRefresh)},${str(_R.dataDesc)},${str(_R.alias)},${str(_R.tableName)},${str(_R.displayName)},${str(_R.parentAlias)},${str(_R.dataOwnerSet)},${str(_R.nodeid)},${str(_R.roleSetting)},${str(_R.outAlias)},${str(_R.dataMemo)},${str(_R.isMuliTab)})"],
+    "com.breezefw.framework.template.DBOperateItem.sqlConfig": ["insert into cmsmetadata(dataRefresh,dataDesc,alias,tableName,displayName,parentAlias,dataOwnerSet,nodeid,roleSetting,outAlias,dataMemo,isMuliTab,checkField)values(${str(_R.dataRefresh)},${str(_R.dataDesc)},${str(_R.alias)},${str(_R.tableName)},${str(_R.displayName)},${str(_R.parentAlias)},${str(_R.dataOwnerSet)},${str(_R.nodeid)},${str(_R.roleSetting)},${str(_R.outAlias)},${str(_R.dataMemo)},${str(_R.isMuliTab)},${str(_R.checkField)})"],
     "com.breezefw.service.authority.temmplate.AuthItem.rolePath": "_S.manager.role",
     "com.breezefw.service.authority.temmplate.AuthItem.defaultRole": "customer",
     "com.breezefw.framework.template.CheckerItem.checkerInfo": [{

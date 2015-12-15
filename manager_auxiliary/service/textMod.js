@@ -10,7 +10,44 @@ define(function(require, exports, module) {
 		public: {
 			/**
 			 * 根据传入的gadget字符串，将字符串解析成class类结构
-			 * 创建后对象被保存到this.MY.classMod中
+			 * 创建后对象被保存到this.MY.classMod中,
+			 * 用t = this.API.private("pDefine", __classContent, 0);获取第一层解析，具体解析格式参见对应函数
+			 * 然后创建一个解析结构，如下：
+			 * {
+				 version:[{
+					author: "lgy"
+					description: "xxx"
+					version: "1.0"
+				 }],
+				 name: "MyGadget",
+				 include:[{
+					vDir: "./MyGadget",
+					vName: ""
+				 }],
+				 extends:[
+					"MyGadget","MyGadget"
+				 ],
+				 functionFragment:{
+					 "+函数名":{
+						 comments:"",
+						 fragments:xxx,
+						 name:"",
+						 parameters:"",
+						 type: "public"
+					 }
+				 },
+				 extends:["MyGadget"],
+				 comments: "desc ",
+				 attributeFragment:{
+					comments: "描述内容",
+					content: ""albb"",
+					name: "newName"
+				 },
+				 view:{
+					 id1:"dir",
+					 id2:"dir"
+				 }
+			 }
 			 */
 			createClassMod: function(__classContent) {
 				var t = this.API.private("pDefine", __classContent, 0);
@@ -150,7 +187,14 @@ define(function(require, exports, module) {
 						this.API.private("processFun",tmpObj.content,"TrigerEvent",result.functionFragment);
 						continue;
 					}
+					//2015-11-4月处理view的情况
+					if (tmpObj.type == 0 && tmpObj.name == "view"){
+						result.view = tmpObj.content;
+						continue;
+					}
 				}
+				
+				
 				this.MY.classMod = FW.createApp("classMod", "classMod", this);
 				this.MY.classMod.setMod(result);
 				console.log(result);
@@ -224,6 +268,21 @@ define(function(require, exports, module) {
 					}
 					mainStr += allFunStr[n]
 				}
+				//处理view部分字段
+				if (cObj.view){
+					for (var i=0;i<cObj.view.length;i++){
+						if (i==0){
+							mainStr+=",view:{\n";
+						}else{
+							mainStr+=",";
+						}
+						mainStr = mainStr + "'" + cObj.view[i].name +"':"+cObj.view[i].content
+						if (i == cObj.view.length-1){
+						mainStr+="}\n"
+						}
+					}
+				}
+				
 				//处理version字符串
 				var versionStr = "";
 				for (var i=0;cObj.version && i < cObj.version.length;i++){
@@ -253,6 +312,8 @@ define(function(require, exports, module) {
 				result = formatJS.js_beautify(result);
 				return result;
 			},
+			
+			
 			getFunStr:function(funObj){
 				var orgResult =  this.API.private("decompressionOneFunction",funObj,"临时");
 				return formatJS.js_beautify(orgResult);
@@ -841,9 +902,11 @@ define(function(require, exports, module) {
 				}
 				var cmArray = commentStr.split(/[\n\r]/);
 				var result = {
+					description:"",
 					param:{}
 				};
-				var lastType = "description";
+				var lastObj = result;
+				var lastMenber = "description";
 				for (var i=0;i<cmArray.length;i++){
 					var oneComm = cmArray[i].replace(/^[\t\s]*\*/,'');
 					if (oneComm == '' || /^\/\*?/.test(oneComm)){
@@ -852,22 +915,25 @@ define(function(require, exports, module) {
 					var execResult = /\s*@\s*(\w+)\s*(.*)/.exec(oneComm);
 					if (execResult== null){
 						//合并到上一个类型中
-						if (result[lastType] && /string/.test(typeof(result[lastType]))){
-							result[lastType] = result[lastType] + "\n" + oneComm;
+						if (lastObj[lastMenber]){
+							lastObj[lastMenber] = lastObj[lastMenber] + "\n" + oneComm;
 						}else{
-							result[lastType] = oneComm;
+							lastObj[lastMenber] = oneComm;
 						}
 						continue;
 					}
-					lastType = execResult[1];
-					if (lastType == "param"){
+					lastMenber = execResult[1];
+					if (lastMenber == "param"){
 						var execResult2 = /(\w+)\s+(.+)/.exec(execResult[2]);
 						if (execResult2 != null){
 							result.param[execResult2[1]] = execResult2[2];
+							lastObj = result.param;
+							lastMenber = execResult2[1];
 						}
 						continue;
 					}
-					result[lastType] = execResult[2];
+					result[lastMenber] = execResult[2];
+					lastObj = result;
 				}
 				return result;
 			},

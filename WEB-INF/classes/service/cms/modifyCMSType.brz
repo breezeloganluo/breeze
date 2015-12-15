@@ -4,7 +4,7 @@
     "toolsMemoDesc0000": "",
     "com.breezefw.service.cms.templateitem.Desc2TableItem.descContextPath": "_R.dataDesc",
     "com.breezefw.service.cms.templateitem.Desc2TableItem.tableContextPath": "_R.tableName",
-    "com.breezefw.framework.template.DBOperateItem.sqlConfig": ["update cmsmetadata set dataDesc=${str(_R.dataDesc)},alias = ${str(_R.alias)},tableName=${str(_R.tableName)},dataRefresh=${str(_R.dataRefresh)},displayName=${str(_R.displayName)},parentAlias=${str(_R.parentAlias)},outAlias=${str(_R.outAlias)},dataOwnerSet=${str(_R.dataOwnerSet)},roleSetting=${str(_R.roleSetting)},dataMemo=${str(_R.dataMemo)},isMuliTab=${str(_R.isMuliTab)} where cid=${int(_R.cid)}"],
+    "com.breezefw.framework.template.DBOperateItem.sqlConfig": ["update cmsmetadata set dataDesc=${str(_R.dataDesc)},alias = ${str(_R.alias)},tableName=${str(_R.tableName)},dataRefresh=${str(_R.dataRefresh)},displayName=${str(_R.displayName)},parentAlias=${str(_R.parentAlias)},outAlias=${str(_R.outAlias)},dataOwnerSet=${str(_R.dataOwnerSet)},roleSetting=${str(_R.roleSetting)},dataMemo=${str(_R.dataMemo)},isMuliTab=${str(_R.isMuliTab)},checkField=${str(_R.checkField)} where cid=${int(_R.cid)}"],
     "com.breezefw.service.authority.temmplate.AuthItem.rolePath": "_S.manager.role",
     "com.breezefw.service.authority.temmplate.AuthItem.defaultRole": "customer",
     "com.breezefw.framework.template.CheckerItem.checkerInfo": [{

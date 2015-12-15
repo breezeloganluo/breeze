@@ -1,10 +1,10 @@
-<description>
+﻿<description>
 	<ContentDir>dest/breezeJava.zip</ContentDir>
 	<PatchDir>dest/breezeJava_patch.zip</PatchDir>
 	<DocDir>dest/breezeJava_doc.zip</DocDir>
 	<Type>BreezeJava</Type>
-	<Version>1.25</Version>
+	<Version>1.27</Version>
 	<VersionDesc>
-	  支持breeze请求可以不用data=参数的方式，而是直接在body中传递json方式。即支持angular
+	  修改了3des的方法
 	</versionDesc>
 <description>

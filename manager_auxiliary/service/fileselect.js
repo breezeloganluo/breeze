@@ -37,7 +37,7 @@ define(function(require, exports, module) {
 						midFileName : midFileName,
 						operType  : "DELETE"
 					};
-					this.API.doServer("fileOper","",param);
+					return this.API.doServer("fileOper","",param);
 				},
 				copyFile:function(fileName,midFilePath,midFileName){
 					var param = {
@@ -47,7 +47,7 @@ define(function(require, exports, module) {
 						midFileName : midFileName,
 						operType  : "copy"
 					};
-					this.API.doServer("fileOper","",param);
+					return this.API.doServer("fileOper","",param);
 				},
 				showInit:function(){
 					this.API.show(this.param.viewid,this.MY.data);
@@ -142,6 +142,7 @@ define(function(require, exports, module) {
 						alert("文件删除成功");
 						this.API.trigerOtherEvent("deleteFileOk",param);
 					}
+					return code;
 				},
 				getPath:function(){
 					return this.MY.data.dir;

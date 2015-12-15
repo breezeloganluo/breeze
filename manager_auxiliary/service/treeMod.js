@@ -291,6 +291,14 @@ define(function(require, exports, module) {
 						}
 					}
 					
+					//显示视图部分
+					//基本信息
+					tree_data["view"] = {
+						name:"视图",
+						type:"item",
+						cid:"view"
+					}
+					
 					//显示类的树数据
 					var DataSourceTree = function(options) {
 						this._data 	= options.data;

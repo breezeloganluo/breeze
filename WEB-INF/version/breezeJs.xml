@@ -1,10 +1,10 @@
-<description>
+﻿<description>
 	<ContentDir>dest/breezeJs.zip</ContentDir>
 	<PatchDir>dest/breezeJs_patch.zip</PatchDir>
 	<DocDir>dest/breezeJs_doc.zip</DocDir>
 	<Type>BreezeJs</Type>
-	<Version>1.28</Version>
+	<Version>1.33</Version>
 	<VersionDesc>
-	  修改了h.jsp支持反向代理的入口
+	  lang工具中增加了从表单读取数据的功能
 	</versionDesc>
 <description>

@@ -1,8 +1,10 @@
-<description>
+﻿<description>
 	<ContentDir>dest/breezeCMS.zip</ContentDir>
 	<PatchDir>dest/breezeCMS_patch.zip</PatchDir>
 	<DocDir>dest/breezeCMS_doc.zip</DocDir>
 	<Type>BreezeCMS</Type>
-	<Version>2.04</Version>
-	<VersionDesc>修复filterbug以及对于定制页面的控制</VersionDesc>
+	<Version>2.09</Version>
+	<VersionDesc>
+     CMS模型管理时，增加的函数校验字段提供了帮助说明
+	</VersionDesc>
 </description>

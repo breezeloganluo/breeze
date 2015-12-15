@@ -7,7 +7,6 @@ request.setAttribute("S",request.getAttribute("B")+"breeze/framework/jsp/BreezeF
 
 		<head>
 			<meta charset="utf-8" />
-			<title>需求管理</title>
 			<style>
 				a {
 					text-decoration: none;

@@ -394,7 +394,7 @@ request.setAttribute("_","$");
 						</a>
 					</div>
 				</div>
-				<div id="changeTheme">
+				<div id="changeTheme" >
 					<p>主题选择: 
 						<select id="select">
 						    <option selected="">default</option>
@@ -441,6 +441,74 @@ request.setAttribute("_","$");
 						</select>
 					</p>
 					<textarea id="infoFormTheme" readonly></textarea>
+				</div>
+				
+				
+				<div id="gadgetview" style="margin-left: 80px;">
+					<a href="javascript:void(0)" onclick="FireEvent.shoAddView();" class="btn btn-info  btn-add-con">
+								<i class="icon-ok bigger-110"></i>
+								添加
+							</a>
+					<table style="margin-bottom:10px; width:" class="table table-list table_version table-striped table-bordered table-hover">
+					   <thead>
+						<tr>
+						 <th class="th_version th_Text" style="cursor:pointer" width="30%" >视图名</th>
+						 <th class="th_author th_Text" style="cursor:pointer" width="40%">所在地址</th>
+						 <th class="th_description th_Text" style="cursor:pointer" width="30%">操作</th>
+						</tr>
+					   </thead>
+					   <tbody>
+					   <!--$for (var i=0;data &&  i<data.length;i++){-->
+						<tr>
+						 <td class="td_version_version td_Text">${_}{data[i].name}</td>
+						 <td class="td_version_author td_Text">${_}{p:("formatViewDir",data[i].content)}</td>
+						 <td class="td_version_description td_Text">
+							<button type="button" class="btn btn-mini btn-info btn-sel-all" onclick="FireEvent.editView('${_}{i}')"><i class="icon-ok bigger-120"> 编辑</i></button>
+							<button type="button" class="btn btn-mini btn-danger btn-del" onclick="FireEvent.deleteView('${_}{i}')"><i class="icon-trash bigger-120"> 删除</i></button>
+						 </td>
+						</tr>
+					   <!--$}-->
+					   </tbody>
+					  </table>
+				</div>
+				<div id="addView" class="form-horizontal clearfix">
+				<div  class="form-wrap pull-left clearfix">
+					<div class="control-group c_Text">
+						<label for="data.name" class="control-label">
+							视图名：
+						</label>
+						<div class="controls">
+							<input id="viewname" class="inp_text _name_inp" type="text" name="data.name">
+							<span class="help-inline">
+								视图也就是view的名称
+							</span>
+						</div>
+					</div>
+					<div class="control-group c_Text">
+						<label for="data.name" class="control-label">
+							视图地址：
+						</label>
+						<div class="controls">
+							<input id="viewdir" class="inp_text _name_inp" type="text" name="data.name">
+							<span class="help-inline">
+								视图所在地址，也就是tpl所在地址，注意工具会自动加上require的格式，这里只需要加入视图的地址即可
+							</span>
+						</div>
+						
+					</div>
+					<div class="control-group c_Text">
+						<label for="data.name" class="control-label">
+							
+						</label>
+						<div class="controls">
+							<a href="javascript:void(0)" onclick="FireEvent.addView();" class="btn btn-info">
+								<i class="icon-ok bigger-110"></i>
+								确认
+							</a>
+						</div>
+					</div>
+					
+				</div>
 				</div>
 			</div>
 		</div>

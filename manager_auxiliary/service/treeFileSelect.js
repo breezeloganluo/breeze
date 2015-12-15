@@ -2,11 +2,13 @@
 * @namespace
 * @name treeFileSelect 
 * @version 0.01 罗光瑜 初始版本
-* @description  这给类因为还是存粹的文件操作，所以最后决定还是用白箱复用的方式引用                
+* @description  这给类因为还是存粹的文件操作，所以最后决定还是用白箱复用的方式引用
+*该类继承了FileOper实际上父类就包含了所有的文件操作功能。    
 */
 define(function(require, exports, module) {
     var FW = require("breeze/framework/js/BreezeFW");
     require("./fileselect");
+    require("./treeView");
     FW.register({
         "name": "treeFileSelect",
         "extends": ["fileselect"],
@@ -37,6 +39,7 @@ define(function(require, exports, module) {
         *@description undefined
         */
         "onCreate": function() {
+            //if (文件是目录操作情况){
             if (this.param.operType == "dir") {
                 //设定最初的目录信息
                 this.MY.data = {
@@ -44,13 +47,14 @@ define(function(require, exports, module) {
                 }
                 //初始化openStatus
                 this.MY.openStatus = {};
-                //初始化文件列表对象
+                //初始化左边文件列表对象
                 this.MY.dirFile = {};
-                //初始化文件列表对象
+                //初始化文件操作app
                 this.MY.listApp = FW.getApp(this.param.listApp);
-                //显示初始的目录信息
+                //调用公有方法showQueryDir显示初始的目录信息
                 this.showQueryDir();
             }
+            //}
         },
         "public": {
             /**
@@ -65,7 +69,33 @@ define(function(require, exports, module) {
                 data.sort();
                 this.API.show(this.param.listViewId, data);
                 $("#currDir").html(decodeURI(data.dir.replace(/@/g, "%")));
+                $("#fileOper").show();
                 this.MY.currDir = data.dir;
+            },
+            /**
+            *@function
+            *@memberOf treeFileSelect
+            *@name public$showFileHistory
+            *@description 显示文件的历史版本信息，需要从后台服务器中读取相关的文件列表。
+            *@param fileName 文件名
+            */
+            "showFileHistory": function(fileName) {
+                //合成正式的历史版本的路径名
+                var path = "/backup/" + fileName;
+                //用文件对象查询文件列表
+                this.setPath(path);
+                var listResult = this.queryDir();
+                //if(无返回结果){alert提示并退出
+                if (!listResult) {
+                    //显示失败
+                    FW.alert("该文件没有历史信息");
+                    return;
+                }
+                //}
+                //显示儿子列表
+                this.API.show("view_fileHistory", listResult);
+                $("#currDir").html(decodeURI(fileName.replace(/@/g, "%")));
+                $("#fileOper").hide();
             }
         },
         "private": {
@@ -164,6 +194,30 @@ define(function(require, exports, module) {
             "changeInputName": function(name) {
                 //直接返回编码内容
                 return encodeURI(name).replace(/%/ig, "@");
+            },
+            /**
+            *@function
+            *@memberOf treeFileSelect
+            *@name private$changeHistoryF
+            *@description 转换原始文件名，将文件名中的用户信息和时间信息展开
+            *@param f 文件名
+            */
+            "changeHistoryF": function(f) {
+                //正则解析
+                var execResult = /([\w@]*)(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/i.exec(f);
+                //返回结果
+                if (execResult) {
+                    var result = decodeURIComponent(execResult[1].replace(/@/ig, "%"));
+                    if (result == "") {
+                        result = "[本地账号]"
+                    } else {
+                        result = "[" + result + "]";
+                    }
+                    result += "&nbsp;&nbsp;";
+                    result += execResult[2] + "年" + execResult[3] + "月" + execResult[4] + "日" + "&nbsp;" + execResult[5] + ":" + execResult[6] + ":" + execResult[7];
+                    return result;
+                }
+                return f;
             }
         },
         "FireEvent": {
@@ -319,21 +373,6 @@ define(function(require, exports, module) {
             /**
             *@function
             *@memberOf treeFileSelect
-            *@name FireEvent$editSRS
-            *@description 点击编辑按钮后，编辑这个文件
-            *@param fileName 要编辑的文件名
-            */
-            "editSRS": function(fileName, operName) {
-                //合成访问地址
-                var srsName = this.MY.currDir + "/" + fileName;
-                var fileUrl = encodeURIComponent(srsName);
-                //跳转跳转到SRSCreator.jsp
-                var url = fileGlobleSetting.clickSetting[operName].replace("[fileUrl]", fileUrl);
-                window.open(url, "_blank");
-            },
-            /**
-            *@function
-            *@memberOf treeFileSelect
             *@name FireEvent$deleteFile
             *@description 删除文件
             *@param fileName 文件名
@@ -464,8 +503,81 @@ define(function(require, exports, module) {
                 }
                 //提示结果
                 FW.alert("操作成功");
+            },
+            /**
+            *@function
+            *@memberOf treeFileSelect
+            *@name FireEvent$showFileHistory
+            *@description 显示文件历史列表
+            *@param f toDo
+            */
+            "showFileHistory": function(f) {
+                //获取全部文件名
+                var fullName = this.MY.currDir + "/" + f;
+                fullName = fullName.replace(/^\W+/, "");
+                //调用公有方法显示历史列表
+                this.showFileHistory(fullName);
+            },
+            /**
+            *@function
+            *@memberOf treeFileSelect
+            *@name FireEvent$editHistoryFile
+            *@description 编辑历史文件，注意，基本路径的获取，是从父类的getPath中获取不是从本类中获取
+            *@param fileName 文件名
+            *@param operName 操作名，即外部程序定义的操作信息
+            */
+            "editHistoryFile": function(fileName, operName) {
+                //合成访问地址
+                var srsName = this.getPath() + "/" + fileName;
+                var fileUrl = encodeURIComponent(srsName);
+                //跳转跳转到SRSCreator.jsp
+                var url = fileGlobleSetting.clickSetting[operName].replace("[fileUrl]", fileUrl);
+                window.open(url, "_blank");
+            },
+            /**
+            *@function
+            *@memberOf treeFileSelect
+            *@name FireEvent$editCurr
+            *@description 点击编辑按钮后，编辑这个文件
+            *@param fileName 要编辑的文件名
+            *@param operName 操作名，即外部程序定义的操作信息
+            */
+            "editCurr": function(fileName, operName) {
+                //合成访问地址
+                var srsName = this.MY.currDir + "/" + fileName;
+                var fileUrl = encodeURIComponent(srsName);
+                //跳转到SRSCreator.jsp
+                var url = fileGlobleSetting.clickSetting[operName].replace("[fileUrl]", fileUrl);
+                window.open(url, "_blank");
+            },
+            /**
+            *@function
+            *@memberOf treeFileSelect
+            *@name FireEvent$restoreFile
+            *@description 还原文件，调用的是父类的copy方法。
+            *copy的原文件和目标文件都从客户端传入的文件中以及父类的getPath方法中获取。
+            *@param fName 传入的文件名
+            */
+            "restoreFile": function(fName) {
+                //获取原路径，从父类getPath中
+                var sorcePath = this.getPath();
+                //合成原路径文件全名，即当前备份部分的
+                var sorcFile = fName;
+                //合成目标路径和名称
+                var exec = /^[\\\/]*backup(.+?[\\\/])([\w\.]+)$/.exec(sorcePath);
+                if (!exec) {
+                    FW.alert("无法解析目标文件，还原失败");
+                    return;
+                }
+                var distPath = exec[1];
+                var distFile = exec[2];
+                //调用父类方法进行拷贝
+                this.copyFile(sorcFile, distPath, distFile);
+                //提示还原成功并返回原文件
+                FW.alert("文件还原成功");
             }
         }
-    });
+    },
+    module);
     return FW;
 });

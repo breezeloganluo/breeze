@@ -12,6 +12,7 @@
 		</style>
 		<script>
 			fileGlobleSetting = {
+				icon:"./img/icon/editpage.png",
 				initDir: "",
 				clickSetting: {
 					"link": "点击自身的事件",

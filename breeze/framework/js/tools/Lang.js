@@ -622,7 +622,7 @@ define(function(require, exports, module) {
 		}catch(e){
 			return __displayObj;
 		}
-	},
+	}
 	/**
 	*深度拷贝，这个方法用于深度的拷贝一个对象
 	*@param __srcObj 原始的对象
@@ -683,6 +683,21 @@ define(function(require, exports, module) {
 				__destObj[name] = oo;
 			}					
 		}
+	}
+	
+	/**
+	* @function
+	* @memberOf lang
+	* @name getFormValue
+	* @desctiption 根据传入的表单的id，获取该表单下面的值，并将其转换成json格式，用name做json对象的key
+	* @param formid 原始的对象
+	*/
+	_result.getFormValue = function(formid) {
+		var result ={};
+		$("#"+formid).find("input").each(function(){
+			result[this.name]=this.value;
+		});
+		return result; 
 	}
 
 	return _result;

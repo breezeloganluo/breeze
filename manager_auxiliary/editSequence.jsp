@@ -12,6 +12,7 @@
 		</style>
 		<script>
 			fileGlobleSetting = {
+				icon:"./img/icon/sequence.jpg",
 				exp:".js",
 				initDir: "design/hld/sequence/",
 				clickSetting: {

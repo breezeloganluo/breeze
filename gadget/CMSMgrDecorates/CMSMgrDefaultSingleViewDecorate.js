@@ -267,10 +267,9 @@ define(function(require, exports, module) {
                 $("div[data-value]").each(function() {
                     var key = $(this).attr("data-value");
                     var type = $(this).attr("data-type");
-                    var value = FW.use().toJSONString(FW.getApp(key).getTypeDecorateData());
-                    if (!value) {
-                        value = "";
-                    }
+                    
+                    var _value = FW.getApp(key).getTypeDecorateData() || "";
+                    value = FW.use().toJSONString(_value);
                     eval(key + "=" + value);
                 });
                 if (FW.getApp("CMSMgrControl").param.queryParam && FW.getApp("CMSMgrControl").param.queryParam.nodeid) {
@@ -487,7 +486,31 @@ define(function(require, exports, module) {
                 	document.getElementById("maskLayer").style.display ="none";
                     return;
                 }
+                var _fun;
+                var checkResult = true;
                 var data = this.getData();
+                //2015年11月3日16:10:56 FrankCheng 从描述数据中获取校验function使用eval进行执行
+                //若该方法不存在、或者语法有错误 那么跳过执行 执行结果返回结果为false表示校验不通过 后续不会执行 其余返回结果表示成功
+                if(this.control.MY.metadata.checkField){
+                	var fun = this.control.MY.metadata.checkField;
+                	if(fun.indexOf("function") == 0){
+                		fun = "_fun=" + fun;
+                	}
+                	fun = "(" + fun + ")(data)";
+                	try{
+                		checkResult = eval(fun);
+                	}catch(e){
+                		alert("您的校验方法有语法错误！");
+                		//2015-12-07 FrankCheng 修复异常拦截
+                		checkResult = false;
+                	}
+                }
+                if(_fun && checkResult == false && _fun != void 0){
+                	//关闭遮罩层
+                	document.getElementById("maskLayer").style.display ="none";
+                	return;
+                }
+                
                 if (this.control.param.parentAlias && this.control.param.queryObj && this.control.param.queryParam && this.control.param.queryParam.nodeid) {
                     data.nodeid = this.control.param.queryParam.nodeid;
                 }

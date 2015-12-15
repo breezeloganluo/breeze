@@ -12,6 +12,7 @@
 		</style>
 		<script>
 			fileGlobleSetting = {
+				icon:"./img/icon/srsview.png",
 				initDir: "design/srs/",
 				clickSetting: {
 					"link": "点击自身的事件",

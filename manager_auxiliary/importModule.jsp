@@ -211,7 +211,7 @@
 				  		}
 				  		String prealias = outLinkStr.split("\\.")[0];
 				  System.out.println("--found preAlias:"+prealias);
-				  		if (!importedAlias.contains(prealias)){
+				  		if (!importedAlias.contains(prealias) && !aliasSet.contains(prealias)){
 				  			prifixOk = false;
 				  System.out.println("--alias "+alias + " prealias "+prealias + "not found!");
 				  			break;

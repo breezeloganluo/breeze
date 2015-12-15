@@ -17,13 +17,13 @@ define(function(require, exports, module) {
 				//获取url参数
 			    var fileUrl = FW.use().getParameter("fileUrl");
 			    //block(代码块){构造文件对象读取对象
-			    var text = null;
+			    var text = null,fileName=null,fileDir=null;
 			    //if (传入的url不为空){获取文件信息
 			    if (fileUrl != null) {
 			        //读取文件
 			        var fileArr = fileUrl.split("/");
-			        var fileName = fileArr.pop();
-			        var fileDir = "/" + fileArr.join("/");
+			        fileName = fileArr.pop();
+			        fileDir = "/" + fileArr.join("/");
 			        this.MY.fileSelect.setFileName(fileName);
 			        this.MY.fileSelect.setPath(fileDir);
 			        text = this.MY.fileSelect.queryFileContent();
@@ -37,9 +37,23 @@ define(function(require, exports, module) {
 			    //}
 			    //if(文件本身不存在){读取默认文件
 			    if (text == null) {
-			        //重新设置文件
-			        this.newGadget();
-			        return;
+			    	//检查template是否存在，存在就读取此为模板
+			    	var template = FW.use().getParameter();
+			    	if (template == null){
+			    		//重新设置文件
+			    		var execResult = /(.+?)\.js$/i.exec(fileName);			    		
+			    		var gName = execResult?execResult[1]:fileName;
+				        this.newGadget(gName);
+				        return;	
+			    	}
+			    	else{
+			    		//读取文件				        
+				        fileName = template+".js";
+				        fileDir = "/manager_auxiliary/template/" ;
+				        this.MY.fileSelect.setFileName(fileName);
+				        this.MY.fileSelect.setPath(fileDir);
+				        text = this.MY.fileSelect.queryFileContent();				        
+			    	}
 			    }
 			    //}
 			    //if (文件还是为空){这说明出错了
@@ -78,9 +92,9 @@ define(function(require, exports, module) {
 				//设置标题
 				document.title = "编辑:"+this.MY.classMod.getMod().name;
 			},
-			newGadget:function(){
+			newGadget:function(gName){
 				var newGadget = {
-					name:"newGadget",
+					name:gName||"newGadget",
 					functionFragment:{
 						onCreate:{
 							type:"onCreate",
@@ -309,17 +323,17 @@ define(function(require, exports, module) {
 							valueRange: [{
 								name: {
 									title: "名称",
-									type: "Text",
+									type: "TextArea",
 								},
 								desc: {
 									title: "描述",
-									type: "Text"
+									type: "TextArea"
 								}
 							}]
 						},
 						"return": {
 							title: "返回值",
-							type: "Text"
+							type: "TextArea"
 						},
 						example: {
 							title: "样例说明",
@@ -408,7 +422,7 @@ define(function(require, exports, module) {
 							param: {
 								p1: "toDo"
 							},
-							description: "toDo",
+							description: "[功能]这里描述基本功能\n[思路]这里描述实现的基本思路\n[接口.this.MY.xxx]这里描述内部全局变量定义\n[接口.service.pkg.name.param]{这里描述服务pkg.name要传入参数内容}\n[接口.service.pkg.name.return]{这里描述doserver返回值的json的结构}",
 							"return": "toDo",
 							example: "toDO"
 						},
@@ -1000,6 +1014,80 @@ define(function(require, exports, module) {
 					document.getElementById("select").value = theme; 
 					selectTheme(); 
 				}
+			},
+			showView:function(){
+				var data = this.MY.classMod.getMod();
+				if (data){
+					data = data.view;
+				}
+				this.API.show("gadgetview",data);
+			},
+			editView:function(idx){
+				var data = this.MY.classMod.getMod();
+				if (data){
+					data = data.view;
+				}
+				else{
+					alert("视图未找到");
+					return;
+				}
+				
+				var dir = data[idx];
+				if (dir){
+					dir = dir.content;
+				}
+				
+				if (dir){
+					dir = this.API.private("formatViewDir",dir);
+				}
+				if (/^\.\//.test(dir)){
+					var fileOper = FW.getAPP("appViewFileSelect");
+					dir = fileOper.getPath()+'/'+dir.replace(/^\.\//i,"");					
+				}
+				var fileUrl = "htmlCreator.jsp?fileUrl="+encodeURIComponent(dir);
+				
+				window.open(fileUrl);
+			},
+			deleteView:function(idx){
+				var data = this.MY.classMod.getMod();
+				if (data){
+					data = data.view;
+				}
+				else{
+					alert("视图未找到");
+					return;
+				}
+				
+				var dir = data[idx];
+				data.splice(idx,1);
+				this.saveFile();
+				this.showView();
+			},
+			shoAddView:function(){
+				this.API.show("addView");
+			},
+			addView:function(d){
+				var data = this.MY.classMod.getMod();
+				if (data){
+					data = data.view;
+				}
+				else{
+					alert("视图未找到");
+					return;
+				}
+				var addData = {
+					name:d.name,
+					content:"require(\""+d.content+"\")",
+					type:2
+				}
+				if (!data){
+					data = this.MY.classMod.getMod();
+					data.view = [];
+					data = data.view;
+				}
+				data.push(addData);
+				this.saveFile();
+				this.showView();
 			}
 		},
 		private:{
@@ -1329,6 +1417,15 @@ define(function(require, exports, module) {
 					}
 				});
 				
+			},
+			/**
+			*格式化视图的url地址，因为读取的内容都是require(...)要把require去掉
+			*/
+			formatViewDir:function(str){
+				var execResult = /require\s*\(\s*["']([\w\/\\\.]+)['"]\s*\)/.exec(str);
+				if (execResult){
+					return execResult[1];
+				}
 			}
 		},
 		FireEvent: {
@@ -1450,6 +1547,22 @@ define(function(require, exports, module) {
 			},
 			go2changeTheme:function(){
 				this.go2changeTheme();
+			},
+			editView:function(idx){
+				this.editView(idx);
+			},
+			deleteView:function(idx){
+				this.deleteView(idx);
+			},
+			shoAddView:function(){
+				this.shoAddView();
+			},
+			addView:function(){
+				var postData = {
+					name:$("#viewname").val(),
+					content:$("#viewdir").val()
+				}
+				this.addView(postData);
 			}
 		},
 		TrigerEvent: {
@@ -1477,6 +1590,10 @@ define(function(require, exports, module) {
 					var processData = eval("(" + cid + ")");
 					this.showFunBase(processData);
 					return;
+				}
+				//处理view
+				if (cid == "view"){
+					this.showView();
 				}
 			}
 		}

@@ -50,6 +50,7 @@
 * @version 0.49 罗光瑜2015-09-02 增加返回gadget
 * @version 0.50 罗光瑜2015-09-20 father函数中，寻找father的循环写的有问题，被修复
 * @version 0.51 2015-10-19罗光瑜修改 注册gadget的时候增加module参数使得gadget能带上_uri属性
+* @version 0.52 2015-11-05 罗光瑜修改，把doServer首次访问
 */ 
 
 /**
@@ -1056,7 +1057,8 @@ define(function(require, exports, module) {
 			return result;
 		}
 		//第一次运行的时候，一起加载，其余的时候，单独加载
-		if (_allPost){
+		//2015-11-05 罗光瑜 取消doServer统一消息处理
+		if (false){
 			_allPost.addPost(postData);
 		}else{
 			var temp = _createPost();

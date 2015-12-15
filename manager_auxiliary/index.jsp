@@ -32,27 +32,14 @@
 		}
 	}
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="shortcut icon" href="./img/icon/tools.png" >
-<title>辅助工具列表</title>
-<style type="text/css">
-      <!-- 
-        a {text-transform:none;text-decoration:none;} 
-        a:hover {text-decoration:underline} 
-       -->
-</style> 
-</head>
-<body>
-	<ul>
-<%if (needLogin){ %>
+<%  if (needLogin){ %>
 	<form method="post">
 		请输入密码<input name="password" type="password"><br /> <input
 			type="submit" value="ok">
 	</form>
-<%}else{
+<%
+      return;
+    }
     //如果有url则直接返回
     Object backurl = session.getAttribute("backurl");
     if (backurl != null){
@@ -60,52 +47,116 @@
     	session.removeAttribute("backurl");
     	return;
     }
-	//自动读入所有
-	String dir = Cfg.getCfg().getRootDir()+"manager_auxiliary";
-	File fDir = new File(dir);
-	HashMap<String,String> allMap = new HashMap<String,String>();
-	for (File f : fDir.listFiles()){
-		if (f.isDirectory()){
-			continue;
-		}
-		if (f.getName().indexOf(".jsp") <=0 || f.getName().indexOf("index.jsp")>=0){
-			continue;
-		}
-		String content = FileTools.readFile(f,"utf-8");
-		Pattern pt = Pattern.compile("<title>([\\s\\S]+?)</title>");
-		Matcher mh = pt.matcher(content);
-		String url = null;
-		String name = null;
-		if (mh.find()){
-			name = mh.group(1);
-			String[] fileNameArr = f.getName().split("[\\/]");
-			url = fileNameArr[fileNameArr.length-1];
-		}
-		String img = null;
-		
-		pt = Pattern.compile("<link\\s+rel=\"shortcut\\sicon\"\\s+href=\"([^\"]+)\"");
-		mh = pt.matcher(content);
-		if (mh.find()){
-			img = mh.group(1);
-		}else{
-			img = "./img/icon/noimg.png";
-		}
-		if (name != null && url != null){
-%>          
-        <li style="width: 150px;list-style-type:none;display: inline-block;">
-        	<div style="text-align: center;">
-        		<a href="<%=url%>" target="_blank"><img src="<%=img%>" width="100" height="100"/></a>
-        	</div>
-        	<div style="text-align: center;">
-        		<a href="<%=url%>" target="_blank"><%=name%></a>
-        	</div>        	
-        </li>
-         
-<%
-       }
-	}	
-}
+
 %>
-	</ul>
-</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="./img/icon/tools.png" >
+<title>辅助工具列表</title>
+  <script>
+              fileGlobleSetting = [
+                {
+                      name:"gadget编辑器",
+                      exp:".js",
+                      icon:"./img/icon/editgadget.png",
+                      type:"file",
+                      initDir: "/",
+                      clickSetting: {
+                          "link": "点击自身的事件",
+                          'newone':"./gadgetCreator.jsp?fileUrl=[fileUrl]",
+                          "编辑": "./gadgetCreator.jsp?fileUrl=[fileUrl]"
+                      }
+                  
+                },                
+                {
+                    name:"页面编辑器",
+                    exp:".jsp",
+                    icon:"./img/icon/editpage.png",
+                    type:"file",
+                    initDir: "/",
+                    clickSetting: {
+                        "link": "点击自身的事件",
+                        'newone':"./htmlCreator.jsp?fileUrl=[fileUrl]",
+                        "编辑": "./htmlCreator.jsp?fileUrl=[fileUrl]"
+                    }
+                },
+                {
+                	name:"需求管理",
+                    icon:"./img/icon/srsview.png",
+                    exp:".jsp",
+                    initDir: "/design/srs/",
+                    type:"file",
+                    clickSetting: {
+                        "link": "点击自身的事件",
+                        'newone':"./SRSCreator.jsp?fileUrl=[fileUrl]",
+                        "编辑": "./SRSCreator.jsp?fileUrl=[fileUrl]"
+                    }
+                },
+                {
+                    name:"顺序管理",
+                    icon:"./img/icon/sequence.png",
+                    exp:".js",
+                    initDir: "design/hld/sequence/",
+                    type:"file",
+                    clickSetting: {
+                        "link": "点击自身的事件",
+                        'newone':"./sequenceCreator.jsp?fileUrl=[fileUrl]",
+                        "编辑": "./sequenceCreator.jsp?fileUrl=[fileUrl]"
+                    }
+                },
+                {
+                    name:"flow编辑器",
+                    icon:"./img/icon/createflow.png",
+                    toolsUrl:"./createflow.jsp"
+                },
+                {
+                    name:"service调试器",
+                    icon:"./img/icon/debugservice.png",
+                    toolsUrl:"./debugService.jsp"
+                },
+                {
+                    name:"service调编辑试器",
+                    icon:"./img/icon/editservice.png",
+                    toolsUrl:"./editservice.jsp"
+                },
+                {
+                      name:"Service测试",
+                      exp:".js",
+                      initDir: "/",
+                      icon:"./img/icon/editgadget.png",
+                      type:"selfedit",
+                      gadget:"editServiceTest"
+                  
+                },
+                {
+                    name:"日志查看",
+                    icon:"./img/icon/logsview.png",
+                    toolsUrl:"logsview.jsp"
+                },
+                {
+                    name:"查阅上下文",
+                    icon:"./img/icon/viewcontext.png",
+                    toolsUrl:"viewContext.jsp"
+                },
+                {
+                    name:"创建数据库",
+                    icon:"./img/icon/createdb.png",
+                    toolsUrl:"./createdb.jsp"
+                },
+                { 
+                    name:"导出数据",
+                    icon:"./img/icon/exportmodule.png",
+                    toolsUrl:"exportModule.jsp"
+                },
+                {
+                    name:"导入数据",
+                    icon:"./img/icon/importmodule.png",
+                    toolsUrl:"importModule.jsp"
+                }
+              ]
+  </script>
+</head>
+<jsp:include page="./FileViewBase.jsp" />
 </html>

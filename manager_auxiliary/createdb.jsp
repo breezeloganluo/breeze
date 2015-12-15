@@ -27,7 +27,7 @@
 <body>
 	<form method="get">
 		数据库地址:<input name="dbHost" type="text" value="localhost"/><br/>
-		数据库名:<input name="dbName" type="text" value="wgdev"/><br/>
+		数据库名:<input name="dbName" type="text" value="zlwx"/><br/>
 		数据库帐号:<input name="dbAccount" type="text" value="root" /><br/> 
 		数据库密码:<input name="dbPassword" type="text" value="123456" /><br/>
         
@@ -38,11 +38,10 @@
 <%
 	return;	
 	}
-	String dbCfg = FileTools.readFile(Cfg.getCfg().getRootDir()+"WEB-INF/config.cfg", "utf-8");
-	dbCfg = dbCfg.replaceAll("\\[dbHost\\]", dbHost);
-	dbCfg = dbCfg.replaceAll("\\[dbName\\]", dbName);
-	dbCfg = dbCfg.replaceAll("\\[dbAccount\\]", dbAccount);
-	dbCfg = dbCfg.replaceAll("\\[dbPassword\\]", dbPassword);
+	String dbCfg = FileTools.readFile(Cfg.getCfg().getRootDir()+"WEB-INF/config.cfg", "utf-8");	
+	dbCfg = dbCfg.replaceAll("('DB.Url':'jdbc:mysql://)([\\w\\[\\]]+)(:3306/)([\\w\\[\\]]+)?", "$1"+dbHost+"$3"+dbName);	
+	dbCfg = dbCfg.replaceAll("('DB.User':')([\\w\\[\\]]+)(',)", "$1"+dbAccount+"$3");
+	dbCfg = dbCfg.replaceAll("('DB.Pwd':')([\\w\\[\\]]+)(',)", "$1"+dbPassword+"$3");
 	FileTools.writeFile(Cfg.getCfg().getRootDir()+"WEB-INF/config.cfg",dbCfg, "utf-8");
 	
 	try{
@@ -57,7 +56,7 @@
 		DBCPOper oper = new DBCPOper();
 		oper.initDB("com.mysql.jdbc.Driver",dburl,dbAccount,dbPassword);
 		COMMDB.initDB(oper);
-		COMMDB.executeUpdate("create database "+dbName);
+		COMMDB.executeUpdate("create database "+dbName+" DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci");
 		System.out.println("finish database....");
 		
 		dburl = "jdbc:mysql://localhost:3306/"+dbName+"?relaxAutoCommit=true&zeroDateTimeBehavior=convertToNull&characterEncoding=utf8";
@@ -70,7 +69,7 @@
 	ArrayList<String>createTable = new ArrayList<String>();
 	String inText=FileTools.readFile(Cfg.getCfg().getRootDir()+"manager_auxiliary/sql.sql", "utf-8");
     //下面执行sql语句
-    String[] ss = inText.split(";");
+    String[] ss = inText.split(";[\\n\\r]");
     boolean multLineFlag = false;
     StringBuilder sqlSb = null;
 	for (String s : ss) {

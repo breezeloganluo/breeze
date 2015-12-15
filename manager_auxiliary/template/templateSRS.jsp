@@ -120,72 +120,225 @@
 
 					<div class="row-fluid">
 						<div class="span12">
-				<div class="row-fluid" id="rowundefined[0]">
-					<div class="span4" id="colundefined[0][0]">
-									
-    <div style="border-width: 1px;text-align: center;">
-<!--SRS(需求点样例)[{"name":"需求标题样例","desc":"一个样例描述"}]-->
+				<div class="row-fluid" id="row[0]">
+					<div class="span12" id="col[0][0]">
+									<div id="navbar" class="navbar navbar-default" style="background:#2c6aa0;height:50px;width:100%;">
+      
 
-   	   需求管理功能列表：
-       <ul style="text-align: left;">
-           <li>每一个对象都可以打开其对象管理列表</li>
-           <li>可以添加删除编辑每一个需求点</li>
-       </ul>
-   </div>
-   
-					</div>
-					<div class="span4" id="colundefined[0][1]">
-									
-   <div style="border-width: 1px;text-align: center;">
-   	   布局功能列表：
-       <ul style="text-align: left;">
-           <li>支持按行布局</li>
-           <li>行与行间进行上下顺序调换</li>
-           <li>上面的行布局，可以进入到下面行的内部，变成内部行布局</li>
-           <li>内部行布局，同样可以到外面，变成对等的行</li>
-       </ul>
-   </div>
-   
-					</div>
-					<div class="span4" id="colundefined[0][2]">
-									
-   <div style="border-width: 1px;text-align: center;">
-   	   对象创建功能列表：
-       <ul style="text-align: left;">
-           <li>创建对象，创建对象时可以选择任何一个组件</li>
-           <li>对象可以任意拖动到任意布局中</li>
-           <li>对象可以进行编辑，手工编写里面的html内容和属性</li>
-       </ul>
-   </div>
-   
+      <div id="navbar-container" class="navbar-container">
+        <div class="navbar-header pull-left" style="color:#fff;font-size:14px; padding-left:10px; line-height:50px;">
+          <a class="navbar-brand" href="#">
+            <small style="color:#fff;font-size:14px;">
+              <i class="icon-leaf" style="color:#fff;font-size:14px;"></i>
+              众联无限后台管理系统
+            </small>
+          </a>
+        </div>
+		
+		<div role="navigation" class="navbar-header pull-right">
+          <ul class="nav ace-nav">
+            
+
+            <li class="light-blue">
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+               
+				
+                <span class="user-info">
+                  <small>欢迎光临,</small>
+                  超级管理员
+                </span>
+
+                <i class="icon-caret-down"></i>
+              </a>
+
+              <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                <li>
+                  <a href="#">
+                    <i class="icon-cog"></i>
+                    设置
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#">
+                    <i class="icon-user"></i>
+                    个人资料
+                  </a>
+                </li>
+
+                <li class="divider"></li>
+
+                <li>
+                  <a href="#">
+                    <i class="icon-off"></i>
+                    退出
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        
+      </div>
+    </div>
 					</div>
 				</div><!--/row-->
-				<div class="row-fluid" id="rowundefined[1]">
-					<div class="span4" id="colundefined[1][0]">
-									<div style="height:480px;border-color: red;border-style: solid;border-width: 1px;">
-   	   左边的菜单栏
-   </div>
+				<div class="row-fluid" id="row[1]">
+					<div class="span2" id="col[1][0]">
+									
+<div id="sidebar" class="sidebar" style="width: 189px;height: 100%; position: static;">
+					
+
+					<ul class="nav nav-list">
+						
+
+
+						<li class="open">
+							<a class="dropdown-toggle" href="#">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> 会员管理 </span>
+
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu" style="display: block;">
+								<li>
+									<a href="#">
+										<i class="icon-double-angle-right"></i>
+										会员管理
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<i class="icon-double-angle-right"></i>
+										在线充值
+									</a>
+								</li>
+
+							
+							</ul>
+						</li>
+
+						<li>
+							<a class="dropdown-toggle" href="#">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> 权限管理 </span>
+
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							
+						</li>
+
+					</ul>
+
+					
+</div>
+
+
 					</div>
-					<div class="span8" id="colundefined[1][1]">
-									<div style="height:40px;border-color: red;border-style: solid;border-width: 1px;">
-   	   面包屑，右边有两个按钮
-   </div>
-									<div style="height:360px;border-color: red;border-style: solid;border-width: 1px;">
-   	   这是一个列表
-       <ul>
-         <li>列信息1</li>
-         <li>列信息1</li>
-         <li>列信息1</li>
-         <li>列信息1</li>
-         <li>列信息1</li>
-         <li>列信息1</li>
-         <li>列信息1</li>
-         <li>列信息1</li>
-         <li>列信息1</li>
-         <li>列信息1</li>
-         <li>列信息1</li>
-       </ul>
-   </div>
+					<div class="span10" id="col[1][1]">
+									<button class="btn btn-primary pull-right">添加</button>
+<div style="width:`100%;heigth:1px;clear:both"></div>
+									<div id="breadcrumbs" class="breadcrumbs">
+						
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页  &gt; </a>
+							</li>
+
+							<li>
+								<a href="#">二级  &gt; </a>
+							</li>
+							<li class="active">当前</li>
+						</ul>
+
+						<div id="nav-search" class="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" autocomplete="off" id="nav-search-input" class="nav-search-input" placeholder="">
+									<i class="icon-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div>
+</div>
+									<div>
+    	<style>
+	        table.dataintable {
+	        margin-top:10px;
+	        border-collapse:collapse;
+	        border:1px solid #eee;
+	        width:100%;
+	        }
+	
+	      table.dataintable th {
+	        vertical-align:baseline;
+	        padding:5px 15px 5px 6px;
+	        background-color:#f1f1f1;
+	        border:1px solid #eee;
+	        text-align:left;
+	        }
+	
+	      table.dataintable td {
+	        vertical-align:text-top;
+	        padding:6px 15px 6px 6px;
+	        background-color:#f9f9f9;
+	        border:1px solid #eee;
+	        }
+	    </style>
+	
+	  <table class="dataintable">
+	      <tbody><tr>
+	        <th>帐号</th>
+	        <th>昵称</th>
+            <th>操作</th>
+	      </tr>
+	
+	        <tr>
+	        <td><a href="/cssref/pr_tab_border-collapse.asp" title="">131341</a></td>
+	        <td>wang</td>
+            <td>
+              <a href="javascript:void(0);" title="编辑" class="FormOperBtn btn btn-mini btn-info _formlist_editbtn_inp"> <i class="icon-edit bigger-120"></i></a>
+              <a href="javascript:void(0);" title="删除" class="FormOperBtn btn btn-mini btn-danger _formlist_delbtn_inp"> <i class="icon-trash bigger-120"></i></a> 
+             </td>
+	        </tr>
+	
+	        <tr>
+	        <td><a href="/cssref/pr_tab_border-spacing.asp" title="">24241</a></td>
+	        <td>wangwi</td>
+            <td>
+              <a href="javascript:void(0);" title="编辑" class="FormOperBtn btn btn-mini btn-info _formlist_editbtn_inp"> <i class="icon-edit bigger-120"></i></a>
+              <a href="javascript:void(0);" title="删除" class="FormOperBtn btn btn-mini btn-danger _formlist_delbtn_inp"> <i class="icon-trash bigger-120"></i></a> 
+             </td>
+	        </tr>
+	
+	        <tr>
+	        <td><a href="/cssref/pr_tab_caption-side.asp" title="">142111</a></td>
+	        <td>ikwj</td>
+            <td>
+              <a href="javascript:void(0);" title="编辑" class="FormOperBtn btn btn-mini btn-info _formlist_editbtn_inp"> <i class="icon-edit bigger-120"></i></a>
+              <a href="javascript:void(0);" title="删除" class="FormOperBtn btn btn-mini btn-danger _formlist_delbtn_inp"> <i class="icon-trash bigger-120"></i></a> 
+             </td>
+	        </tr>
+	
+	      </tbody>
+	   </table> 
+    </div>
+									<div class="pagination">
+              <ul>
+                <li><a href="#">«</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">»</a></li>
+              </ul>
+    </div>
 					</div>
 				</div><!--/row-->
 			</div><!--/.span-->
